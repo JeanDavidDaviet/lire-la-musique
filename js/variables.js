@@ -14,7 +14,7 @@ var groupOrigineX = width / 2;
 var groupOrigineY = height / 2 - 40 - 40;
 
 var staveWidth = 200;
-var numberOfStaves = 5;
+var numberOfStaves = Math.ceil(width / 2 / staveWidth);
 var numberOfNotesByStaves = 6;
 var gapBetweenNotes = 30;
 var staveGroupEndNumber = 0;

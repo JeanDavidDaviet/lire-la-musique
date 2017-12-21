@@ -18,6 +18,8 @@ function setSVGSize(){
   groupOrigineX = width / 2;
   groupOrigineY = height / 2 - 40 - 40;
   group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
+
+  numberOfStaves = Math.ceil(width / 2 / staveWidth);
 }
 
 function generateNewStave(_numberOfStaves, _numberStaveBeginning){
