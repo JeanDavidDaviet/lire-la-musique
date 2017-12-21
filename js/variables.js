@@ -3,6 +3,11 @@ var width = window.innerWidth - margin.left - margin.right;
 var height = window.innerHeight - margin.top - margin.bottom;
 var tempo = 30;
 
+var staveWidth = 200;
+var numberOfStaves = 10;
+var numberOfNotesByStaves = 6;
+var gapBetweenNotes = 30;
+
 var interval = 5;
 var double_interval = interval * 2;
 var keysString = "ABCDEFG";

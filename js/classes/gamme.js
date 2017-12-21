@@ -12,7 +12,7 @@ Gamme.prototype.upwardGamme = function(){
     var note = new Note(notesToGroupYLinear[indexOfToniqueInArray], 3, counter, notesToGroupYLinearArray[indexOfToniqueInArray]);
     indexOfToniqueInArray++;
 
-    counter += 15;
+    counter += gapBetweenNotes / 2;
   }
 }
 Gamme.prototype.downwardGamme = function(){
@@ -25,6 +25,6 @@ Gamme.prototype.downwardGamme = function(){
     var note = new Note(notesToGroupYLinear[indexOfToniqueInArray], 3, counter, notesToGroupYLinearArray[indexOfToniqueInArray]);
     indexOfToniqueInArray--;
 
-    counter += 15;
+    counter += gapBetweenNotes / 2;
   }
 }
