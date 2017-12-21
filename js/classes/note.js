@@ -3,7 +3,7 @@ function Note(_note, _high, _x, _positionOnStaveForce){
   this.high = parseInt(_high, 10);
   this.x = _x;
   this.isLow = false;
-  this.numberOfLowBar = 0;
+  this.bars = '';
   this.positionOnStave = (_positionOnStaveForce === undefined) ? notesToGroupYLinear[this.note + this.high] : _positionOnStaveForce;
 
   // if((this.high <= 2 || this.high >= 5) && notesToGroupYLinear[this.note + this.high] % double_interval === 0){
@@ -11,20 +11,32 @@ function Note(_note, _high, _x, _positionOnStaveForce){
   // }else{
   //   if(this.positionOnStave > -double_interval || this.positionOnStave < -double_interval * 5){
   //     this.isLow = true;
-  //     this.calculateLowBar();
+      this.calculateLowBar();
   //   }
   // }
 
-  // console.log(this.positionOnStave);
 
   this.toString();
 }
 Note.prototype.calculateLowBar = function(){
-  this.numberOfLowBar = Math.abs(this.positionOnStave / 5 / 3);
+  if(this.positionOnStave > 0){
+    _numberOfLowBar = Math.abs(this.positionOnStave / 5);
+    if(this.positionOnStave % double_interval === 0){
+      _y = 80;
+    }else{
+      _y = 70;
+    }
+    for (var i = 0; i < _numberOfLowBar; i++) {
+      this.bars += '<path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="410" y="' + _y + '" width="1" height="41" d="M24 130L42.01824 130"></path>';
+      _y -= double_interval;
+    }
+    console.log(this.bars);
+  }
 }
 Note.prototype.toString = function(){
   document.querySelector('.notes').insertAdjacentHTML('beforeend', `<g class="note" style="transform:translate3d(${this.x}px, ${this.positionOnStave}px, 0px);">
           ${this.isLow ? '<path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="410" y="79.5" width="1" height="41" d="M24 130L42.01824 130"></path>' : ''}
+          ${this.bars}
             <g class="note-stem">
               <path stroke-width="1.5" fill="none" stroke="black" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="410" y="79.5" width="1" height="41" d="M38.26824 130L38.26824 95"></path>
             </g>

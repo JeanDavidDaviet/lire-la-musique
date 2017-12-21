@@ -29,7 +29,7 @@ function generateNewStave(_numberOfStaves, _numberStaveBeginning){
     staveGroup.querySelector('.stave:last-child text').innerHTML = _numberStaveBeginning + i + 1;
   }
   for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
-    var note = new Note(keysString.charAt(Math.floor(Math.random() * keysString.length)), 4, (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );
+    new Note(chooseRandomKey(), _.random(3, 4), (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );
   }
   staveGroupEndNumber += _numberOfStaves;
 }
@@ -43,11 +43,15 @@ function moveScore(){
 function setNewStaveInterval(){
   addStavesInterval = setInterval(function(){
     generateNewStave(numberOfStaves,staveGroupEndNumber);
-  }, 3000 * numberOfStaves / 2);
+  }, 3000 * numberOfStaves / 4);
+}
+
+function chooseRandomKey(){
+	return keysString.charAt(Math.floor(Math.random() * keysString.length));
 }
 
 setSVGSize();
 window.addEventListener('resize', setSVGSize);
 generateNewStave(numberOfStaves,0);
-moveScore();
-setNewStaveInterval();
+// moveScore();
+// setNewStaveInterval();
