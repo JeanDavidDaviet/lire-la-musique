@@ -1,12 +1,23 @@
-var margin = {top:10, bottom: 10, left: 40, right: 40};
+var svg = document.querySelector('svg');
+var marginDebug = document.querySelector('.margin-debug');
+var deadlineDebug = document.querySelector('.deadline-debug');
+
+var group = document.querySelector('.group');
+var staveGroup = document.querySelector('.staves');
+var staveTemplate = document.querySelector('.stave-template');
+
+var margin = {top:50, bottom: 50, left: 50, right: 50};
 var width = window.innerWidth - margin.left - margin.right;
 var height = window.innerHeight - margin.top - margin.bottom;
 var tempo = 30;
+var groupOrigineX = width / 2;
+var groupOrigineY = height / 2 - 40 - 40;
 
 var staveWidth = 200;
-var numberOfStaves = 10;
+var numberOfStaves = 5;
 var numberOfNotesByStaves = 6;
 var gapBetweenNotes = 30;
+
 
 var interval = 5;
 var double_interval = interval * 2;

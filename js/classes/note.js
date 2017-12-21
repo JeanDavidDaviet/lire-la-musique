@@ -23,7 +23,7 @@ Note.prototype.calculateLowBar = function(){
   this.numberOfLowBar = Math.abs(this.positionOnStave / 5 / 3);
 }
 Note.prototype.toString = function(){
-  document.querySelector('.group').insertAdjacentHTML('beforeend', `<g class="note" style="transform:translate3d(${this.x}px, ${this.positionOnStave}px, 0px);">
+  document.querySelector('.notes').insertAdjacentHTML('beforeend', `<g class="note" style="transform:translate3d(${this.x}px, ${this.positionOnStave}px, 0px);">
           ${this.isLow ? '<path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="410" y="79.5" width="1" height="41" d="M24 130L42.01824 130"></path>' : ''}
             <g class="note-stem">
               <path stroke-width="1.5" fill="none" stroke="black" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="410" y="79.5" width="1" height="41" d="M38.26824 130L38.26824 95"></path>

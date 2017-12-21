@@ -9,18 +9,22 @@
     <div class="margin-debug"></div>
     <div class="deadline-debug"></div>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g class="group">
-            <g class="stave">
-                <text x="0" y="60">1</text>
-                <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 80L200 80"></path>
-                <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 90L200 90"></path>
-                <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 100L200 100"></path>
-                <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 110L200 110"></path>
-                <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 120L200 120"></path>
-                <rect stroke-width="0.3" fill="black" stroke="black" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="0" y="79.5" width="1" height="41"></rect>
-                <rect stroke-width="0.3" fill="black" stroke="black" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="200" y="79.5" width="1" height="41"></rect>
-            </g>
+      <defs>
+        <g class="stave-template">
+            <text x="0" y="60"></text>
+            <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 80L200 80"></path>
+            <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 90L200 90"></path>
+            <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 100L200 100"></path>
+            <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 110L200 110"></path>
+            <path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M0 120L200 120"></path>
+            <rect stroke-width="0.3" fill="black" stroke="black" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="0" y="79.5" width="1" height="41"></rect>
+            <rect stroke-width="0.3" fill="black" stroke="black" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="200" y="79.5" width="1" height="41"></rect>
         </g>
+      </defs>
+      <g class="group">
+          <g class="staves"></g>
+          <g class="notes"></g>
+      </g>
     </svg>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="js/variables.js"></script>

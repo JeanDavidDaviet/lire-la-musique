@@ -1,32 +1,46 @@
-var marginDebug = document.querySelector('.margin-debug');
-marginDebug.style.top = margin.top + "px";
-marginDebug.style.left = margin.left + "px";
-marginDebug.style.right = margin.right + "px";
-marginDebug.style.bottom = margin.bottom + "px";
-var deadlineDebug = document.querySelector('.deadline-debug');
-deadlineDebug.style.left = width / 2 + "px";
+function setSVGSize(){
+  width = window.innerWidth - margin.left - margin.right;
+  height = window.innerHeight - margin.top - margin.bottom;
 
+  svg.style.width = width;
+  svg.style.height = height;
+  svg.style.left = margin.left;
 
-var stave = document.querySelector('.stave:first-child');
-// stave.style.transform = 'translateX(' + (width / 2) + 'px)';
+  marginDebug.style.top = margin.top + "px";
+  marginDebug.style.left = margin.left + "px";
+  marginDebug.style.right = margin.right + "px";
+  marginDebug.style.bottom = margin.bottom + "px";
 
-for(var i = 0; i <= numberOfStaves; i++){
-	var stave = document.querySelector('.stave:last-child');
-    stave.insertAdjacentHTML('afterend', '<g class="stave" style="transform: translateX(' + (200 * i) + 'px)">' + stave.innerHTML + "</g>");
-    document.querySelector('.stave:last-child text').innerHTML = i + 1;
+  deadlineDebug.style.left = (width / 2 + margin.left)+ "px";
+  deadlineDebug.style.top = margin.top + "px";
+  deadlineDebug.style.bottom = margin.bottom + "px";
+
+  groupOrigineX = width / 2;
+  groupOrigineY = height / 2 - 40 - 40;
+  group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
 }
 
-for(var j = 0; j < numberOfNotesByStaves * numberOfStaves; j++){
-  var note = new Note(keysString.charAt(Math.floor(Math.random() * keysString.length)), 4, (j * (staveWidth / numberOfNotesByStaves) - 15));
+function generateNewStave(_numberOfStaves, _xBeginning, _numberStaveBeginning){
+    // debugger;
+  for(var i = 0; i < _numberOfStaves; i++){
+    staveGroup.insertAdjacentHTML('beforeend', '<g class="stave" style="transform: translateX(' + (200 * i + _xBeginning) + 'px)">' + staveTemplate.innerHTML + "</g>");
+    staveGroup.querySelector('.stave:last-child text').innerHTML = _numberStaveBeginning + i + 1;
+  }
+  for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
+    var note = new Note(keysString.charAt(Math.floor(Math.random() * keysString.length)), 4, (j * (staveWidth / numberOfNotesByStaves) - 15));
+  }
 }
 
-var group = document.querySelector('.group');
-group.style.transform = 'translateX(' + (width / 2) + 'px)';
-var x = 0;
+
 
 function moveScore(){
-	requestAnimationFrame(moveScore);
-	group.style.transform = "translateX(" + (width / 2) - x + "px)";
-	x -= tempo / 60;
+  group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
+  // requestAnimationFrame(moveScore);
+  groupOrigineX -= tempo / 60;
 }
-// moveScore();
+
+setSVGSize();
+window.addEventListener('resize', setSVGSize);
+generateNewStave(numberOfStaves,0,0);
+
+moveScore();

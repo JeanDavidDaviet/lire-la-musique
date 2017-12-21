@@ -14,8 +14,6 @@ html, body {
 }
 .deadline-debug {
   position: absolute;
-  top: 0;
-  bottom: 0;
   width: 2px;
   background: red;
 }
