@@ -19,18 +19,38 @@ function Note(_note, _high, _x, _positionOnStaveForce){
   this.toString();
 }
 Note.prototype.calculateLowBar = function(){
+  _y = 130;
   if(this.positionOnStave > 0){
     _numberOfLowBar = Math.abs(this.positionOnStave / 5);
-    if(this.positionOnStave % double_interval === 0){
-      _y = 80;
+
+    if(this.positionOnStave % double_interval === interval){
+      _y -= interval;
+      _numberOfLowBar = Math.ceil(Math.abs(this.positionOnStave / 5) / 2);
     }else{
-      _y = 70;
+      _numberOfLowBar = Math.abs(this.positionOnStave / 5) / 2 + 1;
     }
+
     for (var i = 0; i < _numberOfLowBar; i++) {
-      this.bars += '<path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="410" y="' + _y + '" width="1" height="41" d="M24 130L42.01824 130"></path>';
+      this.bars += '<path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M24 ' + _y + ' L 42 ' + _y + '"></path>';
       _y -= double_interval;
     }
-    console.log(this.bars);
+  }else if(this.positionOnStave < -60){
+    _numberOfLowBar = Math.abs((this.positionOnStave + 55) / 5);
+
+    if(this.positionOnStave % double_interval === -interval){
+      _y += interval;
+      _numberOfLowBar = Math.abs((this.positionOnStave + 55) / 5) / 2;
+    }else{
+      _numberOfLowBar = Math.floor(Math.abs((this.positionOnStave + 55) / 5)) / 2;
+    }
+
+    for (var i = 0; i < _numberOfLowBar; i++) {
+      this.bars += '<path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M24 ' + _y + ' L 42 ' + _y + '"></path>';
+      _y += double_interval;
+    }
+
+  }else if(this.positionOnStave === 0 || this.positionOnStave === -50){
+    this.bars += '<path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" d="M24 ' + _y + ' L 42 ' + _y + '"></path>';
   }
 }
 Note.prototype.toString = function(){
