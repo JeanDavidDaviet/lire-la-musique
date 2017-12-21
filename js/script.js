@@ -20,27 +20,32 @@ function setSVGSize(){
   group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
 }
 
-function generateNewStave(_numberOfStaves, _xBeginning, _numberStaveBeginning){
-    // debugger;
+function generateNewStave(_numberOfStaves, _numberStaveBeginning){
+  console.log(staveGroupEndNumber);
   for(var i = 0; i < _numberOfStaves; i++){
-    staveGroup.insertAdjacentHTML('beforeend', '<g class="stave" style="transform: translateX(' + (200 * i + _xBeginning) + 'px)">' + staveTemplate.innerHTML + "</g>");
+    staveGroup.insertAdjacentHTML('beforeend', '<g class="stave" style="transform: translateX(' + (staveWidth * i + (staveGroupEndNumber * staveWidth)) + 'px)">' + staveTemplate.innerHTML + "</g>");
     staveGroup.querySelector('.stave:last-child text').innerHTML = _numberStaveBeginning + i + 1;
   }
   for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
-    var note = new Note(keysString.charAt(Math.floor(Math.random() * keysString.length)), 4, (j * (staveWidth / numberOfNotesByStaves) - 15));
+    var note = new Note(keysString.charAt(Math.floor(Math.random() * keysString.length)), 4, (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );
   }
+  staveGroupEndNumber += _numberOfStaves;
 }
-
-
 
 function moveScore(){
   group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
-  // requestAnimationFrame(moveScore);
+  requestAnimationFrame(moveScore);
   groupOrigineX -= tempo / 60;
+}
+
+function setNewStaveInterval(){
+  addStavesInterval = setInterval(function(){
+    generateNewStave(numberOfStaves,staveGroupEndNumber);
+  }, 3000 * numberOfStaves / 2);
 }
 
 setSVGSize();
 window.addEventListener('resize', setSVGSize);
-generateNewStave(numberOfStaves,0,0);
-
+generateNewStave(numberOfStaves,0);
 moveScore();
+setNewStaveInterval();
