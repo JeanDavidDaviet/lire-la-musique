@@ -23,10 +23,11 @@ function setSVGSize(){
 }
 
 function generateNewStave(_numberOfStaves, _numberStaveBeginning){
-  console.log(staveGroupEndNumber);
   for(var i = 0; i < _numberOfStaves; i++){
     staveGroup.insertAdjacentHTML('beforeend', '<g class="stave" style="transform: translateX(' + (staveWidth * i + (staveGroupEndNumber * staveWidth)) + 'px)">' + staveTemplate.innerHTML + "</g>");
-    staveGroup.querySelector('.stave:last-child text').innerHTML = _numberStaveBeginning + i + 1;
+    if(debug){
+        staveGroup.querySelector('.stave:last-child text').innerHTML = _numberStaveBeginning + i + 1;
+    }
   }
   for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
     new Note(chooseRandomKey(), _.random(3, 4), (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );
@@ -47,11 +48,17 @@ function setNewStaveInterval(){
 }
 
 function chooseRandomKey(){
-	return keysString.charAt(Math.floor(Math.random() * keysString.length));
+    return keysString.charAt(Math.floor(Math.random() * keysString.length));
+}
+function chooseRandomKeyPerlin(){
+    return keysString.charAt(Math.floor(generator.getVal(new Date().getTime()) * keysString.length));
 }
 
 setSVGSize();
 window.addEventListener('resize', setSVGSize);
 generateNewStave(numberOfStaves,0);
-// moveScore();
-// setNewStaveInterval();
+moveScore();
+setNewStaveInterval();
+console.log();
+console.log(Math.floor(generator.getVal(0) * notesToGroupYLinearArray.length));
+console.log(Math.floor(generator.getVal(20) * notesToGroupYLinearArray.length));

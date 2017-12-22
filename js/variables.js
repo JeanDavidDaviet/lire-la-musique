@@ -1,6 +1,7 @@
 var svg = document.querySelector('svg');
 var marginDebug = document.querySelector('.margin-debug');
 var deadlineDebug = document.querySelector('.deadline-debug');
+var debug = false;
 
 var group = document.querySelector('.group');
 var staveGroup = document.querySelector('.staves');
@@ -12,6 +13,7 @@ var height = window.innerHeight - margin.top - margin.bottom;
 var tempo = 60;
 var groupOrigineX = width / 2;
 var groupOrigineY = height / 2 - 40 - 40;
+var generator = new Simple1DNoise();
 
 var staveWidth = 200;
 var numberOfStaves = Math.ceil(width / 2 / staveWidth);
@@ -139,6 +141,7 @@ var notesToGroupYLinear = {
   "G5": -90
 }
 var notesToGroupYLinearArray = _.values(notesToGroupYLinear);
+var notesToGroupYLinearArrayLength = notesToGroupYLinearArray.length;
 var notesToGroupY = {
   "0": {
     "A": 115,
