@@ -30,7 +30,7 @@ function generateNewStave(_numberOfStaves, _numberStaveBeginning){
     }
   }
   for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
-    new Note(chooseRandomKeyPerlin(), _.random(3, 4), (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );
+    new Note(chooseRandomKey(), _.random(3, 4), (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );
   }
   staveGroupEndNumber += _numberOfStaves;
 }
