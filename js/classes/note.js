@@ -5,7 +5,6 @@ function Note(_note, _high, _x, _positionOnStaveForce){
   this.bars = '';
   this.positionOnStave = (_positionOnStaveForce === undefined) ? notesToGroupYLinear[this.note + this.high] : _positionOnStaveForce;
   this.isLow = this.positionOnStave <= -30 ? true : false;
-  console.log(this.positionOnStave);
 
   this.calculateLowBar();
   this.toString();
