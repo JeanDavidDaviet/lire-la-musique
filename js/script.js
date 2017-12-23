@@ -57,8 +57,33 @@ function chooseRandomKeyPerlin(){
     return keysString.charAt(Math.floor(generator.getVal(new Date().getTime()) * keysString.length));
 }
 
+function gammeAlterationsToNumber(_note){
+    return gammeToKeySignature = _.reduce(gammes[_note]["alterations"], function(_old, _new, _index, _array){
+        return _old + _new;
+    })
+}
+
+function setKeySignature(_note){
+    var _numberOfAlterations = gammeAlterationsToNumber(_note);
+    var _alteration = "";
+    if(_numberOfAlterations < 0){
+        _alteration = "flat";
+    }
+    if(_numberOfAlterations > 0){
+        _alteration = "sharp";
+    }
+    var alterationTemplate = document.querySelector('.' + _alteration + '-template');
+    var _xCounter = -305;
+    for(var i = 0; i < Math.abs(_numberOfAlterations); i++){
+        alterationGroup.insertAdjacentHTML('beforeend', alterationTemplate.outerHTML);
+        alterationGroup.querySelector('path:last-child').setAttribute('transform', 'translate(' + _xCounter + ',' + alterationsPositionsY[_alteration][i] + ')');
+        _xCounter += 10;
+    }
+}
+
 setSVGSize();
 window.addEventListener('resize', setSVGSize);
+setKeySignature("D");
 generateNewStave(1,0);
 generateNewStave(numberOfStaves,1);
 // moveScore();

@@ -6,6 +6,7 @@ var debug = false;
 var group = document.querySelector('.group');
 var staveGroup = document.querySelector('.staves');
 var staveTemplate = document.querySelector('.stave-template');
+var alterationGroup = document.querySelector('.key-signature');
 
 var margin = {top:50, bottom: 50, left: 50, right: 50};
 var width = window.innerWidth - margin.left - margin.right;
@@ -96,6 +97,10 @@ var gammes = {
     "notes": ["B","C","D","E","F","G","A"],
     "alterations": [0,1,1,0,1,1,1]
   }
+}
+var alterationsPositionsY = {
+  "sharp": [5, 20, 0, 15, 30, 10, 25],
+  "flat": [25, 10, 30, 15, 35, 20, 40]
 }
 var notesToGroupYLinear = {
   "A0": 115,
