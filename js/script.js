@@ -30,7 +30,11 @@ function generateNewStave(_numberOfStaves, _numberStaveBeginning){
     }
   }
   for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
-    new Note(chooseRandomKey(), _.random(3, 4), (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );
+    console.log(staveGroupEndNumber);
+    // step the first note to put the treble clef instead
+    if(j !== 0 || staveGroupEndNumber !== 0 ){
+        new Note(chooseRandomKey(), _.random(3, 4), (j * (staveWidth / numberOfNotesByStaves) - 15) + (staveGroupEndNumber * staveWidth) );        
+    }
   }
   staveGroupEndNumber += _numberOfStaves;
 }
@@ -56,9 +60,7 @@ function chooseRandomKeyPerlin(){
 
 setSVGSize();
 window.addEventListener('resize', setSVGSize);
-generateNewStave(numberOfStaves,0);
-moveScore();
-setNewStaveInterval();
-console.log();
-console.log(Math.floor(generator.getVal(0) * notesToGroupYLinearArray.length));
-console.log(Math.floor(generator.getVal(20) * notesToGroupYLinearArray.length));
+generateNewStave(1,0);
+generateNewStave(numberOfStaves,1);
+// moveScore();
+// setNewStaveInterval();
