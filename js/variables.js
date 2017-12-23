@@ -17,7 +17,7 @@ var generator = new Simple1DNoise();
 
 var staveWidth = 200;
 var numberOfStaves = Math.ceil(width / 2 / staveWidth);
-var numberOfNotesByStaves = 6;
+var numberOfNotesByStaves = 4;
 var gapBetweenNotes = 30;
 var staveGroupEndNumber = 0;
 
