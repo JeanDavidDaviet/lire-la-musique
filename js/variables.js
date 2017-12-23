@@ -20,6 +20,7 @@ var numberOfStaves = Math.ceil(width / 2 / staveWidth);
 var numberOfNotesByStaves = 4;
 var gapBetweenNotes = 30;
 var staveGroupEndNumber = 0;
+var spaceBetweenFinalNoteOfStaves = staveWidth / numberOfNotesByStaves / 4;
 
 var addStavesInterval = null;
 
