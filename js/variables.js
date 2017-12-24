@@ -1,3 +1,4 @@
+var topLevel = (document.body.querySelector('.panel-body')) ? document.body.querySelector('.panel-body') : document.body;
 var svg = document.querySelector('svg');
 var marginDebug = document.querySelector('.margin-debug');
 var deadlineDebug = document.querySelector('.deadline-debug');
@@ -13,8 +14,8 @@ var staveTemplate = document.querySelector('.stave-template');
 var alterationGroup = document.querySelector('.key-signature');
 
 var margin = {top:50, bottom: 50, left: 50, right: 50};
-var width = window.innerWidth - margin.left - margin.right;
-var height = window.innerHeight - margin.top - margin.bottom;
+var width = topLevel.clientWidth - margin.left - margin.right;
+var height = topLevel.clientHeight - margin.top - margin.bottom;
 var tempo = parseInt(tempoInput.value, 10);
 var groupOrigineX = width / 2;
 var groupOrigineY = height / 2 - 40 - 40;

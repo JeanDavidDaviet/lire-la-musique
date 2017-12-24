@@ -1,6 +1,6 @@
 function setSVGSize(){
-  width = window.innerWidth - margin.left - margin.right;
-  height = window.innerHeight - margin.top - margin.bottom;
+  width = topLevel.clientWidth - margin.left - margin.right;
+  height = topLevel.clientHeight - margin.top - margin.bottom;
 
   svg.style.width = width;
   svg.style.height = height;
@@ -88,7 +88,7 @@ function setKeySignature(_note){
 
 function setKeyChooser(){
   select.addEventListener('change', changeKey);
-  document.body.appendChild(select);
+  topLevel.appendChild(select);
 }
 
 function setTempo(){
@@ -114,7 +114,7 @@ function start(){
 
 function reset(){
   select.removeEventListener('change', changeKey);
-  document.body.removeChild(select);
+  topLevel.removeChild(select);
   staveGroup.innerHTML = "";
   staveGroupEndNumber = 0;
   notesGroup.innerHTML = "";
