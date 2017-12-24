@@ -31,71 +31,156 @@ var keysString = "ABCDEFG";
 var gammes = {
   "C": {
     "notes": ["C","D","E","F","G","A","B"],
-    "alterations": [0,0,0,0,0,0,0]
+    "alterations": [0,0,0,0,0,0,0],
+    "chords" : [
+      ["C", "Am"],
+      ["G", "Em"],
+      ["F", "Dm"],
+    ]
   },
   "C#": {
     "notes": ["C","D","E","F","G","A","B"],
-    "alterations": [1,1,1,1,1,1,1]
+    "alterations": [1,1,1,1,1,1,1],
+    "chords" : [
+      ["C#", "A#m"],
+      ["Ab", "Fm"],
+      ["F#", "D#m"],
+    ]
   },
   "Db": {
     "notes": ["D","E","F","G","A","B","C"],
-    "alterations": [-1,-1,0,-1,-1,-1,0]
+    "alterations": [-1,-1,0,-1,-1,-1,0],
+    "chords" : [
+      ["Db", "Bbm"],
+      ["Ab", "Fm"],
+      ["Gb", "Ebm"],
+    ]
   },
   "D": {
     "notes": ["D","E","F","G","A","B","C"],
-    "alterations": [0,0,1,0,0,0,1]
+    "alterations": [0,0,1,0,0,0,1],
+    "chords" : [
+      ["C#", "Bm"],
+      ["A", "F#m"],
+      ["G", "Em"],
+    ]
   },
   "D#": {
     "notes": ["D","E","F","G","A","B","C"],
-    "alterations": [0,-1,0,0,-1,-1,0]
+    "alterations": [0,-1,0,0,-1,-1,0],
+    "chords" : [
+      ["D#", "Cm"],
+      ["A#", "Gm"],
+      ["G#", "Fm"],
+    ]
   },
   "Eb": {
     "notes": ["E","F","G","A","B","C","D"],
-    "alterations": [-1,0,0,-1,-1,0,0]
+    "alterations": [-1,0,0,-1,-1,0,0],
+    "chords" : [
+      ["Eb", "Cm"],
+      ["Bb", "Gm"],
+      ["Ab", "Fm"],
+    ]
   },
   "E": {
     "notes": ["E","F","G","A","B","C","D"],
-    "alterations": [0,1,1,0,0,1,1]
+    "alterations": [0,1,1,0,0,1,1],
+    "chords" : [
+      ["E", "C#m"],
+      ["B", "G#m"],
+      ["A", "F#m"],
+    ]
   },
   "F": {
     "notes": ["F","G","A","B","C","D","E"],
-    "alterations": [0,0,0,-1,0,0,0]
+    "alterations": [0,0,0,-1,0,0,0],
+    "chords" : [
+      ["F", "Dm"],
+      ["C", "Am"],
+      ["Bb", "Gm"],
+    ]
   },
   "F#": {
     "notes": ["F","G","A","B","C","D","E"],
-    "alterations": [0,-1,-1,-1,0,-1,-1]
+    "alterations": [0,-1,-1,-1,0,-1,-1],
+    "chords" : [
+      ["F#", "D#m"],
+      ["C#", "A#m"],
+      ["Cb", "G#m"],
+    ]
   },
   "Gb": {
     "notes": ["G","A","B","C","D","E","F"],
-    "alterations": [-1,-1,-1,-1,-1,-1,0]
+    "alterations": [-1,-1,-1,-1,-1,-1,0],
+    "chords" : [
+      ["Gb", "Ebm"],
+      ["Db", "Bbm"],
+      ["B", "G#m"],
+    ]
   },
   "G": {
     "notes": ["G","A","B","C","D","E","F"],
-    "alterations": [0,0,0,0,0,0,1]
+    "alterations": [0,0,0,0,0,0,1],
+    "chords" : [
+      ["G", "Em"],
+      ["D", "Bm"],
+      ["C", "Am"],
+    ]
   },
   "G#": {
     "notes": ["G","A","B","C","D","E","F"],
-    "alterations": [0,-1,-1,0,-1,-1,0]
+    "alterations": [0,-1,-1,0,-1,-1,0],
+    "chords" : [
+      ["G#", "Fm"],
+      ["D#", "Cm"],
+      ["C#", "A#m"],
+    ]
   },
   "Ab": {
     "notes": ["A","B","C","D","E","F","G"],
-    "alterations": [-1,-1,0,-1,-1,0,0]
+    "alterations": [-1,-1,0,-1,-1,0,0],
+    "chords" : [
+      ["Ab", "Fm"],
+      ["Db", "Bbm"],
+      ["Eb", "Cm"],
+    ]
   },
   "A": {
     "notes": ["A","B","C","D","E","F","G"],
-    "alterations": [0,0,1,1,0,0,1]
+    "alterations": [0,0,1,1,0,0,1],
+    "chords" : [
+      ["A", "F#m"],
+      ["E", "C#m"],
+      ["D", "Bm"],
+    ]
   },
   "A#": {
     "notes": ["A","B","C","D","E","F","G"],
-    "alterations": [0,-1,0,0,-1,0,0]
+    "alterations": [0,-1,0,0,-1,0,0],
+    "chords" : [
+      ["A#", "Gm"],
+      ["F", "Dm"],
+      ["D#", "Cm"],
+    ]
   },
   "Bb": {
     "notes": ["B","C","D","E","F","G","A"],
-    "alterations": [-1,0,0,-1,0,0,0]
+    "alterations": [-1,0,0,-1,0,0,0],
+    "chords" : [
+      ["Bb", "Gm"],
+      ["F", "Dm"],
+      ["Eb", "Cm"],
+    ]
   },
   "B": {
     "notes": ["B","C","D","E","F","G","A"],
-    "alterations": [0,1,1,0,1,1,1]
+    "alterations": [0,1,1,0,1,1,1],
+    "chords" : [
+      ["B", "G#m"],
+      ["Gb", "Ebm"],
+      ["E", "C#m"],
+    ]
   }
 }
 var alterationsPositionsY = {
