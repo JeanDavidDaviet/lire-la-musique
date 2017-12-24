@@ -46,7 +46,7 @@ Note.prototype.calculateLowBar = function(){
   }
 }
 Note.prototype.toString = function(){
-  document.querySelector('.notes').insertAdjacentHTML('beforeend', `<g class="note" style="transform:translate3d(${this.x}px, ${this.positionOnStave}px, 0px);">
+  notesGroup.insertAdjacentHTML('beforeend', `<g class="note" style="transform:translate3d(${this.x}px, ${this.positionOnStave}px, 0px);">
           ${this.bars}
             <g class="note-stem">
               <path stroke-width="1.5" fill="none" stroke="black" stroke-dasharray="none" font-family="Arial" font-size="10pt" font-weight="normal" font-style="normal" x="410" y="79.5" width="1" height="41" d="${this.isLow ? 'M 38 130 L 38 95' : 'M 28 130 L 28 165'}"></path>

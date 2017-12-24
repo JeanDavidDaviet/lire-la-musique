@@ -34,7 +34,7 @@ function generateNewStave(_numberOfStaves, _numberStaveBeginning){
   for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
     // step the first and second notes to put the treble clef and time signature instead
     if(j > 1 || staveGroupEndNumber !== 0 ){
-        new Note(chooseRandomKey(), _.random(3, 4), (j * (staveWidth / numberOfNotesByStaves) - spaceBetweenFinalNoteOfStaves) + (staveGroupEndNumber * staveWidth) );        
+        new Note(chooseRandomKey(), _.random(3,4), (j * (staveWidth / numberOfNotesByStaves) - spaceBetweenFinalNoteOfStaves) + (staveGroupEndNumber * staveWidth) );        
     }
   }
   staveGroupEndNumber += _numberOfStaves;
@@ -42,7 +42,7 @@ function generateNewStave(_numberOfStaves, _numberStaveBeginning){
 
 function moveScore(){
   group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
-  requestAnimationFrame(moveScore);
+  idRAF = requestAnimationFrame(moveScore);
   groupOrigineX -= tempo / 60;
 }
 
@@ -67,6 +67,7 @@ function gammeAlterationsToNumber(_note){
 
 function setKeySignature(_note){
     currentTonique = _note;
+    select.querySelector('option[value="' + currentTonique + '"]').setAttribute('selected', 'selected');
     var _numberOfAlterations = gammeAlterationsToNumber(_note);
     var _alteration = "";
     if(_numberOfAlterations < 0){
@@ -77,6 +78,7 @@ function setKeySignature(_note){
     }
     var alterationTemplate = document.querySelector('.' + _alteration + '-template');
     var _xCounter = -305;
+    alterationGroup.innerHTML = "";
     for(var i = 0; i < Math.abs(_numberOfAlterations); i++){
         alterationGroup.insertAdjacentHTML('beforeend', alterationTemplate.outerHTML);
         alterationGroup.querySelector('path:last-child').setAttribute('transform', 'translate(' + _xCounter + ',' + alterationsPositionsY[_alteration][i] + ')');
@@ -84,10 +86,36 @@ function setKeySignature(_note){
     }
 }
 
-setSVGSize();
-window.addEventListener('resize', setSVGSize);
-setKeySignature("D");
-generateNewStave(1,0);
-generateNewStave(numberOfStaves,1);
-moveScore();
-setNewStaveInterval();
+function setKeyChooser(){
+  select.addEventListener('change', changeKey);
+  document.body.appendChild(select);
+}
+
+function changeKey(){
+  reset();
+  setKeySignature(this.querySelector('option:checked').innerHTML);
+  start();
+}
+
+function start(){
+  setSVGSize();
+  window.addEventListener('resize', setSVGSize);
+  setKeyChooser();
+  generateNewStave(1,0);
+  generateNewStave(numberOfStaves,1);
+  moveScore();
+  setNewStaveInterval();
+}
+
+function reset(){
+  select.removeEventListener('change', changeKey);
+  document.body.removeChild(select);
+  staveGroup.innerHTML = "";
+  staveGroupEndNumber = 0;
+  notesGroup.innerHTML = "";
+  cancelAnimationFrame(idRAF);
+  clearInterval(addStavesInterval);
+}
+
+setKeySignature("C");
+start();
