@@ -91,6 +91,10 @@ function setKeyChooser(){
   document.body.appendChild(select);
 }
 
+function setTempo(){
+  tempo = parseInt(tempoInput.value, 10);
+}
+
 function changeKey(){
   reset();
   setKeySignature(this.querySelector('option:checked').innerHTML);
@@ -101,6 +105,7 @@ function start(){
   setSVGSize();
   window.addEventListener('resize', setSVGSize);
   setKeyChooser();
+  tempoInput.addEventListener('change', setTempo);
   generateNewStave(1,0);
   generateNewStave(numberOfStaves,1);
   moveScore();
