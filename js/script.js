@@ -25,9 +25,11 @@ function setSVGSize(){
 function generateNewStave(_numberOfStaves, _numberStaveBeginning){
   for(var i = 0; i < _numberOfStaves; i++){
     staveGroup.insertAdjacentHTML('beforeend', '<g class="stave" style="transform: translateX(' + (staveWidth * i + (staveGroupEndNumber * staveWidth)) + 'px)">' + staveTemplate.innerHTML + "</g>");
-    if(debug){
-        staveGroup.querySelector('.stave:last-child text').innerHTML = _numberStaveBeginning + i + 1;
-    }
+    // if(debug){
+      var _intervalChord = Math.floor(Math.random() * 3);
+      var _majorOrMinorChord = Math.floor(Math.random() * 2);
+      staveGroup.querySelector('.stave:last-child text').innerHTML = gammes[currentTonique]["chords"][_intervalChord][_majorOrMinorChord];
+    // }
   }
   for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
     // step the first and second notes to put the treble clef and time signature instead
@@ -64,6 +66,7 @@ function gammeAlterationsToNumber(_note){
 }
 
 function setKeySignature(_note){
+    currentTonique = _note;
     var _numberOfAlterations = gammeAlterationsToNumber(_note);
     var _alteration = "";
     if(_numberOfAlterations < 0){
@@ -86,5 +89,5 @@ window.addEventListener('resize', setSVGSize);
 setKeySignature("D");
 generateNewStave(1,0);
 generateNewStave(numberOfStaves,1);
-// moveScore();
-// setNewStaveInterval();
+moveScore();
+setNewStaveInterval();

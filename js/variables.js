@@ -28,6 +28,7 @@ var addStavesInterval = null;
 var interval = 5;
 var double_interval = interval * 2;
 var keysString = "ABCDEFG";
+var currentTonique = null;
 var gammes = {
   "C": {
     "notes": ["C","D","E","F","G","A","B"],
@@ -60,7 +61,7 @@ var gammes = {
     "notes": ["D","E","F","G","A","B","C"],
     "alterations": [0,0,1,0,0,0,1],
     "chords" : [
-      ["C#", "Bm"],
+      ["D", "Bm"],
       ["A", "F#m"],
       ["G", "Em"],
     ]
