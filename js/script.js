@@ -1,4 +1,5 @@
 function setSVGSize(){
+  topLevel.style.position = "relative";
   width = topLevel.clientWidth - margin.left - margin.right;
   height = topLevel.clientHeight - margin.top - margin.bottom;
 

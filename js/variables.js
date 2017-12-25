@@ -1,4 +1,4 @@
-var topLevel = (document.body.querySelector('.panel-body')) ? document.body.querySelector('.panel-body') : document.body;
+var topLevel = (document.body.querySelector('[data-app="score"]')) ? document.body.querySelector('.panel-body') : document.body;
 var svg = document.querySelector('svg');
 var marginDebug = document.querySelector('.margin-debug');
 var deadlineDebug = document.querySelector('.deadline-debug');
