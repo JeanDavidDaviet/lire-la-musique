@@ -1,4 +1,15 @@
-var topLevel = (document.body.querySelector('[data-app="score"]')) ? document.body.querySelector('.panel-body') : document.body;
+var topLevel = (document.body.querySelector('[data-app="score"]')) ? 
+    document.body.querySelector('.panel-body') : 
+    (document.body.querySelector('[data-app="chords"]')) ? 
+        document.body.querySelector('[data-app="chords"]') :
+        (document.body.querySelector('[data-app="keys"]')) ?
+        document.body.querySelector('[data-app="keys"]') :
+            document.body;
+
+var isScore = topLevel.dataset.app == "score" ? true : false;
+var isChords = topLevel.dataset.app == "chords" ? true : false;
+var isKeys = topLevel.dataset.app == "keys" ? true : false;
+
 var svg = document.querySelector('svg');
 var marginDebug = document.querySelector('.margin-debug');
 var deadlineDebug = document.querySelector('.deadline-debug');
@@ -21,7 +32,7 @@ var groupOrigineX = width / 2;
 var groupOrigineY = height / 2 - 40 - 40;
 var generator = new Simple1DNoise();
 
-var staveWidth = 200;
+var staveWidth = isKeys ? 100 : 200;
 var numberOfStaves = Math.ceil(width / 2 / staveWidth);
 var numberOfNotesByStaves = 4;
 var gapBetweenNotes = 30;

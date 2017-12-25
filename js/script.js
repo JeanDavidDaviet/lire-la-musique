@@ -15,10 +15,19 @@ function setSVGSize(){
   deadlineDebug.style.left = (width / 2 + margin.left)+ "px";
   deadlineDebug.style.top = margin.top + "px";
   deadlineDebug.style.bottom = margin.bottom + "px";
+    if(isKeys){
+        deadlineDebug.style.display = "none";
+    }
 
   groupOrigineX = width / 2;
   groupOrigineY = height / 2 - 40 - 40;
   group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
+
+  staveTemplate.querySelector('rect[x="200"]').setAttribute('x', staveWidth);
+  staveTemplate.querySelectorAll('path').forEach(function(element){
+    element.setAttribute('d', element.getAttribute('d').replace('L200', 'L' + staveWidth));
+  });
+
 
   numberOfStaves = Math.ceil(width / 2 / staveWidth);
 }
@@ -29,14 +38,18 @@ function generateNewStave(_numberOfStaves, _numberStaveBeginning){
     // if(debug){
       var _intervalChord = Math.floor(Math.random() * 3);
       var _majorOrMinorChord = Math.floor(Math.random() * 2);
-      staveGroup.querySelector('.stave:last-child text').innerHTML = gammes[currentTonique]["chords"][_intervalChord][_majorOrMinorChord];
+      if(!isKeys){
+        staveGroup.querySelector('.stave:last-child text').innerHTML = gammes[currentTonique]["chords"][_intervalChord][_majorOrMinorChord];
+      }
     // }
   }
-  for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
-    // step the first and second notes to put the treble clef and time signature instead
-    if(j > 1 || staveGroupEndNumber !== 0 ){
-        new Note(chooseRandomKey(), _.random(3,4), (j * (staveWidth / numberOfNotesByStaves) - spaceBetweenFinalNoteOfStaves) + (staveGroupEndNumber * staveWidth) );        
-    }
+  if(isScore){
+      for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
+        // step the first and second notes to put the treble clef and time signature instead
+        if(j > 1 || staveGroupEndNumber !== 0 ){
+            new Note(chooseRandomKey(), _.random(3,4), (j * (staveWidth / numberOfNotesByStaves) - spaceBetweenFinalNoteOfStaves) + (staveGroupEndNumber * staveWidth) );        
+        }
+      }
   }
   staveGroupEndNumber += _numberOfStaves;
 }
@@ -108,9 +121,11 @@ function start(){
   setKeyChooser();
   tempoInput.addEventListener('change', setTempo);
   generateNewStave(1,0);
-  generateNewStave(numberOfStaves,1);
-  moveScore();
-  setNewStaveInterval();
+  if(!isKeys){
+      generateNewStave(numberOfStaves,1);
+      moveScore();
+      setNewStaveInterval();
+  }
 }
 
 function reset(){
