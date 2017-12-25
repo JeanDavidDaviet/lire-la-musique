@@ -15,15 +15,15 @@ function setSVGSize(){
   deadlineDebug.style.left = (width / 2 + margin.left)+ "px";
   deadlineDebug.style.top = margin.top + "px";
   deadlineDebug.style.bottom = margin.bottom + "px";
-    if(isKeys){
-        deadlineDebug.style.display = "none";
-    }
+  if(isKeys){
+    deadlineDebug.style.display = "none";
+  }
 
   groupOrigineX = width / 2;
   groupOrigineY = height / 2 - 40 - 40;
   group.style.transform = "translate3d(" + groupOrigineX + "px," + groupOrigineY + "px, 0)";
 
-  staveTemplate.querySelector('rect[x="200"]').setAttribute('x', staveWidth);
+  staveTemplate.querySelector('rect:last-child').setAttribute('x', staveWidth);
   staveTemplate.querySelectorAll('path').forEach(function(element){
     element.setAttribute('d', element.getAttribute('d').replace('L200', 'L' + staveWidth));
   });

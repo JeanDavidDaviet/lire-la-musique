@@ -32,7 +32,7 @@ var groupOrigineX = width / 2;
 var groupOrigineY = height / 2 - 40 - 40;
 var generator = new Simple1DNoise();
 
-var staveWidth = isKeys ? 100 : 200;
+var staveWidth = isKeys ? 125 : 200;
 var numberOfStaves = Math.ceil(width / 2 / staveWidth);
 var numberOfNotesByStaves = 4;
 var gapBetweenNotes = 30;
