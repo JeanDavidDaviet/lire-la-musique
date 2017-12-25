@@ -121,7 +121,7 @@ var gammes = {
   },
   "F#": {
     "notes": ["F","G","A","B","C","D","E"],
-    "alterations": [0,-1,-1,-1,0,-1,-1],
+    "alterations": [0,-1,-1,-1,-1,-1,-1],
     "chords" : [
       ["F#", "D#m"],
       ["C#", "A#m"],
@@ -203,7 +203,7 @@ var gammes = {
 }
 var alterationsPositionsY = {
   "sharp": [5, 20, 0, 15, 30, 10, 25],
-  "flat": [25, 10, 30, 15, 35, 20, 40]
+  "flat": [15, 0, 20, 5, 25, 10, 30]
 }
 var notesToGroupYLinear = {
   "A0": 115,

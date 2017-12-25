@@ -17,6 +17,7 @@ function setSVGSize(){
   deadlineDebug.style.bottom = margin.bottom + "px";
   if(isKeys){
     deadlineDebug.style.display = "none";
+    tempoInput.parentNode.style.display = "none";
   }
 
   groupOrigineX = width / 2;
@@ -119,12 +120,12 @@ function start(){
   setSVGSize();
   window.addEventListener('resize', setSVGSize);
   setKeyChooser();
-  tempoInput.addEventListener('change', setTempo);
   generateNewStave(1,0);
   if(!isKeys){
-      generateNewStave(numberOfStaves,1);
-      moveScore();
-      setNewStaveInterval();
+    tempoInput.addEventListener('change', setTempo);
+    generateNewStave(numberOfStaves,1);
+    moveScore();
+    setNewStaveInterval();
   }
 }
 
