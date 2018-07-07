@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Line extends Component {
+  constructor(props){
+    super(props);
+    this.x = props.x;
+    this.y = props.y;
+    this.width = props.width;
+  }
+
   render() {
-    const x = this.props.x;
-    const y = this.props.y;
-    const width = this.props.width;
-    const lineWidth = x + width;
     return (
       <path
         strokeWidth="1"
@@ -17,9 +20,7 @@ class Line extends Component {
         fontSize="10pt"
         fontWeight="normal"
         fontStyle="normal"
-        d={`M${x} ${y}L ${x + width} ${y}`}>
-        {lineWidth}
-      </path>
+        d={`M${this.x} ${this.y}L ${this.x + this.width} ${this.y}`}></path>
     );
   }
 }
@@ -28,9 +29,6 @@ Line.propTypes = {
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired
-}
-Line.defaultProps = {
-  width: 200
 }
 
 export default Line;

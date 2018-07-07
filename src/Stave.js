@@ -1,50 +1,51 @@
 import React, { Component } from 'react';
 import './Stave.css';
 import Line from './Line';
+import Note from './Note';
 
 class Stave extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
-    this.state = {
-      x: 0,
-      transform: {
-        transform:'translate3d(0,0,0)'
-      }
-    }
+    let marginTop = 10;
+    let width = props.width;
 
     this.lines = [];
     for(let i = 0; i < 5; i++){
-      this.lines.push(<Line key={i} x={0} y={i * 10} />);
+      this.lines.push(
+        <Line
+          key   = { i }
+          x     = { 0 }
+          y     = { i * marginTop }
+          width = { width }
+        />
+      );
+    }
+
+    this.notes = [];
+    for(let i = 0; i < 1; i++){
+      this.notes.push(
+        <Note key={i}/>
+      );
     }
   }
 
-  componentDidMount(){
-    requestAnimationFrame(this.update);
-  }
-
-  update = () => {
-    requestAnimationFrame(this.update);
-    this.setState((prevState) => {
-      return {
-        x: prevState.x - 1,
-        transform: {
-          transform: `translate3d(${this.state.x}px,0,0)`
-        }
-      }
-    });
-  }
-
   render() {
-
+    let decalage = {
+      transform: `translate3d( ${ this.props.index * 200 }px, 0, 0)`
+    };
     return (
-      <svg>
-          <g style={this.state.transform}>
-            { this.lines }
-          </g>
-      </svg>
+      <g className="stave" style={decalage}>
+        { this.lines }
+        { this.notes }
+      </g>
     );
   }
+}
+
+Stave.defaultProps = {
+  width: 200,
+  marginTop: 10
 }
 
 export default Stave;
