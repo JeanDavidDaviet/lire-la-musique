@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Stave from './Stave';
+import Stave from '../../components/Stave/Stave';
 import './Mesure.css'
 
 class Mesure extends Component {

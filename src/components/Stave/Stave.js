@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Stave.css';
-import Line from './Line';
-import Note from './Note';
+import Line from '../../components/Line/Line';
+import Note from '../../components/Note/Note';
 
 class Stave extends Component {
   constructor(props){
