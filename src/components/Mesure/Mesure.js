@@ -7,66 +7,61 @@ class Mesure extends Component {
   constructor(props){
     super();
 
-    this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) * 2;
+    this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
     this.pixelsPerBeats = 100;
     this.bpm = 60;
     this.pixelsPerMillisecond = this.pixelsPerBeats / 1000;
-    this.interval = 10;
     this.staves = [];
+    this.canProcess = 0;
 
     this.state = {
       x: 0,
+      staveIndex: 0,
       transform: {
         transform:'translate3d(0,50px,0)'
-      },
-      numberOfStaves: 0
+      }
     }
   }
 
   componentDidMount(){
-    this.lastTime = Date.now();
+    this.lastFrameAdd = Date.now();
+    this.lastFrameRemove = Date.now();
     this.lastFrame = Date.now();
-    this.addStaves();
-    // requestAnimationFrame(this.update);
+    for(let i = 0; i < this.stavesNumber; i++){
+      this.staves.push(<Stave index={i} width={this.props.config.staveWidth} key={i} scale={this.props.scale}/>);
+    }
+    this.setState({staveIndex: this.stavesNumber});
+    requestAnimationFrame(this.update);
   }
 
   update = () => {
     requestAnimationFrame(this.update);
-    if(Date.now() - this.interval * 1000 > this.lastTime){
-      this.lastTime = Date.now();
+    if(this.state.x < -this.props.config.staveWidth - this.canProcess){
+      this.canProcess += this.props.config.staveWidth;
       this.addStaves();
       this.removeStaves();
     }
 
-
-    // if(Date.now() - 16 > this.lastFrame){
-    //   this.lastFrame = Date.now();
-      this.setState((prevState) => {
-        return {
-          x: prevState.x - (this.pixelsPerMillisecond * ( Date.now() - this.lastFrame )).toFixed(1),
-          transform: {
-            transform: `translate3d(${this.state.x}px,50px,0)`
-          }
+    this.setState((prevState) => {
+      return {
+        // 0.1 * 16
+        x: prevState.x - (this.pixelsPerMillisecond * ( Date.now() - this.lastFrame )).toFixed(1),
+        transform: {
+          transform: `translate3d(${this.state.x}px,50px,0)`
         }
-      });
-    // }
+      }
+    });
     this.lastFrame = Date.now();
 
   }
 
   addStaves = () => {
-    const alreadyExistingStaves = this.state.numberOfStaves;
-    for(let i = alreadyExistingStaves; i < alreadyExistingStaves + this.stavesNumber; i++){
-      this.staves.push(<Stave index={i} width={this.props.config.staveWidth} key={i} scale={this.props.scale}/>);
-    }
-    this.setState({numberOfStaves:alreadyExistingStaves + this.stavesNumber});
+    this.staves.push(<Stave index={this.state.staveIndex} width={this.props.config.staveWidth} key={this.state.staveIndex} scale={this.props.scale}/>);
+    this.setState((previousState) => {return {staveIndex: previousState.staveIndex + 1}});
   }
 
   removeStaves = () => {
-    if(this.staves.length / 2 > this.stavesNumber){
-      this.staves.splice(0, this.stavesNumber);
-      this.setState((previousState) => { return {numberOfStaves: previousState.numberOfStaves - this.stavesNumber}});
-    }
+    this.staves.splice(0, 1);
   }
 
   render(){

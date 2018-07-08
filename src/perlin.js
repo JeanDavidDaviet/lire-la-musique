@@ -1,4 +1,4 @@
-var Simple1DNoise = function() {
+export default function() {
     var MAX_VERTICES = 256;
     var MAX_VERTICES_MASK = MAX_VERTICES -1;
     var amplitude = 1;
