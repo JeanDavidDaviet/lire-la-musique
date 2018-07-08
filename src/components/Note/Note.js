@@ -8,7 +8,7 @@ class Note extends Component {
 
   render(){
     return(
-      <g className="note" style={{transform: 'translate3d(0,8,0)'}}>
+      <g className="note" style={{transform: `translate3d(${this.props.x}px,${this.props.y}px,0)`}}>
         <g className="note__stem">
           <path fill="none" stroke="black" d="M 0 0 L 0 35"></path>
         </g>

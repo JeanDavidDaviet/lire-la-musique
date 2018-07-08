@@ -23,9 +23,9 @@ class Stave extends Component {
     }
 
     this.notes = [];
-    for(let i = 0; i < 1; i++){
+    for(let i = 0; i < 4; i++){
       this.notes.push(
-        <Note key={i}/>
+        <Note x={i * width / 4} y={i * 20} key={i}/>
       );
     }
   }
