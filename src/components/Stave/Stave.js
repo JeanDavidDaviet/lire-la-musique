@@ -25,27 +25,27 @@ class Stave extends Component {
     this.notes = [];
     for(let i = 0; i < 4; i++){
       this.notes.push(
-        <Note x={i * width / 4} key={i}/>
+        <Note x={(i * width / 4) + (width / 8) - 6} key={i}/>
       );
     }
   }
 
   render() {
     let decalage = {
-      transform: `translate3d( ${ this.props.index * 200 }px, 0, 0)`
+      transform: `translate3d( ${ this.props.index * this.props.width }px, 0, 0)`
     };
     return (
       <g className="stave" style={decalage}>
         { this.props.scale }
         { this.lines }
         { this.notes }
+        <path fill="none" stroke="black" d={`M ${this.props.width} 0 L ${this.props.width} 40`}></path>
       </g>
     );
   }
 }
 
 Stave.defaultProps = {
-  width: 200,
   marginTop: 10
 }
 
