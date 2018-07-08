@@ -19,4 +19,17 @@ class Note extends Component {
     );
   }
 }
+
+Note.defaultProps = Object.create({}, {
+  y: {
+    enumerable: true,
+    get: () => getRandomInt(-30, 70)
+  },
+
+});
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export default Note;

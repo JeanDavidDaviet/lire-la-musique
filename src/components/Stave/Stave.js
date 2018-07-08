@@ -25,7 +25,7 @@ class Stave extends Component {
     this.notes = [];
     for(let i = 0; i < 4; i++){
       this.notes.push(
-        <Note x={i * width / 4} y={i * 20} key={i}/>
+        <Note x={i * width / 4} key={i}/>
       );
     }
   }
@@ -36,6 +36,7 @@ class Stave extends Component {
     };
     return (
       <g className="stave" style={decalage}>
+        { this.props.scale }
         { this.lines }
         { this.notes }
       </g>
