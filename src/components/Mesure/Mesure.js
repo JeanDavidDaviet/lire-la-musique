@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Stave from '../../components/Stave/Stave';
+import Signature from '../../components/Signature/Signature';
 import './Mesure.css';
 
 
@@ -13,12 +14,13 @@ class Mesure extends Component {
     this.pixelsPerMillisecond = this.pixelsPerBeats / 1000;
     this.staves = [];
     this.canProcess = 0;
+    this.marginLeft = 50;
 
     this.state = {
       x: 0,
       staveIndex: 0,
       transform: {
-        transform:'translate3d(0,50px,0)'
+        transform:'translate3d(50px,50px,0)'
       }
     }
   }
@@ -31,7 +33,7 @@ class Mesure extends Component {
       this.staves.push(<Stave index={i} width={this.props.config.staveWidth} key={i} scale={this.props.scale}/>);
     }
     this.setState({staveIndex: this.stavesNumber});
-    requestAnimationFrame(this.update);
+    // requestAnimationFrame(this.update);
   }
 
   update = () => {
@@ -67,6 +69,7 @@ class Mesure extends Component {
   render(){
     return (
       <svg>
+        <Signature width={50}></Signature>
         <g className="mesure" style={this.state.transform}>
           { this.staves }
         </g>
