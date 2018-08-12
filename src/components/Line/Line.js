@@ -1,34 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-class Line extends Component {
-  constructor(props){
-    super(props);
-    this.x = props.x;
-    this.y = props.y;
-    this.width = props.width;
-  }
+const Line = ( { x, y, width } ) => (
+  <path
+    strokeWidth="1"
+    fill="none"
+    stroke="#999999"
+    strokeDasharray="none"
+    fontFamily="Arial"
+    fontSize="10pt"
+    fontWeight="normal"
+    fontStyle="normal"
 
-  render() {
-    return (
-      <path
-        strokeWidth="1"
-        fill="none"
-        stroke="#999999"
-        strokeDasharray="none"
-        fontFamily="Arial"
-        fontSize="10pt"
-        fontWeight="normal"
-        fontStyle="normal"
-        d={`M${this.x} ${this.y}L ${this.x + this.width} ${this.y}`}></path>
-    );
-  }
-}
-
-Line.propTypes = {
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired
-}
+    d={`M${x} ${y}L ${x + width} ${y}`}></path>
+)
 
 export default Line;

@@ -5,10 +5,10 @@ import './Mesure.css';
 
 
 class Mesure extends Component {
-  constructor(props){
+  constructor({config}){
     super();
 
-    this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
+    this.stavesNumber = Math.ceil(config.width / config.staveWidth) + 1;
     this.pixelsPerBeats = 100;
     this.bpm = 60;
     this.pixelsPerMillisecond = this.pixelsPerBeats / 1000;
@@ -33,7 +33,10 @@ class Mesure extends Component {
       this.staves.push(<Stave index={i} width={this.props.config.staveWidth} key={i} scale={this.props.scale}/>);
     }
     this.setState({staveIndex: this.stavesNumber});
-    // requestAnimationFrame(this.update);
+
+    if(this.props.running){
+     requestAnimationFrame(this.update);
+    }
   }
 
   update = () => {
