@@ -16,21 +16,20 @@ class Stave extends Component {
 
     this.lines = [];
     for(let i = 0; i < 5; i++){
-      this.lines.push(
-        <Line
-          key   = { i }
-          x     = { 0 }
-          y     = { i * marginTop }
-          width = { width }
-        />
-      );
+      this.lines.push({
+        key   : i,
+        x     : 0,
+        y     : i * marginTop,
+        width : width,
+      });
     }
 
     this.notes = [];
     for(let i = 0; i < 4; i++){
-      this.notes.push(
-        <NoteFactory x={(i * width / 4) + (width / 8) - this.MN_centerNote} key={i}/>
-      );
+      this.notes.push({
+        x  : (i * width / 4) + (width / 8) - this.MN_centerNote,
+        key: i
+      });
     }
   }
 
@@ -44,8 +43,16 @@ class Stave extends Component {
     return (
       <g className="stave" style={decalage}>
         <text style={chordPosition}>{ this.props.scale }</text>
-        { this.lines }
-        { this.notes }
+        {
+          this.lines.map((props) => (
+            <Line {...props}></Line>
+          ))
+        }
+        {
+          this.notes.map((props) => (
+            <NoteFactory {...props}/>
+          ))
+        }
         <path fill="none" stroke="black" d={`M ${this.props.width} 0 L ${this.props.width} 40`}></path>
       </g>
     );
