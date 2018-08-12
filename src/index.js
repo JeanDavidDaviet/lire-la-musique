@@ -6,5 +6,5 @@ import scales from './scales.js';
 import Mesure from './components/Mesure/Mesure';
 // import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Mesure config={config} scale={scales.C} running={false}/>, document.getElementById('root'));
+ReactDOM.render(<Mesure config={config} scale={scales.C} running={true}/>, document.getElementById('root'));
 // registerServiceWorker();

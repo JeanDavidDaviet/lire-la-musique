@@ -34,6 +34,14 @@ class Stave extends Component {
   }
 
   render() {
+
+    // choose a random chords
+    let scalesToArray = Object.values(this.props.scale);
+    let randomChords = scalesToArray[Math.floor(Math.random() * scalesToArray.length)];
+    if(typeof randomChords === 'object'){
+      randomChords = Object.values(randomChords)[Math.floor(Math.random() * 2)];
+    }
+
     let decalage = {
       transform: `translate3d( ${ this.props.index * this.props.width }px, 0, 0)`
     };
@@ -42,7 +50,7 @@ class Stave extends Component {
     };
     return (
       <g className="stave" style={decalage}>
-        <text style={chordPosition}>{ this.props.scale }</text>
+        <text style={chordPosition}>{ randomChords }</text>
         {
           this.lines.map((props) => (
             <Line {...props}></Line>
