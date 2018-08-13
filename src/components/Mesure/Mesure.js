@@ -72,10 +72,10 @@ class Mesure extends Component {
   render(){
     return (
       <svg>
-        <Signature width={50}></Signature>
         <g className="mesure" style={this.state.transform}>
           { this.staves }
         </g>
+        <Signature scale={this.props.scale} signature={this.props.signature} chosenScale={this.props.chosenScale} width={50}></Signature>
       </svg>
     );
   }

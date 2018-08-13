@@ -48,7 +48,7 @@ function generateNewStave(_numberOfStaves, _numberStaveBeginning){
       for(var j = 0; j < numberOfNotesByStaves * _numberOfStaves; j++){
         // step the first and second notes to put the treble clef and time signature instead
         if(j > 1 || staveGroupEndNumber !== 0 ){
-            new Note(chooseRandomKey(), _.random(3,4), (j * (staveWidth / numberOfNotesByStaves) - spaceBetweenFinalNoteOfStaves) + (staveGroupEndNumber * staveWidth) );        
+            new Note(chooseRandomKey(), _.random(3,4), (j * (staveWidth / numberOfNotesByStaves) - spaceBetweenFinalNoteOfStaves) + (staveGroupEndNumber * staveWidth) );
         }
       }
   }
