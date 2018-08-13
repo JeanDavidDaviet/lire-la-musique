@@ -27,12 +27,41 @@ const scales = {
     M: "Fs",
     m: "Ebm",
   },
+  Cs: {
+    M: "Cs",
+    m: "G#m",
+  },
   F: {
     M: "F",
     m: "Dm",
+  },
+  Bb: {
+    M: "Bb",
+    m: "Gm",
+  },
+  Eb: {
+    M: "Eb",
+    m: "Cm",
+  },
+  Ab: {
+    M: "Ab",
+    m: "Fm",
+  },
+  Db: {
+    M: "Db",
+    m: "Bbm",
+  },
+  Gb: {
+    M: "Gb",
+    m: "Ebm",
+  },
+  Cb: {
+    M: "Cb",
+    m: "G#m",
   }
 }
 
+// sharps
 scales.C.prev = scales.F;
 scales.C.next = scales.G;
 
@@ -50,5 +79,30 @@ scales.E.next = scales.B;
 
 scales.B.prev = scales.E;
 scales.B.next = scales.Fs;
+
+scales.Fs.prev = scales.B;
+scales.Fs.next = scales.Cs;
+
+scales.Cs.prev = scales.Fs;
+scales.Cs.next = scales.Ab;
+
+// flats
+scales.F.prev = scales.Bb;
+scales.F.next = scales.C;
+
+scales.Bb.prev = scales.Eb;
+scales.Bb.next = scales.F;
+
+scales.Eb.prev = scales.Ab;
+scales.Eb.next = scales.Bb;
+
+scales.Ab.prev = scales.Db;
+scales.Ab.next = scales.Eb;
+
+scales.Db.prev = scales.Gb;
+scales.Db.next = scales.Ab;
+
+scales.Gb.prev = scales.B;
+scales.Gb.next = scales.Db;
 
 export default scales
