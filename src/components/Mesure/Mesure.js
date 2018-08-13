@@ -34,35 +34,34 @@ class Mesure extends Component {
     }
     this.setState({staveIndex: this.stavesNumber});
 
-    if(this.props.running){
-     requestAnimationFrame(this.update);
-    }
+    this.update();
   }
 
   update = () => {
     requestAnimationFrame(this.update);
-    if(this.state.x < -this.props.config.staveWidth - this.canProcess){
-      this.canProcess += this.props.config.staveWidth;
-      this.addStaves();
-      this.removeStaves();
-    }
-
-    this.setState((prevState) => {
-      return {
-        // 0.1 * 16
-        x: prevState.x - (this.pixelsPerMillisecond * ( Date.now() - this.lastFrame )).toFixed(1),
-        transform: {
-          transform: `translate3d(${this.state.x}px,50px,0)`
-        }
+    if(this.props.running){
+      if(this.state.x < -this.props.config.staveWidth - this.canProcess){
+        this.canProcess += this.props.config.staveWidth;
+        this.addStaves();
+        this.removeStaves();
       }
-    });
-    this.lastFrame = Date.now();
 
+      this.setState((prevState) => {
+        return {
+          // 0.1 * 16
+          x: prevState.x - (this.pixelsPerMillisecond * ( Date.now() - this.lastFrame )).toFixed(1),
+          transform: {
+            transform: `translate3d(${this.state.x}px,50px,0)`
+          }
+        }
+      });
+    }
+    this.lastFrame = Date.now();
   }
 
   addStaves = () => {
     this.staves.push(<Stave index={this.state.staveIndex} width={this.props.config.staveWidth} key={this.state.staveIndex} scale={this.props.scale}/>);
-    this.setState((previousState) => {return {staveIndex: previousState.staveIndex + 1}});
+    this.setState({staveIndex: this.state.staveIndex + 1});
   }
 
   removeStaves = () => {
