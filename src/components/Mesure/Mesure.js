@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Stave from '../../components/Stave/Stave';
-import Signature from '../../components/Signature/Signature';
 import './Mesure.css';
 
 
@@ -85,11 +84,12 @@ class Mesure extends Component {
     return (
       <React.Fragment>
         <p>{this.test}</p>
+
         <svg>
           <g className="mesure" style={this.state.transform}>
             { this.staves }
           </g>
-          <Signature scale={this.props.scale} signature={this.props.signature} chosenScale={this.props.chosenScale} width={50}></Signature>
+          {this.props.children}
         </svg>
       </React.Fragment>
     );

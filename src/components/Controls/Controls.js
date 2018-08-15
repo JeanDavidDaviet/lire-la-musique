@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Controls extends Component {
-  constructor(){
-    super();
-  }
-  render() {
-    return (
-      <div className={"controls"}>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const Controls = ({ children }) => (
+  <div className={"controls"}>
+    {children}
+  </div>
+)
 
 export default Controls;
