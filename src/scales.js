@@ -24,11 +24,11 @@ const scales = {
     m: "G#m",
   },
   Fs: {
-    M: "Fs",
+    M: "F#",
     m: "Ebm",
   },
   Cs: {
-    M: "Cs",
+    M: "C#",
     m: "G#m",
   },
   F: {
