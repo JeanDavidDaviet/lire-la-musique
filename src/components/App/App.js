@@ -9,31 +9,36 @@ export class App extends Component {
     super();
     this.state = {
       chosenScale: "C",
-      running: true
+      running: true,
+      tempo: 60
     };
-    this.escFunction = this.escFunction.bind(this);
+    this.stopRunning = this.stopRunning.bind(this);
   }
-  escFunction(event){
-    if(event.keyCode == 32){
+  stopRunning(event){
+    if(event.keyCode === 32){
       this.setState({running: !this.state.running});
     }
   }
   componentDidMount(){
-    document.addEventListener("keydown", this.escFunction, false);
+    document.addEventListener("keydown", this.stopRunning, false);
   }
   componentWillUnmount(){
-    document.removeEventListener("keydown", this.escFunction, false);
+    document.removeEventListener("keydown", this.stopRunning, false);
   }
   render() {
     return (
       <React.Fragment>
-        <div onKeyDown={(event) => {
-          alert(event.key + ' pressed');
-        }}>
+        <div className={"controls"}>
           <select value={this.state.chosenScale} onChange={(event) => {this.setState({chosenScale:  event.target.value})}}>
             {Object.keys(scales).sort().map((value, index) => {
               return <option key={index} value={value}>{scales[value].M}</option>
             })}
+          </select>
+          <select value={this.state.tempo} onChange={(event) => {this.setState({tempo: parseInt(event.target.value, 10)})}}>
+            <option value={60}>60</option>
+            <option value={80}>80</option>
+            <option value={100}>100</option>
+            <option value={120}>120</option>
           </select>
           <label><input checked={this.state.running} type="checkbox" value={this.state.running} onChange={() => {this.setState({running: !this.state.running})}}/>Running</label>
         </div>
@@ -42,7 +47,8 @@ export class App extends Component {
         chosenScale={this.state.chosenScale}
         scale={scales[this.state.chosenScale]}
         signature={signatures[this.state.chosenScale]}
-        running={this.state.running}/>
+        running={this.state.running}
+        tempo={this.state.tempo}/>
       </React.Fragment>
     );
   }

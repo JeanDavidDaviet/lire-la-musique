@@ -5,13 +5,14 @@ import './Mesure.css';
 
 
 class Mesure extends Component {
-  constructor({config}){
-    super();
+  constructor(props){
+    super(props);
 
-    this.stavesNumber = Math.ceil(config.width / config.staveWidth) + 1;
-    this.pixelsPerBeats = 100;
-    this.bpm = 60;
+    this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
     this.pixelsPerMillisecond = this.pixelsPerBeats / 1000;
+
+    this.setTempo(props.tempo);
+
     this.staves = [];
     this.canProcess = 0;
     this.marginLeft = 50;
@@ -23,6 +24,15 @@ class Mesure extends Component {
         transform:'translate3d(50px,50px,0)'
       }
     }
+
+    this.test = 'test';
+  }
+
+  setTempo(tempo){
+    let tempoMultiplicator = tempo / 60;
+
+    this.pixelsPerBeats = this.props.config.xIntervalBetweenNotes * tempoMultiplicator;
+    this.pixelsPerFrame = this.pixelsPerBeats / this.props.config.framesPerBeat;
   }
 
   componentDidMount(){
@@ -49,11 +59,13 @@ class Mesure extends Component {
       this.setState((prevState) => {
         return {
           // 0.1 * 16
-          x: prevState.x - (this.pixelsPerMillisecond * ( Date.now() - this.lastFrame )).toFixed(1),
+          x: this.state.x - this.pixelsPerFrame,
           transform: {
             transform: `translate3d(${this.state.x}px,50px,0)`
           }
         }
+      }, () => {
+        this.test = Math.ceil((1000 / ( Date.now() - this.lastFrame )).toFixed(0)) + ' FPS';
       });
     }
     this.lastFrame = Date.now();
@@ -69,13 +81,17 @@ class Mesure extends Component {
   }
 
   render(){
+    this.setTempo(this.props.tempo);
     return (
-      <svg>
-        <g className="mesure" style={this.state.transform}>
-          { this.staves }
-        </g>
-        <Signature scale={this.props.scale} signature={this.props.signature} chosenScale={this.props.chosenScale} width={50}></Signature>
-      </svg>
+      <React.Fragment>
+        <p>{this.test}</p>
+        <svg>
+          <g className="mesure" style={this.state.transform}>
+            { this.staves }
+          </g>
+          <Signature scale={this.props.scale} signature={this.props.signature} chosenScale={this.props.chosenScale} width={50}></Signature>
+        </svg>
+      </React.Fragment>
     );
   }
 }
