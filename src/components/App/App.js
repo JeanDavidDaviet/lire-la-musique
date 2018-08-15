@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import config from '../../config.js';
 import scales from '../../scales.js';
 import signatures from '../../signatures.js';
+import Controls from '../Controls/Controls';
+import ControlsScale from '../Controls/ControlsScale';
 import Mesure from '../Mesure/Mesure';
 
 export class App extends Component {
@@ -28,12 +30,8 @@ export class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={"controls"}>
-          <select value={this.state.chosenScale} onChange={(event) => {this.setState({chosenScale:  event.target.value})}}>
-            {Object.keys(scales).sort().map((value, index) => {
-              return <option key={index} value={value}>{scales[value].M}</option>
-            })}
-          </select>
+        <Controls>
+          <ControlsScale chosenScale={this.state.chosenScale} scales={scales} onChange={(event) => {this.setState({chosenScale:  event.target.value})}}></ControlsScale>
           <select value={this.state.tempo} onChange={(event) => {this.setState({tempo: parseInt(event.target.value, 10)})}}>
             <option value={60}>60</option>
             <option value={80}>80</option>
@@ -41,7 +39,7 @@ export class App extends Component {
             <option value={120}>120</option>
           </select>
           <label><input checked={this.state.running} type="checkbox" value={this.state.running} onChange={() => {this.setState({running: !this.state.running})}}/>Running</label>
-        </div>
+        </Controls>
         <Mesure
         config={config}
         chosenScale={this.state.chosenScale}
