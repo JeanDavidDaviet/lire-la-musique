@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Stave from '../../components/Stave/Stave';
+import LineFactory from '../../components/Line/LineFactory';
+import NoteFactory from '../../components/Note/NoteFactory';
 
-class Staves extends Component {
+class StaveFactory extends Component {
   constructor(props){
     super(props);
 
@@ -13,10 +15,10 @@ class Staves extends Component {
     this.canProcess = 0;
 
     this.state = {
-      x: 0,
+      x: this.props.config.mesureMarginLeft,
       staveIndex: 0,
       transform: {
-        transform:`translate3d(50px,${this.props.config.staveMarginTop}px,0)`
+        transform:`translate3d(${this.props.config.mesureMarginLeft}px,${this.props.config.staveMarginTop}px,0)`
       }
     }
 
@@ -37,9 +39,20 @@ class Staves extends Component {
         <Stave
           index={i}
           key={i}
-          width={this.props.config.staveWidth}
+          staveWidth={this.props.config.staveWidth}
           scale={this.props.scale}
-        />
+          MN_centerNote={this.props.config.MN_centerNote}>
+          <LineFactory
+            staveWidth={this.props.config.staveWidth}
+            marginTop={this.props.config.yIntervalBetweenNotes * 2}>
+          </LineFactory>
+          <NoteFactory
+            staveWidth={this.props.config.staveWidth}
+            staveHeight={this.props.config.staveHeight}
+            marginTop={this.props.config.yIntervalBetweenNotes * 2}
+            MN_centerNote={this.props.config.MN_centerNote}>
+          </NoteFactory>
+        </Stave>
       );
     }
     this.setState({staveIndex: this.stavesNumber});
@@ -74,10 +87,21 @@ class Staves extends Component {
     this.staves.push(
       <Stave
         index={this.state.staveIndex}
-        width={this.props.config.staveWidth}
         key={this.state.staveIndex}
+        staveWidth={this.props.config.staveWidth}
         scale={this.props.scale}
-      />
+        MN_centerNote={this.props.config.MN_centerNote}>
+        <LineFactory
+          staveWidth={this.props.config.staveWidth}
+          marginTop={this.props.config.yIntervalBetweenNotes * 2}>
+        </LineFactory>
+        <NoteFactory
+          staveWidth={this.props.config.staveWidth}
+          staveHeight={this.props.config.staveHeight}
+          marginTop={this.props.config.yIntervalBetweenNotes * 2}
+          MN_centerNote={this.props.config.MN_centerNote}>
+        </NoteFactory>
+      </Stave>
     );
     this.setState({staveIndex: this.state.staveIndex + 1});
   }
@@ -96,4 +120,4 @@ class Staves extends Component {
   }
 }
 
-export default Staves;
+export default StaveFactory;

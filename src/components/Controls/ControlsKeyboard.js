@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class ControlsKeyboard extends Component {
-  constructor(props){
-    super(props);
-  }
   componentDidMount(){
     document.addEventListener("keydown", this.props.stopRunning, false);
   }
