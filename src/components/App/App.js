@@ -11,13 +11,16 @@ import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
 import Signature from '../Signature/Signature';
 import AppBar from '@material-ui/core/AppBar';
+import Chip from '@material-ui/core/Chip';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 export class App extends Component {
   constructor(){
     super();
     this.state = {
       chosenScale: "C",
-      running: false,
+      running: true,
       tempo: 60
     };
     this.stopRunning = this.stopRunning.bind(this);
@@ -30,8 +33,13 @@ export class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <AppBar style={{paddingLeft: 15}}>
-          <p>Lire la musique</p>
+        <AppBar>
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              Lire la musique
+            </Typography>
+            <Chip color="secondary" label={"Version 1.0"} style={{marginLeft: 'auto'}}/>
+          </Toolbar>
         </AppBar>
         <Controls>
           <ControlsKeyboard running={this.stopRunning} />
