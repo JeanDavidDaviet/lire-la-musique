@@ -1,11 +1,17 @@
 import React from 'react';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const ControlsScale = ( { chosenScale, scales, onChange } ) => (
-  <select value={chosenScale} onChange={onChange}>
-    {Object.keys(scales).sort().map((value, index) => {
-      return <option key={index} value={value}>{scales[value].M}</option>
-    })}
-  </select>
+  <React.Fragment>
+    <InputLabel shrink htmlFor="scale-native-label-placeholder">Scale</InputLabel><br />
+    <NativeSelect value={chosenScale} onChange={onChange} input={<Input name="scale" id="scale-native-label-placeholder" />}>
+      {Object.keys(scales).sort().map((value, index) => {
+        return <option key={index} value={value}>{scales[value].M}</option>
+      })}
+    </NativeSelect>
+  </React.Fragment>
 )
 
 export default ControlsScale;
