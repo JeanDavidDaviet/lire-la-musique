@@ -1,0 +1,13 @@
+.logo {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.changelog {
+  margin-left: auto;
+  text-decoration: none;
+  cursor: pointer;
+}
+.changelog .changelog__chip {
+  cursor: pointer;
+}

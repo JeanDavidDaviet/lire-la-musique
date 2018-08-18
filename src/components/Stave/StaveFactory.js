@@ -10,6 +10,7 @@ class StaveFactory extends Component {
     this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
 
     this.setTempo(props.tempo);
+    this.requestAnimationFrame = null;
 
     this.staves = [];
     this.canProcess = 0;
@@ -60,8 +61,12 @@ class StaveFactory extends Component {
     this.update();
   }
 
+  componentWillUnmount(){
+    cancelAnimationFrame(this.requestAnimationFrame);
+  }
+
   update = () => {
-    requestAnimationFrame(this.update);
+    this.requestAnimationFrame = requestAnimationFrame(this.update);
     if(this.props.running){
       if(this.state.x < -this.props.config.staveWidth - this.canProcess){
         this.canProcess += this.props.config.staveWidth;
@@ -103,6 +108,7 @@ class StaveFactory extends Component {
         </NoteFactory>
       </Stave>
     );
+
     this.setState({staveIndex: this.state.staveIndex + 1});
   }
 

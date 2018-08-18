@@ -1,5 +1,5 @@
-import './ChangeLog.css';
 import React from 'react';
+import './ChangeLog.css';
 
 const ChangeLog = () => (
   <article className="page">

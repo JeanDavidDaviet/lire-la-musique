@@ -10,12 +10,8 @@ import ControlsRunning from '../Controls/ControlsRunning';
 import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
 import Signature from '../Signature/Signature';
-import AppBar from '@material-ui/core/AppBar';
-import Chip from '@material-ui/core/Chip';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
-export class App extends Component {
+export class Home extends Component {
   constructor(){
     super();
     this.state = {
@@ -33,14 +29,6 @@ export class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              Lire la musique
-            </Typography>
-            <Chip color="secondary" label={"Version" + config.version} style={{marginLeft: 'auto'}}/>
-          </Toolbar>
-        </AppBar>
         <Controls>
           <ControlsKeyboard running={this.stopRunning} />
           <ControlsScale chosenScale={this.state.chosenScale} scales={scales} onChange={(event) => {this.setState({chosenScale: event.target.value})}}></ControlsScale><br/>
@@ -68,4 +56,4 @@ export class App extends Component {
   }
 }
 
-export default App;
+export default Home;
