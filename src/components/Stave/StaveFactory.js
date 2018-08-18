@@ -16,10 +16,10 @@ class StaveFactory extends Component {
     this.canProcess = 0;
 
     this.state = {
-      x: this.props.config.mesureMarginLeft,
+      x: this.props.config.clefWidth,
       staveIndex: 0,
       transform: {
-        transform:`translate3d(${this.props.config.mesureMarginLeft}px,${this.props.config.staveMarginTop}px,0)`
+        transform:`translate3d(${this.props.config.clefWidth}px,${this.props.config.staveMarginTop}px,0)`
       }
     }
 
