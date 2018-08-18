@@ -6,7 +6,7 @@ const SharpFactory = ( { signature, chosenScale } ) => {
   const numberOfSharps = Object.keys(signature.sharps).indexOf(chosenScale);
   let sharpsObjects = [];
   let widthOfBackground = 0;
-  sharps.map((value, index) => {
+  sharps.forEach((value, index) => {
     if(index < numberOfSharps){
       sharpsObjects.push(<Sharp key={index} x={-330 + ( 15 * index )} y={value} />)
       widthOfBackground++;

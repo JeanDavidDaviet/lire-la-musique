@@ -3,7 +3,8 @@
 ## Done
 - [x] Fix tempo issues
 - [x] Use config file for global variables ? ( a way to share it)
-- [ ] ChangeLog
+- [x] Routing
+- [x] ChangeLog
 
 ## Todo
 - [ ] Add tests
@@ -11,9 +12,10 @@
 - [ ] 4/4 3/4 2/4 6/8
 - [ ] notes overlapping chords
 - [ ] Add RGPD
-- [ ] Routing
+- [ ] Localization
 
 ## Features
 - [ ] Play note with WebAudio API
 - [ ] Add metronome sound
 - [ ] Change config from shortcut
+- [ ] Add differents notes (eighths, half, whole, ...)

@@ -6,7 +6,7 @@ const FlatFactory = ( { signature, chosenScale } ) => {
   const numberOfFlats = Object.keys(signature.flats).indexOf(chosenScale);
   let flatsObjects = [];
   let widthOfBackground = 0;
-  flats.map((value, index) => {
+  flats.forEach((value, index) => {
     if(index < numberOfFlats){
       flatsObjects.push(<Flat key={index} x={-320 + ( 15 * index )} y={value} />)
       widthOfBackground++;

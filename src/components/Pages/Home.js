@@ -45,6 +45,7 @@ export class Home extends Component {
             tempo={this.state.tempo}>
           </StavesFactory>
           <Signature
+            config={config}
             chosenScale={this.state.chosenScale}
             scale={scales[this.state.chosenScale]}
             signature={signatures[this.state.chosenScale]}
