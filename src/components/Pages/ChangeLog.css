@@ -1,0 +1,15 @@
+.page {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.changelogs > li {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+.changelogs > li li {
+  font-weight: normal;
+}
+.changelogs > li ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}

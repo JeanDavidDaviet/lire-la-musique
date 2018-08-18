@@ -4,7 +4,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 
 const ControlsTempo = ( { tempo, onChange } ) => (
-  <React.Fragment>
+  <div className="control">
     <InputLabel shrink htmlFor="tempo-native-label-placeholder">Tempo</InputLabel><br />
     <NativeSelect value={tempo} onChange={onChange} input={<Input name="tempo" id="tempo-native-label-placeholder" />}>
       <option value={60}>60</option>
@@ -12,7 +12,7 @@ const ControlsTempo = ( { tempo, onChange } ) => (
       <option value={100}>100</option>
       <option value={120}>120</option>
     </NativeSelect>
-  </React.Fragment>
+  </div>
 )
 
 export default ControlsTempo;

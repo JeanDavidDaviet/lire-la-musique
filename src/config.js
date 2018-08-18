@@ -1,4 +1,5 @@
 export default {
+  version:1.1,
   width: window.innerWidth,
   height: window.innerHeight,
   mesureMarginLeft: 50,

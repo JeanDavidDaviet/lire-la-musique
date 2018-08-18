@@ -10,13 +10,9 @@ body, #root {
   height: 100%;
   width: 100%;
   flex-direction: column;
-  justify-content: center;
 }
 
 svg {
   width: 100%;
-}
-
-.controls {
-  padding: 0px 50px;
+  margin-left: 25px;
 }

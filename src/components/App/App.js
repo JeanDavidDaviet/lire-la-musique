@@ -33,12 +33,12 @@ export class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <AppBar>
+        <AppBar position="static">
           <Toolbar>
             <Typography variant="title" color="inherit">
               Lire la musique
             </Typography>
-            <Chip color="secondary" label={"Version 1.0"} style={{marginLeft: 'auto'}}/>
+            <Chip color="secondary" label={"Version" + config.version} style={{marginLeft: 'auto'}}/>
           </Toolbar>
         </AppBar>
         <Controls>
