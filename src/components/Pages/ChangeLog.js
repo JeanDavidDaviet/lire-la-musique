@@ -15,6 +15,11 @@ const ChangeLog = () => (
               <li>Fix overlapping first notes over chord issue</li>
             </ul>
           </li>
+          <li>1.4.2 – 08/19/2018
+            <ul>
+              <li>Fix mobile issue with overflowing score</li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li>1.3 – 08/19/2018
