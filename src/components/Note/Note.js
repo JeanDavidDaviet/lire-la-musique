@@ -1,9 +1,19 @@
 import React from 'react';
 import './Note.css';
 
-const Note = ( { x, y, staveHeight, marginTop } ) => {
+// REMEMBER : for the "y" property
+// less than 0 are higher on the score
+// greater than 0 are higher on the score
+
+const Note = ( { x, y, staveHeight, marginTop, index } ) => {
   let bars = [];
 
+  // prevent first note to overlap the chord name
+  if(!index && y < marginTop){
+    y = getRandomTenth(staveHeight, 60);
+  }
+
+  // sets the bars if the note are out of the score's height
   if(y < 0){
     for(let i = 0; i < Math.abs(Math.ceil(y / marginTop)); i++){
       bars.push(
@@ -37,11 +47,15 @@ const Note = ( { x, y, staveHeight, marginTop } ) => {
 Note.defaultProps = Object.create({}, {
   y: {
     enumerable: true,
-    // return a number between getRandomInt(-30, 70) rounded to the nearest ten
-    get: () => Math.ceil(getRandomInt(-30, 70) / 10) * 10
+    get: () => getRandomTenth(-30, 60)
   },
 
 });
+
+function getRandomTenth(min, max) {
+  // return a number between getRandomInt(-30, 70) rounded to the nearest ten
+  return Math.ceil(getRandomInt(min, max) / 10) * 10;
+}
 
 function getRandomInt(min, max) {
   // const rand = Math.floor(window.perlin().getVal(Date.now()) * (max - min + 1)) + min;

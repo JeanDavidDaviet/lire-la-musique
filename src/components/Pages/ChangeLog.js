@@ -5,6 +5,18 @@ const ChangeLog = () => (
   <article className="page">
     <h2>Changelog (last updated 17th, August 2018)</h2>
     <ul className="changelogs">
+      <li>1.4 – 08/19/2018
+        <ul>
+          <li>Add Time signature</li>
+        </ul>
+        <ul>
+          <li>1.4.1 – 08/19/2018
+            <ul>
+              <li>Fix overlapping first notes over chord issue</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
       <li>1.3 – 08/19/2018
         <ul>
           <li>Added possibilty to change between treble and bass key</li>
