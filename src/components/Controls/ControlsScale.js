@@ -5,8 +5,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 const ControlsScale = ( { chosenScale, scales, onChange } ) => (
   <div className="control">
-    <InputLabel shrink htmlFor="scale-native-label-placeholder">Scale</InputLabel><br />
-    <NativeSelect value={chosenScale} onChange={onChange} input={<Input name="scale" id="scale-native-label-placeholder" />}>
+    <InputLabel shrink htmlFor="control-scale">Scale</InputLabel><br />
+    <NativeSelect value={chosenScale} onChange={onChange} input={<Input name="scale" id="control-scale" />}>
       {Object.keys(scales).sort().map((value, index) => {
         return <option key={index} value={value}>{scales[value].M}</option>
       })}

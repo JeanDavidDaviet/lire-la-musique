@@ -10,7 +10,7 @@
 ## Todo
 - [ ] Add tests
 - [ ] Add Time signature
-- [ ] 4/4 3/4 2/4 6/8
+- [ ] 4/4 3/4 2/4 6/8 change time signature
 - [ ] notes overlapping chords
 - [ ] Add RGPD
 - [ ] Localization
