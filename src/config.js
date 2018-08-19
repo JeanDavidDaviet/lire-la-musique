@@ -1,5 +1,5 @@
 export default {
-  version:1.3,
+  version:1.4,
   width: window.innerWidth,
   height: window.innerHeight,
   staveWidth: 200,
@@ -9,6 +9,6 @@ export default {
   yIntervalBetweenNotes: 5,
   MN_centerNote: 6,
   framesPerBeat: 60,
-  clefWidth: 35,
+  clefWidth: 65,
   alterationWidth: 15
 }
