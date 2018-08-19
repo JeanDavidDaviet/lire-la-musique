@@ -4,6 +4,7 @@ import scales from '../../scales.js';
 import signatures from '../../signatures.js';
 import Controls from '../Controls/Controls';
 import ControlsKeyboard from '../Controls/ControlsKeyboard';
+import ControlsClef from '../Controls/ControlsClef';
 import ControlsScale from '../Controls/ControlsScale';
 import ControlsTempo from '../Controls/ControlsTempo';
 import ControlsRunning from '../Controls/ControlsRunning';
@@ -16,6 +17,7 @@ export class Home extends Component {
     super();
     this.state = {
       chosenScale: "C",
+      clef: 1,
       running: true,
       tempo: 60
     };
@@ -31,6 +33,7 @@ export class Home extends Component {
       <React.Fragment>
         <Controls>
           <ControlsKeyboard running={this.stopRunning} />
+          <ControlsClef clef={this.state.clef} onChange={(event) => {this.setState({clef: !this.state.clef})}}></ControlsClef><br/>
           <ControlsScale chosenScale={this.state.chosenScale} scales={scales} onChange={(event) => {this.setState({chosenScale: event.target.value})}}></ControlsScale><br/>
           <ControlsTempo tempo={this.state.tempo} onChange={(event) => {this.setState({tempo: parseInt(event.target.value, 10)})}}></ControlsTempo><br/>
           <ControlsRunning running={this.state.running} onChange={() => {this.setState({running: !this.state.running})}}></ControlsRunning>
@@ -49,7 +52,8 @@ export class Home extends Component {
             chosenScale={this.state.chosenScale}
             scale={scales[this.state.chosenScale]}
             signature={signatures[this.state.chosenScale]}
-            width={config.xIntervalBetweenNotes}>
+            width={config.xIntervalBetweenNotes}
+            clef={this.state.clef}>
           </Signature>
         </Mesure>
       </React.Fragment>
