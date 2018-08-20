@@ -1,5 +1,5 @@
 export default {
-  version:"1.4.2",
+  version:"1.5",
   width: window.innerWidth,
   height: window.innerHeight,
   staveWidth: 200,

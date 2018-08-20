@@ -7,6 +7,12 @@ class StaveFactory extends Component {
   constructor(props){
     super(props);
 
+    this.audio = 0;
+    this.audios = {};
+    (Object.keys(this.props.sounds)).forEach((index) => {
+      this.audios[index] = new Audio(this.props.sounds[index]);
+    });
+
     this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
 
     this.setTempo(props.tempo);
@@ -14,6 +20,7 @@ class StaveFactory extends Component {
 
     this.staves = [];
     this.canProcess = 0;
+    this.canPlay = 0;
 
     this.state = {
       x: this.props.config.clefWidth,
@@ -34,7 +41,6 @@ class StaveFactory extends Component {
   }
 
   componentDidMount(){
-    this.lastFrame = Date.now();
     for(let i = 0; i < this.stavesNumber; i++){
       this.staves.push(
         <Stave
@@ -51,7 +57,8 @@ class StaveFactory extends Component {
             staveWidth={this.props.config.staveWidth}
             staveHeight={this.props.config.staveHeight}
             marginTop={this.props.config.yIntervalBetweenNotes * 2}
-            MN_centerNote={this.props.config.MN_centerNote}>
+            MN_centerNote={this.props.config.MN_centerNote}
+            sounds={this.props.sounds}>
           </NoteFactory>
         </Stave>
       );
@@ -73,19 +80,20 @@ class StaveFactory extends Component {
         this.addStaves();
         this.removeStaves();
       }
+      // console.log(this.state.x - this.props.config.clefWidth, this.canPlay);
+      if(this.state.x - this.props.config.clefWidth + this.props.config.xIntervalBetweenNotes - 30 < this.canPlay){
+        this.canPlay -= this.props.config.xIntervalBetweenNotes;
+        this.audios[window.notes[0]].play();
+        window.notes.splice(0, 1);
+      }
 
-      this.setState((prevState) => {
-        return {
-          x: this.state.x - this.pixelsPerFrame,
-          transform: {
-            transform: `translate3d(${this.state.x}px,${this.props.config.staveMarginTop}px,0)`
-          }
+      this.setState({
+        x: this.state.x - this.pixelsPerFrame,
+        transform: {
+          transform: `translate3d(${this.state.x}px,${this.props.config.staveMarginTop}px,0)`
         }
-      }, () => {
-        this.displayFPS = Math.ceil((1000 / ( Date.now() - this.lastFrame )).toFixed(0)) + ' FPS';
       });
     }
-    this.lastFrame = Date.now();
   }
 
   addStaves = () => {
@@ -104,7 +112,8 @@ class StaveFactory extends Component {
           staveWidth={this.props.config.staveWidth}
           staveHeight={this.props.config.staveHeight}
           marginTop={this.props.config.yIntervalBetweenNotes * 2}
-          MN_centerNote={this.props.config.MN_centerNote}>
+          MN_centerNote={this.props.config.MN_centerNote}
+          sounds={this.props.sounds}>
         </NoteFactory>
       </Stave>
     );

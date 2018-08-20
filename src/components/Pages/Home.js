@@ -12,6 +12,9 @@ import ControlsRunning from '../Controls/ControlsRunning';
 import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
 import Signature from '../Signature/Signature';
+import sounds from '../Note/sounds/sounds';
+
+window.notes = [];
 
 export class Home extends Component {
   constructor(){
@@ -48,7 +51,8 @@ export class Home extends Component {
             scale={scales[this.state.chosenScale]}
             signature={signatures[this.state.chosenScale]}
             running={this.state.running}
-            tempo={this.state.tempo}>
+            tempo={this.state.tempo}
+            sounds={sounds}>
           </StavesFactory>
           <Signature
             config={config}
