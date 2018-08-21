@@ -4,7 +4,7 @@ import './Note.css';
 // REMEMBER : for the "y" property
 // less than 0 are higher on the score
 // greater than 0 are higher on the score
-//
+
 const higherNote = 15;
 const lowerNote = 50;
 
@@ -14,7 +14,7 @@ const Note = ( { x, y, staveHeight, marginTop, index, sounds } ) => {
 
   // prevent first note to overlap the chord name
   if(!index && y < marginTop){
-    y = getRandomTenth(staveHeight, lowerNote);
+    y = getRandomFifth(staveHeight, lowerNote);
   }
 
   // sets the bars if the note are out of the score's height
@@ -51,14 +51,14 @@ const Note = ( { x, y, staveHeight, marginTop, index, sounds } ) => {
 Note.defaultProps = Object.create({}, {
   y: {
     enumerable: true,
-    get: () => getRandomTenth(higherNote, lowerNote)
+    get: () => getRandomFifth(higherNote, lowerNote)
   },
 
 });
 
-function getRandomTenth(min, max) {
-  // return a number between getRandomInt(higherNote, lowerNote) rounded to the nearest ten
-  return Math.ceil(getRandomInt(min, max) / 10) * 10;
+function getRandomFifth(min, max) {
+  // return a number between getRandomInt(higherNote, lowerNote) rounded to the nearest fifth
+  return Math.ceil(getRandomInt(min, max) / 5) * 5;
 }
 
 function getRandomInt(min, max) {

@@ -12,9 +12,9 @@
 - [ ] Play note
 
 ## Fix
+- [x] Random nearest thenth but doesn't take the 5 betweens
+- [x] Add red line after time signature
 - [ ] Add all sounds from top to bottom
-- [ ] Random nearest thenth but doesn't take the 5 betweens
-- [ ] Add red line after time signature
 
 ## Todo
 - [ ] Add tests

@@ -5,9 +5,10 @@ const ChangeLog = () => (
   <article className="page">
     <h2>Changelog (last updated 17th, August 2018)</h2>
     <ul className="changelogs">
-      <li>1.5 – 08/20/2018
+      <li>1.5 – 08/21/2018
         <ul>
           <li>Notes are being played</li>
+          <li>Added the red deadline</li>
         </ul>
       </li>
       <li>1.4 – 08/19/2018
