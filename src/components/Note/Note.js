@@ -5,10 +5,10 @@ import './Note.css';
 // less than 0 are higher on the score
 // greater than 0 are higher on the score
 
-const higherNote = 15;
-const lowerNote = 50;
+const higherNote = -15;
+const lowerNote = 85;
 
-const Note = ( { x, y, staveHeight, marginTop, index, sounds } ) => {
+const Note = ( { x, y, staveHeight, marginTop, index, c } ) => {
   window.notes.push(y);
   let bars = [];
 
