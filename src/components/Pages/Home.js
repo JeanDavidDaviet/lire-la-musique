@@ -34,35 +34,43 @@ export class Home extends Component {
     }
   }
   render() {
+    const {
+      chosenScale,
+      clef,
+      time,
+      running,
+      tempo
+    } = this.state;
+
     return (
       <React.Fragment>
         <Controls>
           <ControlsKeyboard running={this.stopRunning} />
-          <ControlsClef clef={this.state.clef} onChange={() => {this.setState({clef: !this.state.clef})}}></ControlsClef><br/>
-          <ControlsTime time={this.state.time} onChange={(event) => {this.setState({time: event.target.value})}}></ControlsTime><br/>
-          <ControlsScale chosenScale={this.state.chosenScale} scales={scales} onChange={(event) => {this.setState({chosenScale: event.target.value})}}></ControlsScale><br/>
-          <ControlsTempo tempo={this.state.tempo} onChange={(event) => {this.setState({tempo: parseInt(event.target.value, 10)})}}></ControlsTempo><br/>
-          <ControlsRunning running={this.state.running} onChange={() => {this.setState({running: !this.state.running})}}></ControlsRunning>
+          <ControlsClef clef={clef} onChange={() => {this.setState({clef: !clef})}}></ControlsClef><br/>
+          <ControlsTime time={time} onChange={(event) => {this.setState({time: event.target.value})}}></ControlsTime><br/>
+          <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {this.setState({chosenScale: event.target.value})}}></ControlsScale><br/>
+          <ControlsTempo tempo={tempo} onChange={(event) => {this.setState({tempo: parseInt(event.target.value, 10)})}}></ControlsTempo><br/>
+          <ControlsRunning running={running} onChange={() => {this.setState({running: !running})}}></ControlsRunning>
         </Controls>
         <Mesure>
           <StavesFactory
             config={config}
-            chosenScale={this.state.chosenScale}
-            scale={scales[this.state.chosenScale]}
-            signature={signatures[this.state.chosenScale]}
-            running={this.state.running}
-            tempo={this.state.tempo}
+            chosenScale={chosenScale}
+            scale={scales[chosenScale]}
+            signature={signatures[chosenScale]}
+            running={running}
+            tempo={tempo}
             sounds={sounds}>
           </StavesFactory>
           <Signature
             config={config}
-            chosenScale={this.state.chosenScale}
-            scale={scales[this.state.chosenScale]}
-            signature={signatures[this.state.chosenScale]}
+            chosenScale={chosenScale}
+            scale={scales[chosenScale]}
+            signature={signatures[chosenScale]}
             width={config.xIntervalBetweenNotes}
-            clef={this.state.clef}
-            beats={parseInt(this.state.time, 10)}
-            quarter={parseInt(this.state.time.substr(2), 10)}>
+            clef={clef}
+            beats={parseInt(time, 10)}
+            quarter={parseInt(time.substr(2), 10)}>
           </Signature>
         </Mesure>
       </React.Fragment>
