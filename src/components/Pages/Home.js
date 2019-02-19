@@ -21,7 +21,7 @@ export class Home extends Component {
     super();
     this.state = {
       chosenScale: "C",
-      clef: 1,
+      clef: true,
       time: "4/4",
       running: true,
       tempo: 60
