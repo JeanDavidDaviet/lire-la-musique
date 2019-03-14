@@ -5,17 +5,25 @@
 - [x] Use config file for global variables ? ( a way to share it)
 - [x] Routing
 - [x] ChangeLog
+- [x] Clef change
+- [x] Add Time signature
+- [x] 4/4 3/4 2/4 6/8 change time signature
+- [x] notes overlapping chords
+- [x] Play note
+
+## Fix
+- [x] Random nearest thenth but doesn't take the 5 betweens
+- [x] Add red line after time signature
+- [ ] Add all sounds from top to bottom
 
 ## Todo
 - [ ] Add tests
-- [ ] Add Time signature
-- [ ] 4/4 3/4 2/4 6/8
-- [ ] notes overlapping chords
-- [ ] Add RGPD
 - [ ] Localization
+- [ ] [Add button to detect user interaction](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio)
 
 ## Features
-- [ ] Play note with WebAudio API
 - [ ] Add metronome sound
 - [ ] Change config from shortcut
 - [ ] Add differents notes (eighths, half, whole, ...)
+- [ ] Make the tempo a range selector
+- [ ] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)

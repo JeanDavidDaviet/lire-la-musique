@@ -5,8 +5,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 const ControlsRunning = ( { running, onChange } ) => (
   <div className="control">
-    <InputLabel shrink htmlFor="running-native-label-placeholder">Running</InputLabel><br />
-    <Switch color="primary" checked={running} onChange={onChange}  input={<Input name="running" id="running-native-label-placeholder" />}/>
+    <InputLabel shrink htmlFor="control-running">Running</InputLabel><br />
+    <Switch color="primary" checked={running} onChange={onChange} input={<Input name="running" id="control-running" />}/>
   </div>
 )
 

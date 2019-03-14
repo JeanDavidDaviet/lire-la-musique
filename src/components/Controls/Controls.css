@@ -1,6 +1,7 @@
 .controls {
   padding: 25px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .controls > br {

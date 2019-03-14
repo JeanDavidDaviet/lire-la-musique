@@ -14,5 +14,6 @@ body, #root {
 
 svg {
   width: 100%;
+  width: calc(100% - 25px);
   margin-left: 25px;
 }

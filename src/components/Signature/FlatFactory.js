@@ -2,18 +2,19 @@ import React from 'react';
 import Flat from './Flat.js';
 import flats from '../../flats.js';
 
-const FlatFactory = ( { signature, chosenScale } ) => {
+const FlatFactory = ( { signature, chosenScale, clefWidth, alterationWidth } ) => {
   const numberOfFlats = Object.keys(signature.flats).indexOf(chosenScale);
   let flatsObjects = [];
   let widthOfBackground = 0;
-  flats.map((value, index) => {
+  flats.forEach((value, index) => {
     if(index < numberOfFlats){
-      flatsObjects.push(<Flat key={index} x={-320 + ( 15 * index )} y={value} />)
+      flatsObjects.push(<Flat key={index} x={-290 + ( alterationWidth * index )} y={value} />)
       widthOfBackground++;
     }
   })
-  const background = <rect key="background" x="0" y="0" width={35 + widthOfBackground * 15} height="150" fill="white" style={{transform: "translate3d(0, -50px, 0px)"}} />;
-  return Object.keys(signature.flats).indexOf(chosenScale) > -1 ? [background, flatsObjects] : null;
+  const background = <rect key="background" x="0" y="0" width={clefWidth + widthOfBackground * alterationWidth} height="150" fill="white" style={{transform: "translate3d(0, -50px, 0px)"}} />;
+  const deadline = <path key="deadline" fill="none" stroke="red" d={`M ${clefWidth + widthOfBackground * alterationWidth} 0 L ${clefWidth + widthOfBackground * alterationWidth} 40`}></path>;
+  return Object.keys(signature.flats).indexOf(chosenScale) > -1 ? [background, deadline, flatsObjects] : null;
 }
 
 export default FlatFactory;
