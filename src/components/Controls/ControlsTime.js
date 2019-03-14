@@ -1,12 +1,11 @@
 import React from 'react';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 
 const ControlsTime = ( { time, onChange } ) => (
   <div className="control">
     <InputLabel shrink htmlFor="control-time">Time Signature</InputLabel><br />
-    <NativeSelect value={time} onChange={onChange} input={<Input name="time" id="control-time" />}>
+    <NativeSelect value={time} onChange={onChange}>
       <optgroup label="2 beats">
         <option>2/2</option>
         <option>2/4</option>

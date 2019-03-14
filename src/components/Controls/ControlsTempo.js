@@ -1,12 +1,11 @@
 import React from 'react';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 
 const ControlsTempo = ( { tempo, onChange } ) => (
   <div className="control">
     <InputLabel shrink htmlFor="control-tempo">Tempo</InputLabel><br />
-    <NativeSelect value={tempo} onChange={onChange} input={<Input name="tempo" id="control-tempo" />}>
+    <NativeSelect value={tempo} onChange={onChange}>
       <option value={20}>20</option>
       <option value={40}>40</option>
       <option value={60}>60</option>
