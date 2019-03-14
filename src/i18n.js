@@ -1,25 +1,11 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import translations from './translations';
 
-const ressources = {
-  en: {
-    translations: {
-      "Read the music": "Read the music",
-      "Scale": "Scale",
-      "Welcome to React": "Welcome to React and react-i18next"
-    }
-  },
-  fr: {
-    translations: {
-      "Scale": "Gamme",
-      "Read the music": "Lire la musique"
-    }
-  }
-};
 
 i18n.use(LanguageDetector).init({
   // we init with resources
-  resources: ressources,
+  resources: translations,
   fallbackLng: "en",
   debug: false,
 

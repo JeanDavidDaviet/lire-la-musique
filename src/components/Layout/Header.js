@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
 import config from '../../config.js';
 import { useTranslation } from "react-i18next";
+import i18n from '../../i18n';
 
 const Header = () => {
   const { t } = useTranslation();
@@ -16,7 +17,7 @@ const Header = () => {
         <Typography variant="title" color="inherit">
           <Link to="/" className="logo">{t('Read the music')}</Link>
         </Typography>
-        <Link to="/changelog" className="changelog">
+        <Link to={`${i18n.language}/changelog`} className="changelog">
           <Chip color="secondary" label={"Version " + config.version} className="changelog__chip"/>
         </Link>
       </Toolbar>

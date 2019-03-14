@@ -1,19 +1,19 @@
 import React from 'react';
 import './ChangeLog.css';
 
-const ChangeLog = () => (
+const ChangeLogEN = () => (
   <article className="page">
-    <h2>Changelog (last updated 19th, February 2018)</h2>
+    <h2>Changelog (last updated 14th, March 2019)</h2>
     <ul className="changelogs">
       <li><strong>1.6 – 03/14/2019</strong>
         <ul>
-          <li>Added choice between piano and computer generated sounds</li>
+          <li>Added choice of instrument between piano and computer generated sounds</li>
         </ul>
       </li>
       <li><strong>1.5.1 – 02/19/2019</strong>
         <ul>
           <li>Updated React version</li>
-          <li>Changed changelog version order</li>
+          <li>Changed changelog version's display order</li>
         </ul>
         <ul>
           <li><strong>1.5 – 08/21/2018</strong>
@@ -68,4 +68,4 @@ const ChangeLog = () => (
   </article>
 )
 
-export default ChangeLog;
+export default ChangeLogEN;
