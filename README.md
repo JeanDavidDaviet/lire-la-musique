@@ -9,7 +9,7 @@
 - [x] Add Time signature
 - [x] 4/4 3/4 2/4 6/8 change time signature
 - [x] notes overlapping chords
-- [ ] Play note
+- [x] Play note
 
 ## Fix
 - [x] Random nearest thenth but doesn't take the 5 betweens
@@ -18,8 +18,8 @@
 
 ## Todo
 - [ ] Add tests
-- [ ] Add RGPD
 - [ ] Localization
+- [ ] [Add button to detect user interaction](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio)
 
 ## Features
 - [ ] Add metronome sound

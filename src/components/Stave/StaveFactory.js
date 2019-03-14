@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Stave from '../../components/Stave/Stave';
 import LineFactory from '../../components/Line/LineFactory';
 import NoteFactory from '../../components/Note/NoteFactory';
+import { oscillator, gain } from '../../webAudio';
+
+let timeoutId = 0;
 
 class StaveFactory extends Component {
   constructor(props){
@@ -83,7 +86,19 @@ class StaveFactory extends Component {
       // console.log(this.state.x - this.props.config.clefWidth, this.canPlay);
       if(this.state.x - this.props.config.clefWidth + this.props.config.xIntervalBetweenNotes - 30 < this.canPlay){
         this.canPlay -= this.props.config.xIntervalBetweenNotes;
-        this.audios[window.notes[0]].play();
+
+        if (this.props.instrument === 0) {
+          this.audios[window.notes[0]].play();
+        }
+        if (this.props.instrument === 1) {
+          oscillator.frequency.value = 1396.91 * (Math.pow(2, (-(window.notes[0] / 5) / 12)));
+          gain.gain.value = 1;
+
+          timeoutId = setTimeout(() => {
+            gain.gain.value = 0;
+            clearTimeout(timeoutId);
+          }, 150);
+        }
         window.notes.splice(0, 1);
       }
 

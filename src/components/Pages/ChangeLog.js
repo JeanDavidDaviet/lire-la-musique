@@ -5,6 +5,11 @@ const ChangeLog = () => (
   <article className="page">
     <h2>Changelog (last updated 19th, February 2018)</h2>
     <ul className="changelogs">
+      <li><strong>1.6 – 03/14/2019</strong>
+        <ul>
+          <li>Added choice between piano and computer generated sounds</li>
+        </ul>
+      </li>
       <li><strong>1.5.1 – 02/19/2019</strong>
         <ul>
           <li>Updated React version</li>

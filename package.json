@@ -1,6 +1,6 @@
 {
   "name": "musique",
-  "version": "1.5.1",
+  "version": "1.6",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.5.1",
