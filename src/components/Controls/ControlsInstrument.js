@@ -9,8 +9,8 @@ const ControlsInstrument = ({ instrument, onChange }) => {
     <div className="control">
       <InputLabel shrink htmlFor="control-tempo">{t('Instrument')}</InputLabel><br />
       <NativeSelect value={instrument} onChange={onChange}>
-        <option value={0}>Piano</option>
-        <option value={1}>Ordinateur</option>
+        <option value={0}>{t('Piano')}</option>
+        <option value={1}>{t('Computer')}</option>
         {/* <option value={1}>Metronome</option> */}
       </NativeSelect>
     </div>

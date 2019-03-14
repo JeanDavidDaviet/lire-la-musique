@@ -5,9 +5,16 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog (last updated 14th, March 2019)</h2>
     <ul className="changelogs">
-      <li><strong>1.7 – 03/14/2019</strong>
+      <li><strong>1.7.1 – 03/14/2019</strong>
         <ul>
-          <li>Added translations of texts and changelogs</li>
+          <li>Fix some translations mistakes and updated dependencies</li>
+        </ul>
+        <ul>
+        <li><strong>1.7 – 03/14/2019</strong>
+          <ul>
+            <li>Added translations of texts and changelogs</li>
+          </ul>
+        </li>
         </ul>
       </li>
       <li><strong>1.6 – 03/14/2019</strong>

@@ -5,9 +5,16 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog (dernière mise à jour le 14 mars 2019)</h2>
     <ul className="changelogs">
-      <li><strong>1.7 – 14/03/2019</strong>
+      <li><strong>1.7.1 – 14/03/2019</strong>
         <ul>
-          <li>Ajout des traductions des textes et des journaux de changements</li>
+          <li>Corrections d'oublis de traductions de et mise à jours des dépendances</li>
+        </ul>
+        <ul>
+          <li><strong>1.7 – 14/03/2019</strong>
+            <ul>
+              <li>Ajout des traductions des textes et des journaux de changements</li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li><strong>1.6 – 14/03/2019</strong>

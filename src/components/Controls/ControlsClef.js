@@ -9,8 +9,8 @@ const ControlsClef = ( { clef, onChange } ) => {
     <div className="control">
       <InputLabel shrink htmlFor="control-clef">{t('Clef')}</InputLabel><br />
       <NativeSelect value={clef} onChange={onChange}>
-        <option value={false}>Bass</option>
-        <option value={true}>Treble</option>
+        <option value={false}>{t('Bass')}</option>
+        <option value={true}>{t('Treble')}</option>
       </NativeSelect>
     </div>
   )
