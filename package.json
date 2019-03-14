@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.5.0",
+    "@material-ui/icons": "^3.0.2",
     "i18next": "^11.6.0",
     "i18next-browser-languagedetector": "^2.2.3",
     "react": "^16.4.0",

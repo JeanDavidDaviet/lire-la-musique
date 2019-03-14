@@ -18,17 +18,22 @@ import ControlsInstrument from '../Controls/ControlsInstrument.js';
 window.notes = [];
 
 export class Home extends Component {
-  constructor(){
+  constructor({ running }){
     super();
     this.state = {
       chosenScale: "C",
       clef: true,
       time: "4/4",
-      running: true,
+      running: running,
       tempo: 60,
       instrument: 0
     };
     this.stopRunning = this.stopRunning.bind(this);
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.running !== prevProps.running) {
+      this.setState({ running: !this.state.running });
+    }
   }
   stopRunning(event){
     if(event.keyCode === 32){
