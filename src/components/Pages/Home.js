@@ -14,17 +14,24 @@ import StavesFactory from '../Stave/StaveFactory';
 import Signature from '../Signature/Signature';
 import sounds from '../Note/sounds/sounds';
 import ControlsInstrument from '../Controls/ControlsInstrument.js';
+import Button from '@material-ui/core/Button';
+import PlayArrow from '@material-ui/icons/PlayArrow';
+import Pause from '@material-ui/icons/Pause';
+import { useTranslation } from 'react-i18next';
+import Footer from '../Layout/Footer.js';
 
 window.notes = [];
 
+const { t } = useTranslation();
+
 export class Home extends Component {
-  constructor({ running }){
+  constructor(){
     super();
     this.state = {
       chosenScale: "C",
       clef: true,
       time: "4/4",
-      running: running,
+      running: false,
       tempo: 60,
       instrument: 0
     };
@@ -83,6 +90,17 @@ export class Home extends Component {
             quarter={parseInt(time.substr(2), 10)}>
           </Signature>
         </Mesure>
+        <div style={{ marginTop: 'auto', textAlign: 'center' }}>
+          <Button variant="contained" color="primary" size="large" onClick={() => { this.setState({ running: !running }) }}>
+            <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
+              {running ? t('Pause') : t('Play')}
+            </span>
+            {running ?
+              <Pause style={{ marginLeft: 0, marginRight: -5 }} /> :
+              <PlayArrow style={{ marginLeft: 0, marginRight: -5 }} />}
+          </Button>
+        </div>
+        <Footer />
       </React.Fragment>
     );
   }

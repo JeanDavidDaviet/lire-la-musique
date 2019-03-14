@@ -5,6 +5,11 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog (dernière mise à jour le 14 mars 2019)</h2>
     <ul className="changelogs">
+      <li><strong>1.7 – 14/03/2019</strong>
+        <ul>
+          <li>Ajout des traductions des textes et des journaux de changements</li>
+        </ul>
+      </li>
       <li><strong>1.6 – 14/03/2019</strong>
         <ul>
           <li>Ajout du choix d'intrument entre piano et sons générés par l'ordinateur</li>
@@ -13,7 +18,7 @@ const ChangeLogFR = () => (
       <li><strong>1.5.1 – 19/02/2019</strong>
         <ul>
           <li>Mise à jour de la version de React</li>
-          <li>Changement de l'ordre d'affichage des versons du journal des changements-</li>
+          <li>Changement de l'ordre d'affichage des versions du journal de changements-</li>
         </ul>
         <ul>
           <li><strong>1.5 – 21/08/2018</strong>
