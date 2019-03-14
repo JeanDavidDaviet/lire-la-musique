@@ -1,14 +1,16 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import Home from './Pages/Home';
-import ChangeLog from './Pages/ChangeLog';
+import ChangeLogEN from './Pages/ChangeLogEN';
+import ChangeLogFR from './Pages/ChangeLogFR';
 import Header from './Layout/Header';
 
 const App = () => (
   <React.Fragment>
-    <Header />
+    <Header/>
     <Route exact path="/" component={Home} />
-    <Route path="/changelog" component={ChangeLog} />
+    <Route path="/en/changelog" component={ChangeLogEN} />
+    <Route path="/fr/changelog" component={ChangeLogFR} />
   </React.Fragment>
 )
 

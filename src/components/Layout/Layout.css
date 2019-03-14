@@ -11,3 +11,11 @@
 .changelog .changelog__chip {
   cursor: pointer;
 }
+.footer {
+  margin-top: auto;
+  padding: 25px;
+}
+.footer__img {
+  margin-right: 10px;
+  cursor: pointer;
+}
