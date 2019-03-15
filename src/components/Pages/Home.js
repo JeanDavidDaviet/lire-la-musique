@@ -19,6 +19,7 @@ import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import { useTranslation } from 'react-i18next';
 import Footer from '../Layout/Footer.js';
+import { context } from '../../webAudio.js';
 
 window.notes = [];
 
@@ -33,7 +34,8 @@ export class Home extends Component {
       time: "4/4",
       running: false,
       tempo: 60,
-      instrument: 0
+      instrument: 0,
+      context: false
     };
     this.stopRunning = this.stopRunning.bind(this);
   }
@@ -45,6 +47,13 @@ export class Home extends Component {
   stopRunning(event){
     if(event.keyCode === 32){
       this.setState({running: !this.state.running});
+    }
+  }
+  setContext() {
+    if (!this.state.context) {
+      context.resume().then(() => {
+        this.setState({ context: true});
+      });
     }
   }
   render() {
@@ -66,7 +75,7 @@ export class Home extends Component {
           <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {this.setState({chosenScale: event.target.value})}}></ControlsScale><br/>
           <ControlsTempo tempo={tempo} onChange={(event) => {this.setState({tempo: parseInt(event.target.value, 10)})}}></ControlsTempo><br/>
           <ControlsInstrument instrument={instrument} onChange={(event) => { this.setState({ instrument: parseInt(event.target.value, 10) }) }}></ControlsInstrument>
-          <ControlsRunning running={running} onChange={() => {this.setState({running: !running})}}></ControlsRunning><br />
+          <ControlsRunning running={running} onChange={() => {this.setContext(); this.setState({running: !running})}}></ControlsRunning><br />
         </Controls>
         <Mesure>
           <StavesFactory
@@ -91,7 +100,7 @@ export class Home extends Component {
           </Signature>
         </Mesure>
         <div style={{ marginTop: 'auto', textAlign: 'center' }}>
-          <Button variant="contained" color="primary" size="large" onClick={() => { this.setState({ running: !running }) }}>
+          <Button variant="contained" color="primary" size="large" onClick={() => { this.setContext(); this.setState({ running: !running }) }}>
             <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
               {running ? t('Pause') : t('Play')}
             </span>

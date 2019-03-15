@@ -27,3 +27,10 @@
 - [ ] Add differents notes (eighths, half, whole, ...)
 - [ ] Make the tempo a range selector
 - [ ] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)
+
+## On update
+- Bump version number (config, package.json)
+- Changelog in differents translations (careful of date format)
+- Cleanup
+- Tests
+- Dploy
