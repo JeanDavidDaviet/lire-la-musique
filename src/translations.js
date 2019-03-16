@@ -19,6 +19,7 @@ export default {
       "Two ways of doing this:": "Two ways of doing this:",
       "Send me an email at": "Send me an email at",
       "Contribute directly using": "Contribute directly using",
+      "Language changed to": "Language changed to",
     }
   },
   fr: {
@@ -40,7 +41,12 @@ export default {
       "You can contribute by adding your own translation in your language!": "Vous pouvez contribuer en ajoutant votre propre traduction dans votre langage !",
       "Two ways of doing this:": "Deux façons de procéder :",
       "Send me an email at": "Envoyez-moi un email à",
-      "Contribute directly using": "Contribuez directement avec",
+      "Language changed to": "Langue changée en",
     }
   }
 };
+
+export const languages = {
+  'en': 'English',
+  'fr': 'Français',
+}
