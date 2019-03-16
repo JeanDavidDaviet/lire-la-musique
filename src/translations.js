@@ -13,6 +13,10 @@ export default {
       "Computer": "Computer",
       "Treble": "Treble",
       "Bass": "Bass",
+      "Credits": "Credits",
+      "Credits": "Credits",
+      "Flags SVG Icons": "Flags SVG Icons",
+      "UI Design": "UI Design",
     }
   },
   "Time Signature": "Time Signature",
@@ -31,6 +35,9 @@ export default {
       "Computer": "Ordinateur",
       "Treble": "Sol",
       "Bass": "Fa",
+      "Credits": "Crédits",
+      "Flags SVG Icons": "Icones SVG des drapeaux",
+      "UI Design": "Design d'interface",
     }
   }
 };
