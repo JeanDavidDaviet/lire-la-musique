@@ -19,7 +19,7 @@ import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import { useTranslation } from 'react-i18next';
 import Footer from '../Layout/Footer.js';
-import { context } from '../../webAudio.js';
+import getAudioContext from '../../webAudio.js';
 
 window.notes = [];
 
@@ -51,6 +51,7 @@ export class Home extends Component {
   }
   setContext() {
     if (!this.state.context) {
+      const context = getAudioContext();
       context.resume().then(() => {
         this.setState({ context: true});
       });
