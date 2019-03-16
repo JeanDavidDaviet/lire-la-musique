@@ -13,6 +13,16 @@ export default {
       "Computer": "Computer",
       "Treble": "Treble",
       "Bass": "Bass",
+      "Notation": "Notation",
+      "Shortcuts": "Shortcuts",
+      'Up arrow': 'Up arrow',
+      'Change scale up one half a tone': 'Change scale up one half a tone',
+      'Down arrow': 'Down arrow',
+      'Change scale down one half a tone': 'Change scale down one half a tone',
+      'Left arrow': 'Left arrow',
+      'Accelerate tempo up 20 bpm': 'Accelerate tempo up 20 bpm',
+      'Right arrow': 'Right arrow',
+      'Decelerate tempo up 20 bpm': 'Decelerate tempo up 20 bpm',
     }
   },
   "Time Signature": "Time Signature",
@@ -31,6 +41,16 @@ export default {
       "Computer": "Ordinateur",
       "Treble": "Sol",
       "Bass": "Fa",
+      "Notation": "Notation",
+      "Shortcuts": "Raccourcis",
+      'Up arrow': 'Flèche du haut',
+      'Change scale up one half a tone': 'Augmenter la gamme d\'un demi-ton',
+      'Down arrow': 'Flèche du bas',
+      'Change scale down one half a tone': 'Baisser la gamme d\'un demi-ton',
+      'Left arrow': 'Flèche gauche',
+      'Accelerate tempo up 20 units': 'Accélerer le tempo de 20 bpm',
+      'Right arrow': 'Flèche droite',
+      'Decelerate tempo up 20 units': 'Ralentir le tempo de 20 bpm',
     }
   }
 };

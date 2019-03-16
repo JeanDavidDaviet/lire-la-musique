@@ -20,6 +20,8 @@
 
 ## Todo
 - [ ] Add tests
+- [ ] Add settings dialog
+- [ ] Add redux ?
 
 ## Features
 - [ ] Add metronome sound
