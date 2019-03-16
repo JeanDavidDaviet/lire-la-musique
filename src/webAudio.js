@@ -1,15 +1,18 @@
-const context = new AudioContext();
-const oscillator = context.createOscillator();
-oscillator.start(0);
+let context = undefined;
 
-const gain = context.createGain();
-gain.gain.value = 0;
+const getAudioContext = () => {
+  if(context === undefined){
+    context = new AudioContext();
+    context.oscillator = context.createOscillator();
+    context.oscillator.start(0);
 
-oscillator.connect(gain);
-gain.connect(context.destination);
+    context.gain = context.createGain();
+    context.gain.gain.value = 0;
 
-export {
-  context,
-  oscillator,
-  gain
+    context.oscillator.connect(context.gain);
+    context.gain.connect(context.destination);
+  }
+  return context;
 }
+
+export default getAudioContext;

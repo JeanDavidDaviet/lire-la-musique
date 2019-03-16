@@ -5,6 +5,15 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog (dernière mise à jour le 14 mars 2019)</h2>
     <ul className="changelogs">
+      <li><strong>1.8</strong> – 16/03/2019
+        <ul>
+          <li>Ajout de la popup des crédits</li>
+          <li>Ajout de la popup de contribution de la langue et son icône</li>
+          <li>Ajout de la notification de changement de langue</li>
+          <li>Mis à jour des icones de drapeaux et des sons des notes</li>
+          <li>Correction des barres des notes qui n'étaient pas à la bonne hauteur et d'autres petits problèmes</li>
+        </ul>
+      </li>
       <li><strong>1.7.2</strong> – 15/03/2019
         <ul>
           <li>Correction des sons par ordinateurs qui ne marchaient plus et de l'ordre d'affichage des journaux de changements</li>

@@ -14,8 +14,10 @@
 .footer {
   margin-top: auto;
   padding: 25px;
+  display: flex;
+  justify-content: space-between;
 }
-.footer__img {
-  margin-right: 10px;
-  cursor: pointer;
+
+.flags {
+  flex: 1;
 }
