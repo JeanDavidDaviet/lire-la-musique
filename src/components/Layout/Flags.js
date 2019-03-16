@@ -24,7 +24,7 @@ const Flags = () => {
                     <p>{t('Two ways of doing this:')}</p>
                     <ul>
                         <li>{t('Send me an email at')} <a href="mailto:read.the.music.online@gmail.com">read.the.music.online@gmail.com</a></li>
-                        <li>{t('Contribute directly using')} <a href="https://github.com/JeanDavidDaviet/piano">Github</a></li>
+                        <li>{t('Contribute directly using')} <a href="https://github.com/JeanDavidDaviet/piano" target="_blank" rel="noopener noreferrer">Github</a></li>
                     </ul>
                 </div>
             </Dialog>
