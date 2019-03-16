@@ -20,6 +20,9 @@ export default {
       "Send me an email at": "Send me an email at",
       "Contribute directly using": "Contribute directly using",
       "Language changed to": "Language changed to",
+      "Credits": "Credits",
+      "Flags SVG Icons": "Flags SVG Icons",
+      "UI Design": "UI Design",
     }
   },
   fr: {
@@ -41,7 +44,11 @@ export default {
       "You can contribute by adding your own translation in your language!": "Vous pouvez contribuer en ajoutant votre propre traduction dans votre langage !",
       "Two ways of doing this:": "Deux façons de procéder :",
       "Send me an email at": "Envoyez-moi un email à",
+      "Contribute directly using": "Contribuer directement en utilisant",
       "Language changed to": "Langue changée en",
+      "Credits": "Crédits",
+      "Flags SVG Icons": "Icones SVG des drapeaux",
+      "UI Design": "Design d'interface",
     }
   }
 };
