@@ -7,6 +7,7 @@ export default {
       "Clef": "Clef",
       "Running": "Running",
       "Scale": "Scale",
+      "Time Signature": "Time Signature",
       "Instrument": "Instrument",
       "Tempo": "Tempo",
       "Piano": "Piano",
@@ -15,7 +16,6 @@ export default {
       "Bass": "Bass",
     }
   },
-  "Time Signature": "Time Signature",
   fr: {
     translations: {
       "Read the music": "Lire la musique",
