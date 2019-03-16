@@ -20,15 +20,29 @@ const Note = ( { x, y, staveHeight, marginTop, index } ) => {
   // sets the bars if the note are out of the score's height
   if(y < 0){
     for(let i = 0; i < Math.abs(Math.ceil(y / marginTop)); i++){
-      bars.push(
-        <path fill="none" stroke="black" d={`M-4 ${i*marginTop - 2} L 20 ${i*marginTop - 2}`} key={i}></path>
-      );
+      // if the note is on a bar
+      if (y % 10 === -5) {
+        bars.push(
+          <path fill="none" stroke="black" d={`M-4 ${i * marginTop - 2 + (marginTop / 2)} L 20 ${i * marginTop - 2 + (marginTop / 2)}`} key={i}></path>
+        );
+      } else {
+        bars.push(
+          <path fill="none" stroke="black" d={`M-4 ${i * marginTop - 2} L 20 ${i * marginTop - 2}`} key={i}></path>
+        );
+      }
     }
   }else if(y > staveHeight){
     for(let i = 0; i < Math.floor((y - staveHeight) / marginTop); i++){
-      bars.push(
-        <path fill="none" stroke="black" d={`M-4 ${i * -marginTop - 2} L 20 ${i * -marginTop - 2}`} key={i}></path>
-      );
+      // if the note is on a bar
+      if (y % 10 === 5) {
+        bars.push(
+          <path fill="none" stroke="black" d={`M-4 ${i * -marginTop - 2 - (marginTop / 2)} L 20 ${i * -marginTop - 2 - (marginTop / 2)}`} key={i}></path>
+        );
+      } else {
+        bars.push(
+          <path fill="none" stroke="black" d={`M-4 ${i * -marginTop - 2} L 20 ${i * -marginTop - 2}`} key={i}></path>
+        );
+      }
     }
   }
 
