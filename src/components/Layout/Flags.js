@@ -23,7 +23,7 @@ const Flags = () => {
                     <p>{t('You can contribute by adding your own translation in your language!')}</p>
                     <p>{t('Two ways of doing this:')}</p>
                     <ul>
-                        <li>{t('Send me an email at')} <a href="mailto:"></a></li>
+                        <li>{t('Send me an email at')} <a href="mailto:read.the.music.online@gmail.com">read.the.music.online@gmail.com</a></li>
                         <li>{t('Contribute directly using')} <a href="https://github.com/JeanDavidDaviet/piano">Github</a></li>
                     </ul>
                 </div>
