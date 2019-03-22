@@ -19,6 +19,7 @@
 - [ ] Add settings dialog
 - [ ] Add redux ?
 - [ ] Add shortcuts
+- [ ] Sort the scales not on name only but on tone => Cb then C then C#
 
 ## Features
 - [ ] Add metronome sound
