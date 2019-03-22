@@ -20,6 +20,7 @@ import Pause from '@material-ui/icons/Pause';
 import { useTranslation } from 'react-i18next';
 import Footer from '../Layout/Footer.js';
 import getAudioContext from '../../webAudio.js';
+import { connect } from 'react-redux';
 
 window.notes = [];
 
@@ -32,17 +33,11 @@ export class Home extends Component {
       chosenScale: "C",
       clef: true,
       time: "4/4",
-      running: false,
       tempo: 60,
       instrument: 0,
       context: false
     };
     this.stopRunning = this.stopRunning.bind(this);
-  }
-  componentDidUpdate(prevProps) {
-    if (this.props.running !== prevProps.running) {
-      this.setState({ running: !this.state.running });
-    }
   }
   stopRunning(event){
     if(event.keyCode === 32){
@@ -70,13 +65,13 @@ export class Home extends Component {
     return (
       <React.Fragment>
         <Controls>
-          <ControlsKeyboard running={this.stopRunning} />
+          <ControlsKeyboard/>
           <ControlsClef clef={clef} onChange={() => {this.setState({clef: !clef})}}></ControlsClef><br/>
           <ControlsTime time={time} onChange={(event) => {this.setState({time: event.target.value})}}></ControlsTime><br/>
           <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {this.setState({chosenScale: event.target.value})}}></ControlsScale><br/>
           <ControlsTempo tempo={tempo} onChange={(event) => {this.setState({tempo: parseInt(event.target.value, 10)})}}></ControlsTempo><br/>
           <ControlsInstrument instrument={instrument} onChange={(event) => { this.setState({ instrument: parseInt(event.target.value, 10) }) }}></ControlsInstrument>
-          <ControlsRunning running={running} onChange={() => {this.setContext(); this.setState({running: !running})}}></ControlsRunning><br />
+          <ControlsRunning running={this.props.running} onChange={() => {this.setContext(); this.props.setRunning(); }}></ControlsRunning><br />
         </Controls>
         <Mesure>
           <StavesFactory
@@ -84,7 +79,7 @@ export class Home extends Component {
             chosenScale={chosenScale}
             scale={scales[chosenScale]}
             signature={signatures[chosenScale]}
-            running={running}
+            running={this.props.running}
             tempo={tempo}
             sounds={sounds}
             instrument={instrument}>
@@ -101,19 +96,37 @@ export class Home extends Component {
           </Signature>
         </Mesure>
         <div style={{ marginTop: 'auto', textAlign: 'center' }}>
-          <Button variant="contained" color="primary" size="large" onClick={() => { this.setContext(); this.setState({ running: !running }) }}>
+          <Button variant="contained" color="primary" size="large" onClick={() => { this.setContext(); this.props.setRunning(); }}>
             <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
-              {running ? t('Pause') : t('Play')}
+              {this.props.running ? t('Pause') : t('Play')}
             </span>
-            {running ?
+            {this.props.running ?
               <Pause style={{ marginLeft: 0, marginRight: -5 }} /> :
               <PlayArrow style={{ marginLeft: 0, marginRight: -5 }} />}
           </Button>
         </div>
+        <h1 onClick={this.props.setRunning}>TEST2 {this.props.running}</h1>
         <Footer />
+
       </React.Fragment>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = (state /*, ownProps*/) => {
+  return {
+    counter: state.counter,
+    running: state.running
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setRunning: () => dispatch({ type: 'RUNNING' }),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
