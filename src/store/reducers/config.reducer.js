@@ -1,9 +1,9 @@
+import { RUNNING, SET_CLEF, SET_TIME, SET_INSTRUMENT } from "../actions/actionTypes";
+
 const initialState = {
-  chosenScale: "C",
   clef: true,
   time: "4/4",
   running: false,
-  tempo: 60,
   instrument: 0,
   context: false,
   counter: 0
@@ -11,12 +11,22 @@ const initialState = {
 
 const configReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'INCREMENT':
+    case SET_CLEF:
       return {
         ...state,
-        counter: state.counter + 1
+        clef: !state.clef
       }
-    case 'RUNNING':
+    case SET_TIME:
+      return {
+        ...state,
+        time: action.payload
+      }
+    case SET_INSTRUMENT:
+      return {
+        ...state,
+        instrument: action.payload
+      }
+    case RUNNING:
       return {
         ...state,
         running: !state.running
