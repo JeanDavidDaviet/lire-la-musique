@@ -5,6 +5,15 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog (last updated 14th, March 2019)</h2>
     <ul className="changelogs">
+      <li><strong>1.8</strong> – 03/16/2019
+        <ul>
+          <li>Added credits modal</li>
+          <li>Added language contribution modal and icon</li>
+          <li>Added language change notification</li>
+          <li>Updated the flags icon and the sounds of notes</li>
+          <li>Fix note's bar not on the correct height and other small issues</li>
+        </ul>
+      </li>
       <li><strong>1.7.2</strong> – 03/15/2019
         <ul>
           <li>Fix computer sounds not generated and changelog display order</li>
