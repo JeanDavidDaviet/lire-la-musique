@@ -38,4 +38,8 @@ signatures.Db = signatures.flats.Db;
 signatures.Gb = signatures.flats.Gb;
 signatures.Cb = signatures.flats.Cb;
 
+signatures.As = signatures.flats.Bb;
+signatures.Ds = signatures.flats.Eb;
+signatures.Gs = signatures.flats.Ab;
+
 export default signatures

@@ -50,7 +50,6 @@ class StaveFactory extends Component {
           index={i}
           key={i}
           staveWidth={this.props.config.staveWidth}
-          scale={this.props.scale}
           MN_centerNote={this.props.config.MN_centerNote}>
           <LineFactory
             staveWidth={this.props.config.staveWidth}
@@ -118,7 +117,6 @@ class StaveFactory extends Component {
         index={this.state.staveIndex}
         key={this.state.staveIndex}
         staveWidth={this.props.config.staveWidth}
-        scale={this.props.scale}
         MN_centerNote={this.props.config.MN_centerNote}>
         <LineFactory
           staveWidth={this.props.config.staveWidth}

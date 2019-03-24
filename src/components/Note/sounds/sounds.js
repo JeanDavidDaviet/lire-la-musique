@@ -65,3 +65,35 @@ const sounds = {
 }
 
 export default sounds;
+
+export const realSounds = {
+    "-70" :  C1_note,
+    "-65" :  D1_note,
+    "-60" :  E1_note,
+    "-55" :  F1_note,
+    "-50" :  G1_note,
+    "-45" :  A2_note,
+    "-40" :  B2_note,
+    "-35" :  C2_note,
+    "-30" :  D2_note,
+    "-25" :  E2_note,
+    "-20" :  F2_note,
+    "-15" :  G2_note,
+    "-10" :  A3_note,
+    "-5" :  B3_note,
+    "0"  : C3_note,
+    "5"  : D3_note,
+    "10" :  E3_note,
+    "15" :  F3_note,
+    "20" :  G3_note,
+    "25" :  A4_note,
+    "30" :  B4_note,
+    "35" :  C4_note,
+    "40" :  D4_note,
+    "45" :  E4_note,
+    "50" :  F4_note,
+    "55" :  G4_note,
+    "60" :  A5_note,
+    "65" :  B5_note,
+    "70" :  C5_note,
+  }

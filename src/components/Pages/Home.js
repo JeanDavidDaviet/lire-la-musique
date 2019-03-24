@@ -44,7 +44,7 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
         <ControlsKeyboard />
         <ControlsClef clef={clef} onChange={() => {setClef()}}></ControlsClef><br/>
         <ControlsTime time={time} onChange={(event) => { setTime(event.target.value)}}></ControlsTime><br/>
-        <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
+        <ControlsScale onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
         <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }}></ControlsTempo><br/>
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }}></ControlsInstrument>
         <ControlsRunning running={running} onChange={() => { setContextOnce(); setRunning(); }}></ControlsRunning><br />
@@ -53,7 +53,6 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
         <StavesFactory
           config={config}
           chosenScale={chosenScale}
-          scale={scales[chosenScale]}
           signature={signatures[chosenScale]}
           running={running}
           tempo={tempo}

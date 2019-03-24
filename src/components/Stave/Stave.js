@@ -1,12 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { realScale } from '../../scales';
 
-const Stave = ({ scale, index, staveWidth, MN_centerNote, children }) => {
-  // choose a random chords
-  let scalesToArray = Object.values(scale);
-  let randomChords = scalesToArray[Math.floor(Math.random() * scalesToArray.length)];
-  if(typeof randomChords === 'object'){
-    randomChords = Object.values(randomChords)[Math.floor(Math.random() * 2)];
-  }
+const Stave = ({ index, staveWidth, MN_centerNote, children, chosenScale }) => {
+  const rootOrFifthOrFourth = Math.round(Math.random() * 2);
+  const minorOrMajor = Math.round(Math.random());
+
+  const currentScale = realScale.ids[chosenScale];
+  const chords = [
+    currentScale,
+    realScale.fourth[currentScale],
+    realScale.fifth[currentScale]
+  ];
+
+  let chord = chords[rootOrFifthOrFourth];
+  chord = minorOrMajor ? realScale.displayName[realScale.minor[chord]] + 'm' : realScale.displayName[chord];
 
   let decalage = {
     transform: `translate3d( ${ index * staveWidth }px, 0, 0)`
@@ -17,11 +25,20 @@ const Stave = ({ scale, index, staveWidth, MN_centerNote, children }) => {
 
   return (
     <g className="stave" style={decalage}>
-      <text style={chordPosition}>{ randomChords }</text>
+      <text style={chordPosition}>{ chord }</text>
       { children }
       <path fill="none" stroke="black" d={`M ${staveWidth} 0 L ${staveWidth} 40`}></path>
     </g>
   );
 }
 
-export default Stave;
+
+
+const mapStateToProps = (state) => ({
+  chosenScale: state.scaleReducer.chosenScale,
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(Stave);

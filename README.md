@@ -20,6 +20,8 @@
 - [ ] Add redux ?
 - [ ] Add shortcuts
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#
+- [ ] Change Running Checkbox to Sound Checkbox
+- [ ] Add localstorage to keep configuration between reload
 
 ## Features
 - [ ] Add metronome sound
@@ -33,3 +35,10 @@
 - Cleanup
 - Tests
 - Dploy
+
+
+
+
+# DEV to fix before merge
+- [ ] As, Ds, and Gs need to have their signature. Signature can't be relevant to order in array because then order of flats is wrong.
+- [ ] when using shortcut to change scale with keyboard arrows, need to update the controlScale input too.
