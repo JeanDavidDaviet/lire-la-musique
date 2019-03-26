@@ -23,6 +23,18 @@ export default {
       "Credits": "Credits",
       "Flags SVG Icons": "Flags SVG Icons",
       "UI Design": "UI Design",
+      "Notation": "Notation",
+      "Shortcuts": "Shortcuts",
+      'Space': 'Space',
+      'Play/Pause': 'Play/Pause',
+      'Up arrow': 'Up arrow',
+      'Change scale up one half a tone': 'Change scale up one half a tone',
+      'Down arrow': 'Down arrow',
+      'Change scale down one half a tone': 'Change scale down one half a tone',
+      'Left arrow': 'Left arrow',
+      'Accelerate tempo up 20 bpm': 'Accelerate tempo up 20 bpm',
+      'Right arrow': 'Right arrow',
+      'Decelerate tempo up 20 bpm': 'Decelerate tempo up 20 bpm',
     }
   },
   fr: {
@@ -49,6 +61,18 @@ export default {
       "Credits": "Crédits",
       "Flags SVG Icons": "Icones SVG des drapeaux",
       "UI Design": "Design d'interface",
+      "Notation": "Notation",
+      "Shortcuts": "Raccourcis",
+      'Space': 'Espace',
+      'Play/Pause': 'Jouer/Pause',
+      'Up arrow': 'Flèche du haut',
+      'Change scale up one half a tone': 'Augmenter la gamme d\'un demi-ton',
+      'Down arrow': 'Flèche du bas',
+      'Change scale down one half a tone': 'Baisser la gamme d\'un demi-ton',
+      'Left arrow': 'Flèche gauche',
+      'Accelerate tempo up 20 units': 'Accélerer le tempo de 20 bpm',
+      'Right arrow': 'Flèche droite',
+      'Decelerate tempo up 20 units': 'Ralentir le tempo de 20 bpm',
     }
   }
 };
