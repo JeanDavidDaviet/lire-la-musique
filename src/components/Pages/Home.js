@@ -22,12 +22,14 @@ import getAudioContext from '../../webAudio.js';
 import { connect } from 'react-redux';
 import { setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument } from '../../store/actions/global.action.js';
 import ControlsVolume from '../Controls/ControlsRunning';
+import { useMedia } from '../../useMedia.js';
 
 window.notes = [];
 
 const { t } = useTranslation();
 
 const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+  const isSmallHeight = useMedia(['(max-height: 400px)'],[true],false);
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
     if (!context) {
@@ -71,7 +73,7 @@ const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, set
           quarter={parseInt(time.substr(2), 10)}>
         </Signature>
       </Mesure>
-      <div style={{ marginTop: 'auto', textAlign: 'center' }}>
+      <div className={`play ${isSmallHeight ? 'play--small':''}`}>
         <Button variant="contained" color="primary" size="large" onClick={() => { setContextOnce(); setRunning(); }}>
           <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
             {running ? t('Pause') : t('Play')}

@@ -4,6 +4,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.controls--small {
+  padding: 10px 25px 0;
+}
 .controls > br {
   display: none;
 }
