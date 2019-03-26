@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Stave from '../../components/Stave/Stave';
 import StaveChords from '../../components/Stave/StaveChords';
 import LineFactory from '../../components/Line/LineFactory';
 import NoteFactory from '../../components/Note/NoteFactory';

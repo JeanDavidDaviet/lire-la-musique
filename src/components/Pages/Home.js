@@ -28,7 +28,7 @@ window.notes = [];
 
 const { t } = useTranslation();
 
-const Home = ({ test, running, tempo, chosenScale, clef, time, instrument, setRunning, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ chords, running, tempo, chosenScale, clef, time, instrument, setRunning, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
     if (!context) {
@@ -50,7 +50,7 @@ const Home = ({ test, running, tempo, chosenScale, clef, time, instrument, setRu
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }}></ControlsInstrument>
         <ControlsRunning running={running} onChange={() => { setContextOnce(); setRunning(); }}></ControlsRunning><br />
       </Controls>
-      {test ? null : <Mesure>
+      {chords ? null : <Mesure>
         <StavesFactory
           config={config}
           chosenScale={chosenScale}
@@ -72,7 +72,7 @@ const Home = ({ test, running, tempo, chosenScale, clef, time, instrument, setRu
           quarter={parseInt(time.substr(2), 10)}>
         </Signature>
       </Mesure>}
-      {test ? <Mesure>
+      {chords ? <Mesure>
         <StavesChordsFactory
           config={config}
           chosenScale={chosenScale}
@@ -111,7 +111,7 @@ const Home = ({ test, running, tempo, chosenScale, clef, time, instrument, setRu
 }
 
 const mapStateToProps = (state, props) => ({
-  test: props.test,
+  chords: props.chords,
   counter: state.configReducer.counter,
   running: state.configReducer.running,
   tempo: state.tempoReducer.tempo,
