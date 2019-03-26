@@ -14,7 +14,8 @@ import TableRow from '@material-ui/core/TableRow';
 import { useTranslation } from 'react-i18next';
 
 const rows = [
-  ['Up arrow', 'Change scale up one half a tone',],
+  ['Space', 'Play/Pause'],
+  ['Up arrow', 'Change scale up one half a tone'],
   ['Down arrow', 'Change scale down one half a tone'],
   ['Left arrow', 'Accelerate tempo up 20 units'],
   ['Right arrow', 'Decelerate tempo up 20 units'],
@@ -31,11 +32,9 @@ const Footer = () => {
       <Settings onClick={() => setOpen(!opened)} color="primary" fontSize="large" style={{float: 'right', cursor: 'pointer'}}></Settings>
       <Dialog open={opened} onClose={() => setOpen(!opened)} aria-labelledby="simple-dialog-title">
         <Tabs value={optionTab} onChange={(event, value) => {setOptionTab(value)}}>
-          <Tab label={t('Notation')} />
           <Tab label={t('Shortcuts')} />
         </Tabs>
-        {optionTab === 0 && <Typography component="div" style={{ padding: 8 * 3 }}>{t('Notation')}</Typography>}
-        {optionTab === 1 && <Typography component="div" style={{ padding: 8 * 3 }}>
+        {optionTab === 0 && <Typography component="div" style={{ padding: 8 * 3 }}>
           <Table>
             <TableHead>
               <TableRow>
