@@ -11,6 +11,7 @@ import ControlsTempo from '../Controls/ControlsTempo';
 import ControlsRunning from '../Controls/ControlsRunning';
 import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
+import StavesChordsFactory from '../Stave/StaveChordsFactory';
 import Signature from '../Signature/Signature';
 import sounds from '../Note/sounds/sounds';
 import ControlsInstrument from '../Controls/ControlsInstrument.js';
@@ -27,7 +28,7 @@ window.notes = [];
 
 const { t } = useTranslation();
 
-const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ test, running, tempo, chosenScale, clef, time, instrument, setRunning, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
     if (!context) {
@@ -49,7 +50,7 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }}></ControlsInstrument>
         <ControlsRunning running={running} onChange={() => { setContextOnce(); setRunning(); }}></ControlsRunning><br />
       </Controls>
-      <Mesure>
+      {test ? null : <Mesure>
         <StavesFactory
           config={config}
           chosenScale={chosenScale}
@@ -70,7 +71,29 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
           beats={parseInt(time, 10)}
           quarter={parseInt(time.substr(2), 10)}>
         </Signature>
-      </Mesure>
+      </Mesure>}
+      {test ? <Mesure>
+        <StavesChordsFactory
+          config={config}
+          chosenScale={chosenScale}
+          scale={scales[chosenScale]}
+          signature={signatures[chosenScale]}
+          running={running}
+          tempo={tempo}
+          sounds={sounds}
+          instrument={instrument}>
+        </StavesChordsFactory>
+        <Signature
+          config={config}
+          chosenScale={chosenScale}
+          scale={scales[chosenScale]}
+          signature={signatures[chosenScale]}
+          width={config.xIntervalBetweenNotes}
+          clef={clef}
+          beats={parseInt(time, 10)}
+          quarter={parseInt(time.substr(2), 10)}>
+        </Signature>
+      </Mesure> : null}
       <div style={{ marginTop: 'auto', textAlign: 'center' }}>
         <Button variant="contained" color="primary" size="large" onClick={() => { setContextOnce(); setRunning(); }}>
           <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
@@ -87,7 +110,8 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
+  test: props.test,
   counter: state.configReducer.counter,
   running: state.configReducer.running,
   tempo: state.tempoReducer.tempo,
