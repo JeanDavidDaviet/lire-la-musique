@@ -1,17 +1,16 @@
 import React from 'react';
 import Note from '../../components/Note/Note';
+import config from '../../config';
 
-const NoteFactory = ( { staveWidth, staveHeight, marginTop, sounds } ) => {
-  const MN_centerNote = 6;
+const NoteFactory = () => {
+  const MN_centerNote = config.MN_centerNote;
+  const staveWidth = config.staveWidth;
   let notes = [];
   for(let i = 0; i < 4; i++){
     notes.push({
       x  : (i * staveWidth / 4) + (staveWidth / 8) - MN_centerNote,
-      marginTop: marginTop,
-      staveHeight: staveHeight,
       key: i,
       index: i,
-      sounds: sounds
     });
   }
 

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Stave from '../../components/Stave/Stave';
+import StaveChords from '../../components/Stave/StaveChords';
 import LineFactory from '../../components/Line/LineFactory';
-import NoteFactory from '../../components/Note/NoteFactory';
+import NoteChordsFactory from '../../components/Note/NoteChordsFactory';
 import getAudioContext from '../../webAudio';
+import { chords } from '../../chords';
 import config from '../../config';
 
 let timeoutId = 0;
 
-class StaveFactory extends Component {
+class StaveChordsFactory extends Component {
   constructor(props){
     super(props);
 
@@ -46,11 +47,15 @@ class StaveFactory extends Component {
 
   componentDidMount(){
     for(let i = 0; i < this.stavesNumber; i++){
+      let chord = this.props.chord;
+      if (chord === undefined) {
+        chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
+      }
       this.staves.push(
-        <Stave index={i} key={i}>
+        <StaveChords index={i} key={i} scale={this.props.scale} chord={chord}>
           <LineFactory />
-          <NoteFactory />
-        </Stave>
+          <NoteChordsFactory chord={chord} />
+        </StaveChords>
       );
     }
     this.setState({staveIndex: this.stavesNumber});
@@ -70,7 +75,6 @@ class StaveFactory extends Component {
         this.addStaves();
         this.removeStaves();
       }
-
       if(this.state.x - config.clefWidth + config.xIntervalBetweenNotes - 30 < this.canPlay){
         this.canPlay -= config.xIntervalBetweenNotes;
 
@@ -102,11 +106,15 @@ class StaveFactory extends Component {
   }
 
   addStaves = () => {
+    let chord = this.props.chord;
+    if (chord === undefined) {
+      chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
+    }
     this.staves.push(
-      <Stave index={this.state.staveIndex} key={this.state.staveIndex}>
+      <StaveChords index={this.state.staveIndex} key={this.state.staveIndex} scale={this.props.scale} chord={chord}>
         <LineFactory />
-        <NoteFactory />
-      </Stave>
+        <NoteChordsFactory chord={chord} />
+      </StaveChords>
     );
 
     this.setState({staveIndex: this.state.staveIndex + 1});
@@ -126,4 +134,4 @@ class StaveFactory extends Component {
   }
 }
 
-export default StaveFactory;
+export default StaveChordsFactory;

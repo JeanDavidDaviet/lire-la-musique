@@ -1,5 +1,5 @@
 export default {
-  version:"1.8",
+  version:"1.9",
   width: window.innerWidth,
   height: window.innerHeight,
   staveWidth: 200,
@@ -10,5 +10,8 @@ export default {
   MN_centerNote: 6,
   framesPerBeat: 60,
   clefWidth: 65,
-  alterationWidth: 15
+  alterationWidth: 15,
+  tempoGapUnit: 20,
+  tempoMaxBPM: 200,
+  isSmallHeight: 420,
 }

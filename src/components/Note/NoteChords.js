@@ -2,22 +2,9 @@ import React from 'react';
 import './Note.css';
 import config from '../../config';
 
-const staveHeight = config.staveHeight;
-const marginTop = config.yIntervalBetweenNotes * 2;
-
-// REMEMBER : for the "y" property
-// less than 0 are higher on the score
-// greater than 0 are higher on the score
-
-const higherNote = -20;
-const lowerNote = 70;
-
-const Note = ( { x, y, index } ) => {
-  // prevent first note to overlap the chord name
-  if(!index && y < marginTop){
-    y = getRandomFifth(0, staveHeight);
-  }
-
+const NoteChords = ( { x, y, isUpOrDown } ) => {
+  const staveHeight = config.staveHeight;
+  const marginTop = config.yIntervalBetweenNotes * 2;
   window.notes.push(y);
   let bars = [];
 
@@ -35,7 +22,7 @@ const Note = ( { x, y, index } ) => {
         );
       }
     }
-  }else if(y > staveHeight){
+  }else if(y > config.staveHeight){
     for(let i = 0; i < Math.floor((y - staveHeight) / marginTop); i++){
       // if the note is on a bar
       if (y % 10 === 5) {
@@ -52,8 +39,8 @@ const Note = ( { x, y, index } ) => {
 
   return (
     <g className="note" style={{transform: `translate3d(${x}px,${y + 2}px,0)`}}>
-      <g className="note__stem" style={{transform: `translate3d(${y < 20 ? 0 : 14}px,${y < 20 ? 0 : -38}px,0)`}}>
-        <path fill="none" stroke="black" d="M 1 0 L 1 35"></path>
+      <g className="note__stem" style={{transform: `translate3d(${isUpOrDown ? 0 : 14}px,${isUpOrDown ? 0 : -28}px,0)`}}>
+        <path fill="none" stroke="black" d="M 1 0 L 1 25"></path>
       </g>
       <g className="note__head" style={{transform: `rotate(-15deg)`}}>
         <ellipse cx="8" cy="0" rx="8" ry="5"></ellipse>
@@ -65,25 +52,4 @@ const Note = ( { x, y, index } ) => {
   )
 }
 
-
-Note.defaultProps = Object.create({}, {
-  y: {
-    enumerable: true,
-    get: () => getRandomFifth(higherNote, lowerNote)
-  },
-
-});
-
-function getRandomFifth(min, max) {
-  // return a number between getRandomInt(higherNote, lowerNote) rounded to the nearest fifth
-  return Math.ceil(getRandomInt(min, max) / 5) * 5;
-}
-
-function getRandomInt(min, max) {
-  // const rand = Math.floor(window.perlin().getVal(Date.now()) * (max - min + 1)) + min;
-  // console.log(rand);
-  // return rand;
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-export default Note;
+export default NoteChords;

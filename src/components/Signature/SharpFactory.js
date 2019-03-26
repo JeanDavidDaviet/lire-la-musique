@@ -1,8 +1,11 @@
 import React from 'react';
 import Sharp from './Sharp.js';
 import sharps from '../../sharps.js';
+import config from '../../config';
 
-const SharpFactory = ( { signature, chosenScale, clefWidth, alterationWidth } ) => {
+const SharpFactory = ( { signature, chosenScale } ) => {
+  const clefWidth = config.clefWidth;
+  const alterationWidth = config.alterationWidth;
   const numberOfSharps = Object.keys(signature.sharps).indexOf(chosenScale);
   let sharpsObjects = [];
   let widthOfBackground = 0;

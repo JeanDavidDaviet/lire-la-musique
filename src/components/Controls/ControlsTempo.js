@@ -2,19 +2,20 @@ import React from 'react';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputLabel from '@material-ui/core/InputLabel';
 import { useTranslation } from 'react-i18next';
+import config from '../../config';
 
 const ControlsTempo = ({ tempo, onChange }) => {
   const { t } = useTranslation();
+  const tempos = [];
+  for(let i = config.tempoGapUnit; i <= config.tempoMaxBPM; i += config.tempoGapUnit){
+    tempos.push(i);
+  }
   return (
     <div className="control">
       <InputLabel shrink htmlFor="control-tempo">{t('Tempo')}</InputLabel><br />
       <NativeSelect value={tempo} onChange={onChange}>
-        <option value={20}>20</option>
-        <option value={40}>40</option>
-        <option value={60}>60</option>
-        <option value={80}>80</option>
-        <option value={100}>100</option>
-        <option value={120}>120</option>
+        {}
+        {tempos.map(t => <option key={t} value={t}>{t}</option>)}
       </NativeSelect>
     </div>
   )

@@ -1,8 +1,11 @@
 import React from 'react';
 import Flat from './Flat.js';
 import flats from '../../flats.js';
+import config from '../../config';
 
-const FlatFactory = ( { signature, chosenScale, clefWidth, alterationWidth } ) => {
+const FlatFactory = ( { signature, chosenScale } ) => {
+  const clefWidth = config.clefWidth;
+  const alterationWidth = config.alterationWidth;
   const numberOfFlats = Object.keys(signature.flats).indexOf(chosenScale);
   let flatsObjects = [];
   let widthOfBackground = 0;
