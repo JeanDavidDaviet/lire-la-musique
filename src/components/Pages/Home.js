@@ -10,6 +10,7 @@ import ControlsScale from '../Controls/ControlsScale';
 import ControlsTempo from '../Controls/ControlsTempo';
 import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
+import StavesChordsFactory from '../Stave/StaveChordsFactory';
 import Signature from '../Signature/Signature';
 import sounds from '../Note/sounds/sounds';
 import ControlsInstrument from '../Controls/ControlsInstrument.js';
@@ -28,7 +29,7 @@ window.notes = [];
 
 const { t } = useTranslation();
 
-const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const isSmallHeight = useMedia(['(max-height: 400px)'],[true],false);
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
@@ -51,7 +52,7 @@ const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, set
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }}></ControlsInstrument><br />
         <ControlsVolume volume={volume} onChange={setVolume}></ControlsVolume><br />
       </Controls>
-      <Mesure>
+      {chords ? null : <Mesure>
         <StavesFactory
           config={config}
           chosenScale={chosenScale}
@@ -72,7 +73,29 @@ const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, set
           beats={parseInt(time, 10)}
           quarter={parseInt(time.substr(2), 10)}>
         </Signature>
-      </Mesure>
+      </Mesure>}
+      {chords ? <Mesure>
+        <StavesChordsFactory
+          config={config}
+          chosenScale={chosenScale}
+          scale={scales[chosenScale]}
+          signature={signatures[chosenScale]}
+          running={running}
+          tempo={tempo}
+          sounds={sounds}
+          instrument={instrument}>
+        </StavesChordsFactory>
+        <Signature
+          config={config}
+          chosenScale={chosenScale}
+          scale={scales[chosenScale]}
+          signature={signatures[chosenScale]}
+          width={config.xIntervalBetweenNotes}
+          clef={clef}
+          beats={parseInt(time, 10)}
+          quarter={parseInt(time.substr(2), 10)}>
+        </Signature>
+      </Mesure> : null}
       <div className={`play ${isSmallHeight ? 'play--small':''}`}>
         <Button variant="contained" color="primary" size="large" onClick={() => { setContextOnce(); setRunning(); }}>
           <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
@@ -89,7 +112,8 @@ const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, set
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
+  chords: props.chords,
   counter: state.configReducer.counter,
   running: state.configReducer.running,
   volume: state.configReducer.volume,
