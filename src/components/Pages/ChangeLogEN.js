@@ -5,6 +5,18 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog (last updated 14th, March 2019)</h2>
     <ul className="changelogs">
+      <li><strong>2.0</strong> – 26/03/2019
+        <ul>
+          <li>Added chords groups of notes (private URL for now)</li>
+          <li>Added localStorage to save config of settings</li>
+        </ul>
+      </li>
+      <li><strong>1.9</strong> – 03/25/2019
+        <ul>
+          <li>Added fullscreen mode</li>
+          <li>Added redux behind the scene</li>
+        </ul>
+      </li>
       <li><strong>1.8</strong> – 03/16/2019
         <ul>
           <li>Added credits modal</li>

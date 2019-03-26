@@ -3,8 +3,20 @@ import './ChangeLog.css';
 
 const ChangeLogFR = () => (
   <article className="page">
-    <h2>Changelog (dernière mise à jour le 14 mars 2019)</h2>
+    <h2>Changelog (dernière mise à jour le 26 mars 2019)</h2>
     <ul className="changelogs">
+      <li><strong>2.0</strong> – 03/26/2019
+        <ul>
+          <li>Ajout des groupes de notes d'accords (URL privée pour l'instant)</li>
+          <li>Ajout du localStorage pour sauvegarder la configuration des paramètres</li>
+        </ul>
+      </li>
+      <li><strong>1.9</strong> – 25/03/2019
+        <ul>
+          <li>Ajout du mode fullscreen</li>
+          <li>Ajout de redux</li>
+        </ul>
+      </li>
       <li><strong>1.8</strong> – 16/03/2019
         <ul>
           <li>Ajout de la popup des crédits</li>
