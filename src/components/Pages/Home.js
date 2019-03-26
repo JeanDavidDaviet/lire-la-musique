@@ -114,7 +114,7 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
   );
 }
 
-const mapStateToProps = (state, props) => {console.log(props.match); return {
+const mapStateToProps = (state, props) => ({
   chord: props.match.params.chord,
   counter: state.configReducer.counter,
   running: state.configReducer.running,
@@ -124,7 +124,7 @@ const mapStateToProps = (state, props) => {console.log(props.match); return {
   clef: state.configReducer.clef,
   time: state.configReducer.time,
   instrument: state.configReducer.instrument,
-}};
+});
 
 const mapDispatchToProps = dispatch => ({
   setRunning: () => dispatch(setRunning()),
