@@ -1,8 +1,11 @@
 import React from 'react';
 import Line from '../../components/Line/Line';
+import config from '../../config';
 
-const LineFactory = ( { staveWidth, marginTop } ) => {
-  let lines = [];
+const LineFactory = ({ staveWidth }) => {
+  staveWidth = staveWidth || config.staveWidth;
+  const marginTop = config.yIntervalBetweenNotes * 2;
+  const lines = [];
   for(let i = 0; i < 5; i++){
     lines.push({
       key   : i,

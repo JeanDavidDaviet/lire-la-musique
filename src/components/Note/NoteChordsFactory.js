@@ -1,9 +1,11 @@
 import React from 'react';
 import { chords } from '../../chords';
 import NoteChords from './NoteChords';
+import config from '../../config';
 
-const NoteChordsFactory = ( { staveWidth, staveHeight, marginTop, chord } ) => {
-  const MN_centerNote = 6;
+const NoteChordsFactory = ( { chord } ) => {
+  const MN_centerNote = config.MN_centerNote;
+  const staveWidth = config.staveWidth;
   let notes = [];
 
   for(let i = 0; i < 4; i++){
@@ -12,8 +14,6 @@ const NoteChordsFactory = ( { staveWidth, staveHeight, marginTop, chord } ) => {
       notes.push({
         x  : (i * staveWidth / 4) + (staveWidth / 8) - MN_centerNote,
         y : chords[chord][random][j],
-        marginTop: marginTop,
-        staveHeight: staveHeight,
         key: i + '' + j,
         isUpOrDown: chords[chord][random][2] > 20
       });

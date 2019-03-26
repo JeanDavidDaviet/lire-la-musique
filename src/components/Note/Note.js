@@ -1,5 +1,9 @@
 import React from 'react';
 import './Note.css';
+import config from '../../config';
+
+const staveHeight = config.staveHeight;
+const marginTop = config.yIntervalBetweenNotes * 2;
 
 // REMEMBER : for the "y" property
 // less than 0 are higher on the score
@@ -8,7 +12,7 @@ import './Note.css';
 const higherNote = -20;
 const lowerNote = 70;
 
-const Note = ( { x, y, staveHeight, marginTop, index } ) => {
+const Note = ( { x, y, index } ) => {
   // prevent first note to overlap the chord name
   if(!index && y < marginTop){
     y = getRandomFifth(0, staveHeight);

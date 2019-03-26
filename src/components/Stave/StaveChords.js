@@ -1,6 +1,9 @@
 import React from 'react';
+import config from '../../config';
 
-const StaveChords = ({ scale, index, staveWidth, MN_centerNote, children, chord }) => {
+const StaveChords = ({ scale, index, chord, children }) => {
+  const staveWidth = config.staveWidth;
+  const MN_centerNote = config.MN_centerNote;
   // choose a random chords
   let scalesToArray = Object.values(scale);
   let randomChords = scalesToArray[Math.floor(Math.random() * scalesToArray.length)];

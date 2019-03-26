@@ -1,7 +1,10 @@
 import React from 'react';
 import './Note.css';
+import config from '../../config';
 
-const NoteChords = ( { x, y, staveHeight, marginTop, isUpOrDown } ) => {
+const NoteChords = ( { x, y, isUpOrDown } ) => {
+  const staveHeight = config.staveHeight;
+  const marginTop = config.yIntervalBetweenNotes * 2;
   window.notes.push(y);
   let bars = [];
 
@@ -19,7 +22,7 @@ const NoteChords = ( { x, y, staveHeight, marginTop, isUpOrDown } ) => {
         );
       }
     }
-  }else if(y > staveHeight){
+  }else if(y > config.staveHeight){
     for(let i = 0; i < Math.floor((y - staveHeight) / marginTop); i++){
       // if the note is on a bar
       if (y % 10 === 5) {

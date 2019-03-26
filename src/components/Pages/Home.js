@@ -47,34 +47,13 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
         <ControlsKeyboard />
         <ControlsClef clef={clef} onChange={() => {setClef()}} /><br/>
         <ControlsTime time={time} onChange={(event) => { setTime(event.target.value)}} /><br/>
-        <ControlsScale onChange={(event) => {setScale(event.target.value)}} /><br/>
+        <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
         <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }} /><br/>
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} /><br />
         {chord ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
       </Controls>
-      {chord ? null : <Mesure>
-        <StavesFactory
-          config={config}
-          chosenScale={chosenScale}
-          signature={signatures[chosenScale]}
-          running={running}
-          volume={volume}
-          tempo={tempo}
-          sounds={sounds}
-          instrument={instrument}>
-        </StavesFactory>
-        <Signature
-          config={config}
-          chosenScale={chosenScale}
-          scale={scales[chosenScale]}
-          signature={signatures[chosenScale]}
-          width={config.xIntervalBetweenNotes}
-          clef={clef}
-          beats={parseInt(time, 10)}
-          quarter={parseInt(time.substr(2), 10)}>
-        </Signature>
-      </Mesure>}
-      {chord ? <Mesure>
+      <Mesure>
+      {chord ?
         <StavesChordsFactory
           config={config}
           chosenScale={chosenScale}
@@ -86,18 +65,24 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
           sounds={sounds}
           instrument={instrument}
           chord={chord}>
-        </StavesChordsFactory>
-        <Signature
+        </StavesChordsFactory>:
+        <StavesFactory
           config={config}
           chosenScale={chosenScale}
-          scale={scales[chosenScale]}
           signature={signatures[chosenScale]}
-          width={config.xIntervalBetweenNotes}
+          running={running}
+          volume={volume}
+          tempo={tempo}
+          sounds={sounds}
+          instrument={instrument}>
+        </StavesFactory>}
+        <Signature
+          signature={signatures[chosenScale]}
+          chosenScale={chosenScale}
+          scale={scales[chosenScale]}
           clef={clef}
-          beats={parseInt(time, 10)}
-          quarter={parseInt(time.substr(2), 10)}>
-        </Signature>
-      </Mesure> : null}
+          time={time} />
+      </Mesure>
       <div className={`play ${isSmallHeight ? 'play--small':''}`}>
         <Button variant="contained" color="primary" size="large" onClick={() => { setContextOnce(); setRunning(); }}>
           <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>

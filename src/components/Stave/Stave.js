@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { realScale } from '../../scales';
+import config from '../../config';
 
-const Stave = ({ index, staveWidth, MN_centerNote, children, chosenScale }) => {
+const Stave = ({ index, chosenScale, children }) => {
+  const staveWidth = config.staveWidth;
+  const MN_centerNote = config.MN_centerNote;
   const rootOrFifthOrFourth = Math.round(Math.random() * 2);
   const minorOrMajor = Math.round(Math.random());
 

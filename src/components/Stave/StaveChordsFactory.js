@@ -4,6 +4,7 @@ import LineFactory from '../../components/Line/LineFactory';
 import NoteChordsFactory from '../../components/Note/NoteChordsFactory';
 import getAudioContext from '../../webAudio';
 import { chords } from '../../chords';
+import config from '../../config';
 
 let timeoutId = 0;
 
@@ -27,10 +28,10 @@ class StaveChordsFactory extends Component {
     this.canPlay = 0;
 
     this.state = {
-      x: this.props.config.clefWidth,
+      x: config.clefWidth,
       staveIndex: 0,
       transform: {
-        transform:`translate3d(${this.props.config.clefWidth}px,${this.props.config.staveMarginTop}px,0)`
+        transform:`translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
       }
     }
 
@@ -40,8 +41,8 @@ class StaveChordsFactory extends Component {
   setTempo(tempo){
     let tempoMultiplicator = tempo / 60;
 
-    this.pixelsPerBeats = this.props.config.xIntervalBetweenNotes * tempoMultiplicator;
-    this.pixelsPerFrame = this.pixelsPerBeats / this.props.config.framesPerBeat;
+    this.pixelsPerBeats = config.xIntervalBetweenNotes * tempoMultiplicator;
+    this.pixelsPerFrame = this.pixelsPerBeats / config.framesPerBeat;
   }
 
   componentDidMount(){
@@ -51,25 +52,9 @@ class StaveChordsFactory extends Component {
         chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
       }
       this.staves.push(
-        <StaveChords
-          index={i}
-          key={i}
-          staveWidth={this.props.config.staveWidth}
-          scale={this.props.scale}
-          MN_centerNote={this.props.config.MN_centerNote}
-          chord={chord}>
-          <LineFactory
-            staveWidth={this.props.config.staveWidth}
-            marginTop={this.props.config.yIntervalBetweenNotes * 2}>
-          </LineFactory>
-          <NoteChordsFactory
-            staveWidth={this.props.config.staveWidth}
-            staveHeight={this.props.config.staveHeight}
-            marginTop={this.props.config.yIntervalBetweenNotes * 2}
-            MN_centerNote={this.props.config.MN_centerNote}
-            sounds={this.props.sounds}
-            chord={chord}>
-          </NoteChordsFactory>
+        <StaveChords index={i} key={i} scale={this.props.scale} chord={chord}>
+          <LineFactory />
+          <NoteChordsFactory chord={chord} />
         </StaveChords>
       );
     }
@@ -85,13 +70,13 @@ class StaveChordsFactory extends Component {
   update = () => {
     this.requestAnimationFrame = requestAnimationFrame(this.update);
     if(this.props.running){
-      if(this.state.x < -this.props.config.staveWidth - this.canProcess){
-        this.canProcess += this.props.config.staveWidth;
+      if(this.state.x < -config.staveWidth - this.canProcess){
+        this.canProcess += config.staveWidth;
         this.addStaves();
         this.removeStaves();
       }
-      if(this.state.x - this.props.config.clefWidth + this.props.config.xIntervalBetweenNotes - 30 < this.canPlay){
-        this.canPlay -= this.props.config.xIntervalBetweenNotes;
+      if(this.state.x - config.clefWidth + config.xIntervalBetweenNotes - 30 < this.canPlay){
+        this.canPlay -= config.xIntervalBetweenNotes;
 
         if (this.props.volume === true) {
           if (this.props.instrument === 0) {
@@ -114,7 +99,7 @@ class StaveChordsFactory extends Component {
       this.setState({
         x: this.state.x - this.pixelsPerFrame,
         transform: {
-          transform: `translate3d(${this.state.x}px,${this.props.config.staveMarginTop}px,0)`
+          transform: `translate3d(${this.state.x}px,${config.staveMarginTop}px,0)`
         }
       });
     }
@@ -126,25 +111,9 @@ class StaveChordsFactory extends Component {
       chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
     }
     this.staves.push(
-      <StaveChords
-        index={this.state.staveIndex}
-        key={this.state.staveIndex}
-        staveWidth={this.props.config.staveWidth}
-        scale={this.props.scale}
-        MN_centerNote={this.props.config.MN_centerNote}
-        chord={chord}>
-        <LineFactory
-          staveWidth={this.props.config.staveWidth}
-          marginTop={this.props.config.yIntervalBetweenNotes * 2}>
-        </LineFactory>
-        <NoteChordsFactory
-          staveWidth={this.props.config.staveWidth}
-          staveHeight={this.props.config.staveHeight}
-          marginTop={this.props.config.yIntervalBetweenNotes * 2}
-          MN_centerNote={this.props.config.MN_centerNote}
-          sounds={this.props.sounds}
-          chord={chord}>
-        </NoteChordsFactory>
+      <StaveChords index={this.state.staveIndex} key={this.state.staveIndex} scale={this.props.scale} chord={chord}>
+        <LineFactory />
+        <NoteChordsFactory chord={chord} />
       </StaveChords>
     );
 

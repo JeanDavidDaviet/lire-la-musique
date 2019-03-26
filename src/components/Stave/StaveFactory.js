@@ -3,6 +3,7 @@ import Stave from '../../components/Stave/Stave';
 import LineFactory from '../../components/Line/LineFactory';
 import NoteFactory from '../../components/Note/NoteFactory';
 import getAudioContext from '../../webAudio';
+import config from '../../config';
 
 let timeoutId = 0;
 
@@ -26,10 +27,10 @@ class StaveFactory extends Component {
     this.canPlay = 0;
 
     this.state = {
-      x: this.props.config.clefWidth,
+      x: config.clefWidth,
       staveIndex: 0,
       transform: {
-        transform:`translate3d(${this.props.config.clefWidth}px,${this.props.config.staveMarginTop}px,0)`
+        transform:`translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
       }
     }
 
@@ -39,29 +40,16 @@ class StaveFactory extends Component {
   setTempo(tempo){
     let tempoMultiplicator = tempo / 60;
 
-    this.pixelsPerBeats = this.props.config.xIntervalBetweenNotes * tempoMultiplicator;
-    this.pixelsPerFrame = this.pixelsPerBeats / this.props.config.framesPerBeat;
+    this.pixelsPerBeats = config.xIntervalBetweenNotes * tempoMultiplicator;
+    this.pixelsPerFrame = this.pixelsPerBeats / config.framesPerBeat;
   }
 
   componentDidMount(){
     for(let i = 0; i < this.stavesNumber; i++){
       this.staves.push(
-        <Stave
-          index={i}
-          key={i}
-          staveWidth={this.props.config.staveWidth}
-          MN_centerNote={this.props.config.MN_centerNote}>
-          <LineFactory
-            staveWidth={this.props.config.staveWidth}
-            marginTop={this.props.config.yIntervalBetweenNotes * 2}>
-          </LineFactory>
-          <NoteFactory
-            staveWidth={this.props.config.staveWidth}
-            staveHeight={this.props.config.staveHeight}
-            marginTop={this.props.config.yIntervalBetweenNotes * 2}
-            MN_centerNote={this.props.config.MN_centerNote}
-            sounds={this.props.sounds}>
-          </NoteFactory>
+        <Stave index={i} key={i}>
+          <LineFactory />
+          <NoteFactory />
         </Stave>
       );
     }
@@ -77,14 +65,14 @@ class StaveFactory extends Component {
   update = () => {
     this.requestAnimationFrame = requestAnimationFrame(this.update);
     if(this.props.running){
-      if(this.state.x < -this.props.config.staveWidth - this.canProcess){
-        this.canProcess += this.props.config.staveWidth;
+      if(this.state.x < -config.staveWidth - this.canProcess){
+        this.canProcess += config.staveWidth;
         this.addStaves();
         this.removeStaves();
       }
 
-      if(this.state.x - this.props.config.clefWidth + this.props.config.xIntervalBetweenNotes - 30 < this.canPlay){
-        this.canPlay -= this.props.config.xIntervalBetweenNotes;
+      if(this.state.x - config.clefWidth + config.xIntervalBetweenNotes - 30 < this.canPlay){
+        this.canPlay -= config.xIntervalBetweenNotes;
 
         if (this.props.volume === true) {
           if (this.props.instrument === 0) {
@@ -107,7 +95,7 @@ class StaveFactory extends Component {
       this.setState({
         x: this.state.x - this.pixelsPerFrame,
         transform: {
-          transform: `translate3d(${this.state.x}px,${this.props.config.staveMarginTop}px,0)`
+          transform: `translate3d(${this.state.x}px,${config.staveMarginTop}px,0)`
         }
       });
     }
@@ -115,22 +103,9 @@ class StaveFactory extends Component {
 
   addStaves = () => {
     this.staves.push(
-      <Stave
-        index={this.state.staveIndex}
-        key={this.state.staveIndex}
-        staveWidth={this.props.config.staveWidth}
-        MN_centerNote={this.props.config.MN_centerNote}>
-        <LineFactory
-          staveWidth={this.props.config.staveWidth}
-          marginTop={this.props.config.yIntervalBetweenNotes * 2}>
-        </LineFactory>
-        <NoteFactory
-          staveWidth={this.props.config.staveWidth}
-          staveHeight={this.props.config.staveHeight}
-          marginTop={this.props.config.yIntervalBetweenNotes * 2}
-          MN_centerNote={this.props.config.MN_centerNote}
-          sounds={this.props.sounds}>
-        </NoteFactory>
+      <Stave index={this.state.staveIndex} key={this.state.staveIndex}>
+        <LineFactory />
+        <NoteFactory />
       </Stave>
     );
 
