@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import StaveChords from '../../components/Stave/StaveChords';
 import LineFactory from '../../components/Line/LineFactory';
-import NoteFactory from '../../components/Note/NoteFactory';
 import NoteChordsFactory from '../../components/Note/NoteChordsFactory';
 import getAudioContext from '../../webAudio';
 import { chords } from '../../chords';
@@ -92,18 +91,20 @@ class StaveChordsFactory extends Component {
       if(this.state.x - this.props.config.clefWidth + this.props.config.xIntervalBetweenNotes - 30 < this.canPlay){
         this.canPlay -= this.props.config.xIntervalBetweenNotes;
 
-        if (this.props.instrument === 0) {
-          this.audios[window.notes[0]].play();
-        }
-        if (this.props.instrument === 1) {
-          const context = getAudioContext();
-          context.oscillator.frequency.value = 1396.91 * (Math.pow(2, (-(window.notes[0] / 5) / 12)));
-          context.gain.gain.value = 1;
+        if (this.props.volume === true) {
+          if (this.props.instrument === 0) {
+            this.audios[window.notes[0]].play();
+          }
+          if (this.props.instrument === 1) {
+            const context = getAudioContext();
+            context.oscillator.frequency.value = 1396.91 * (Math.pow(2, (-(window.notes[0] / 5) / 12)));
+            context.gain.gain.value = 1;
 
-          timeoutId = setTimeout(() => {
-            context.gain.gain.value = 0;
-            clearTimeout(timeoutId);
-          }, 150);
+            timeoutId = setTimeout(() => {
+              context.gain.gain.value = 0;
+              clearTimeout(timeoutId);
+            }, 150);
+          }
         }
         window.notes.splice(0, 1);
       }
@@ -131,14 +132,14 @@ class StaveChordsFactory extends Component {
           staveWidth={this.props.config.staveWidth}
           marginTop={this.props.config.yIntervalBetweenNotes * 2}>
         </LineFactory>
-        <NoteFactory
+        <NoteChordsFactory
           staveWidth={this.props.config.staveWidth}
           staveHeight={this.props.config.staveHeight}
           marginTop={this.props.config.yIntervalBetweenNotes * 2}
           MN_centerNote={this.props.config.MN_centerNote}
           sounds={this.props.sounds}
           chords={chord}>
-        </NoteFactory>
+        </NoteChordsFactory>
       </StaveChords>
     );
 

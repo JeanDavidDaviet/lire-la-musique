@@ -45,12 +45,12 @@ const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrum
     <React.Fragment>
       <Controls>
         <ControlsKeyboard />
-        <ControlsClef clef={clef} onChange={() => {setClef()}}></ControlsClef><br/>
-        <ControlsTime time={time} onChange={(event) => { setTime(event.target.value)}}></ControlsTime><br/>
-        <ControlsScale onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
-        <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }}></ControlsTempo><br/>
-        <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }}></ControlsInstrument><br />
-        <ControlsVolume volume={volume} onChange={setVolume}></ControlsVolume><br />
+        <ControlsClef clef={clef} onChange={() => {setClef()}} /><br/>
+        <ControlsTime time={time} onChange={(event) => { setTime(event.target.value)}} /><br/>
+        <ControlsScale onChange={(event) => {setScale(event.target.value)}} /><br/>
+        <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }} /><br/>
+        <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} /><br />
+        {chords ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
       </Controls>
       {chords ? null : <Mesure>
         <StavesFactory
@@ -81,6 +81,7 @@ const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrum
           scale={scales[chosenScale]}
           signature={signatures[chosenScale]}
           running={running}
+          volume={false}
           tempo={tempo}
           sounds={sounds}
           instrument={instrument}>
