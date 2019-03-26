@@ -8,7 +8,6 @@ import ControlsClef from '../Controls/ControlsClef';
 import ControlsTime from '../Controls/ControlsTime';
 import ControlsScale from '../Controls/ControlsScale';
 import ControlsTempo from '../Controls/ControlsTempo';
-import ControlsRunning from '../Controls/ControlsRunning';
 import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
 import Signature from '../Signature/Signature';
@@ -21,13 +20,14 @@ import { useTranslation } from 'react-i18next';
 import Footer from '../Layout/Footer.js';
 import getAudioContext from '../../webAudio.js';
 import { connect } from 'react-redux';
-import { setRunning, setTempo, setScale, setClef, setTime, setInstrument } from '../../store/actions/global.action.js';
+import { setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument } from '../../store/actions/global.action.js';
+import ControlsVolume from '../Controls/ControlsRunning';
 
 window.notes = [];
 
 const { t } = useTranslation();
 
-const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
     if (!context) {
@@ -46,8 +46,8 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
         <ControlsTime time={time} onChange={(event) => { setTime(event.target.value)}}></ControlsTime><br/>
         <ControlsScale onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
         <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }}></ControlsTempo><br/>
-        <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }}></ControlsInstrument>
-        <ControlsRunning running={running} onChange={() => { setContextOnce(); setRunning(); }}></ControlsRunning><br />
+        <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }}></ControlsInstrument><br />
+        <ControlsVolume volume={volume} onChange={setVolume}></ControlsVolume><br />
       </Controls>
       <Mesure>
         <StavesFactory
@@ -55,6 +55,7 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
           chosenScale={chosenScale}
           signature={signatures[chosenScale]}
           running={running}
+          volume={volume}
           tempo={tempo}
           sounds={sounds}
           instrument={instrument}>
@@ -89,6 +90,7 @@ const Home = ({ running, tempo, chosenScale, clef, time, instrument, setRunning,
 const mapStateToProps = (state) => ({
   counter: state.configReducer.counter,
   running: state.configReducer.running,
+  volume: state.configReducer.volume,
   tempo: state.tempoReducer.tempo,
   chosenScale: state.scaleReducer.chosenScale,
   clef: state.configReducer.clef,
@@ -98,6 +100,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   setRunning: () => dispatch(setRunning()),
+  setVolume: () => dispatch(setVolume()),
   setTempo: (value) => dispatch(setTempo(value)),
   setScale: (value) => dispatch(setScale(value)),
   setClef: () => dispatch(setClef()),

@@ -1,7 +1,10 @@
-import { RUNNING, INCREMENT_TEMPO, DECREMENT_TEMPO, INCREMENT_SCALE, DECREMENT_SCALE, SET_SCALE, SET_TEMPO, SET_CLEF, SET_TIME, SET_INSTRUMENT } from "../actions/actionTypes";
+import { RUNNING, VOLUME, INCREMENT_TEMPO, DECREMENT_TEMPO, INCREMENT_SCALE, DECREMENT_SCALE, SET_SCALE, SET_TEMPO, SET_CLEF, SET_TIME, SET_INSTRUMENT } from "../actions/actionTypes";
 
 export const setRunning = () => ({
   type: RUNNING
+})
+export const setVolume = () => ({
+  type: VOLUME
 })
 export const incrementTempo = () => ({
   type: INCREMENT_TEMPO
