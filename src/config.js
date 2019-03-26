@@ -10,5 +10,7 @@ export default {
   MN_centerNote: 6,
   framesPerBeat: 60,
   clefWidth: 65,
-  alterationWidth: 15
+  alterationWidth: 15,
+  tempoGapUnit: 20,
+  tempoMaxBPM: 200,
 }

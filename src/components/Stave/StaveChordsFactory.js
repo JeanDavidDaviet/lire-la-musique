@@ -127,7 +127,7 @@ class StaveChordsFactory extends Component {
         staveWidth={this.props.config.staveWidth}
         scale={this.props.scale}
         MN_centerNote={this.props.config.MN_centerNote}
-        chords={chord}>
+        chord={chord}>
         <LineFactory
           staveWidth={this.props.config.staveWidth}
           marginTop={this.props.config.yIntervalBetweenNotes * 2}>
@@ -138,7 +138,7 @@ class StaveChordsFactory extends Component {
           marginTop={this.props.config.yIntervalBetweenNotes * 2}
           MN_centerNote={this.props.config.MN_centerNote}
           sounds={this.props.sounds}
-          chords={chord}>
+          chord={chord}>
         </NoteChordsFactory>
       </StaveChords>
     );
