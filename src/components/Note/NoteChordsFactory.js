@@ -2,7 +2,7 @@ import React from 'react';
 import { chords } from '../../chords';
 import NoteChords from './NoteChords';
 
-const NoteChordsFactory = ( { staveWidth, staveHeight, marginTop, sounds, chord } ) => {
+const NoteChordsFactory = ( { staveWidth, staveHeight, marginTop, chord } ) => {
   const MN_centerNote = 6;
   let notes = [];
 
@@ -15,7 +15,7 @@ const NoteChordsFactory = ( { staveWidth, staveHeight, marginTop, sounds, chord 
         marginTop: marginTop,
         staveHeight: staveHeight,
         key: i + '' + j,
-        sounds: sounds
+        isUpOrDown: chords[chord][random][2] > 20
       });
     }
   }

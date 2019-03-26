@@ -1,7 +1,7 @@
 import React from 'react';
 import './Note.css';
 
-const NoteChords = ( { x, y, staveHeight, marginTop } ) => {
+const NoteChords = ( { x, y, staveHeight, marginTop, isUpOrDown } ) => {
   window.notes.push(y);
   let bars = [];
 
@@ -36,6 +36,9 @@ const NoteChords = ( { x, y, staveHeight, marginTop } ) => {
 
   return (
     <g className="note" style={{transform: `translate3d(${x}px,${y + 2}px,0)`}}>
+      <g className="note__stem" style={{transform: `translate3d(${isUpOrDown ? 0 : 14}px,${isUpOrDown ? 0 : -28}px,0)`}}>
+        <path fill="none" stroke="black" d="M 1 0 L 1 25"></path>
+      </g>
       <g className="note__head" style={{transform: `rotate(-15deg)`}}>
         <ellipse cx="8" cy="0" rx="8" ry="5"></ellipse>
       </g>
