@@ -4,11 +4,15 @@
   cursor: pointer;
 }
 .changelog {
-  margin-left: auto;
   text-decoration: none;
   cursor: pointer;
 }
 .changelog .changelog__chip {
+  cursor: pointer;
+}
+.fullscreen {
+  margin-left: auto;
+  margin-right: 15px;
   cursor: pointer;
 }
 .footer {

@@ -13,4 +13,5 @@ export default {
   alterationWidth: 15,
   tempoGapUnit: 20,
   tempoMaxBPM: 200,
+  isSmallHeight: 420,
 }

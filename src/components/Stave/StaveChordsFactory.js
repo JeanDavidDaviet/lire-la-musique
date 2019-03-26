@@ -90,7 +90,6 @@ class StaveChordsFactory extends Component {
         this.addStaves();
         this.removeStaves();
       }
-      // console.log(this.state.x - this.props.config.clefWidth, this.canPlay);
       if(this.state.x - this.props.config.clefWidth + this.props.config.xIntervalBetweenNotes - 30 < this.canPlay){
         this.canPlay -= this.props.config.xIntervalBetweenNotes;
 
