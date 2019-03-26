@@ -6,8 +6,8 @@ const NoteChordsFactory = ( { staveWidth, staveHeight, marginTop, sounds, chord 
   const MN_centerNote = 6;
   let notes = [];
 
-  for(let i = 0; i < 3; i++){
-    const random = Math.floor(Math.random() * 3);
+  for(let i = 0; i < 4; i++){
+    const random = Math.floor(Math.random() * chords[chord].length);
     for(let j = 0; j < 3; j++){
       notes.push({
         x  : (i * staveWidth / 4) + (staveWidth / 8) - MN_centerNote,

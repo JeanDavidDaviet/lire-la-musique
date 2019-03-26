@@ -46,7 +46,10 @@ class StaveChordsFactory extends Component {
 
   componentDidMount(){
     for(let i = 0; i < this.stavesNumber; i++){
-      const chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
+      let chord = this.props.chord;
+      if (chord === undefined) {
+        chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
+      }
       this.staves.push(
         <StaveChords
           index={i}
@@ -119,7 +122,10 @@ class StaveChordsFactory extends Component {
   }
 
   addStaves = () => {
-    const chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
+    let chord = this.props.chord;
+    if (chord === undefined) {
+      chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
+    }
     this.staves.push(
       <StaveChords
         index={this.state.staveIndex}

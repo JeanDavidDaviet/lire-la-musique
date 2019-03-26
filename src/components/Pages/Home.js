@@ -29,7 +29,7 @@ window.notes = [];
 
 const { t } = useTranslation();
 
-const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const isSmallHeight = useMedia(['(max-height: 400px)'],[true],false);
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
@@ -50,9 +50,9 @@ const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrum
         <ControlsScale onChange={(event) => {setScale(event.target.value)}} /><br/>
         <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }} /><br/>
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} /><br />
-        {chords ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
+        {chord ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
       </Controls>
-      {chords ? null : <Mesure>
+      {chord ? null : <Mesure>
         <StavesFactory
           config={config}
           chosenScale={chosenScale}
@@ -74,7 +74,7 @@ const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrum
           quarter={parseInt(time.substr(2), 10)}>
         </Signature>
       </Mesure>}
-      {chords ? <Mesure>
+      {chord ? <Mesure>
         <StavesChordsFactory
           config={config}
           chosenScale={chosenScale}
@@ -84,7 +84,8 @@ const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrum
           volume={false}
           tempo={tempo}
           sounds={sounds}
-          instrument={instrument}>
+          instrument={instrument}
+          chord={chord}>
         </StavesChordsFactory>
         <Signature
           config={config}
@@ -113,8 +114,8 @@ const Home = ({ chords, running, volume, tempo, chosenScale, clef, time, instrum
   );
 }
 
-const mapStateToProps = (state, props) => ({
-  chords: props.chords,
+const mapStateToProps = (state, props) => {console.log(props.match); return {
+  chord: props.match.params.chord,
   counter: state.configReducer.counter,
   running: state.configReducer.running,
   volume: state.configReducer.volume,
@@ -123,7 +124,7 @@ const mapStateToProps = (state, props) => ({
   clef: state.configReducer.clef,
   time: state.configReducer.time,
   instrument: state.configReducer.instrument,
-});
+}};
 
 const mapDispatchToProps = dispatch => ({
   setRunning: () => dispatch(setRunning()),
