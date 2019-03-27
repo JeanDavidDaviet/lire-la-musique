@@ -5,7 +5,7 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog (last updated 14th, March 2019)</h2>
     <ul className="changelogs">
-      <li><strong>2.0</strong> – 26/03/2019
+      <li><strong>2.0</strong> – 03/26/2019
         <ul>
           <li>Added chords groups of notes (private URL for now)</li>
           <li>Added localStorage to save config of settings</li>

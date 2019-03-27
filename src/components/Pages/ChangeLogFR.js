@@ -5,7 +5,7 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog (dernière mise à jour le 26 mars 2019)</h2>
     <ul className="changelogs">
-      <li><strong>2.0</strong> – 03/26/2019
+      <li><strong>2.0</strong> – 26/03/2019
         <ul>
           <li>Ajout des groupes de notes d'accords (URL privée pour l'instant)</li>
           <li>Ajout du localStorage pour sauvegarder la configuration des paramètres</li>
