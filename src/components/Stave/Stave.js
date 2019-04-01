@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { realScale } from '../../scales';
 import config from '../../config';
 
-const Stave = ({ index, chosenScale, children }) => {
+const Stave = ({ index, chosenScale, children, displayLatin }) => {
   const staveWidth = config.staveWidth;
   const MN_centerNote = config.MN_centerNote;
   const rootOrFifthOrFourth = Math.round(Math.random() * 2);
@@ -16,8 +16,10 @@ const Stave = ({ index, chosenScale, children }) => {
     realScale.fifth[currentScale]
   ];
 
+  const displayName = displayLatin ? 'displayLatin' : 'displayName';
+
   let chord = chords[rootOrFifthOrFourth];
-  chord = minorOrMajor ? realScale.displayName[realScale.minor[chord]] + 'm' : realScale.displayName[chord];
+  chord = minorOrMajor ? realScale[displayName][realScale.minor[chord]] + 'm' : realScale[displayName][chord];
 
   let decalage = {
     transform: `translate3d( ${ index * staveWidth }px, 0, 0)`
@@ -35,10 +37,9 @@ const Stave = ({ index, chosenScale, children }) => {
   );
 }
 
-
-
 const mapStateToProps = (state) => ({
   chosenScale: state.scaleReducer.chosenScale,
+  displayLatin: state.configReducer.displayLatin,
 });
 
 export default connect(

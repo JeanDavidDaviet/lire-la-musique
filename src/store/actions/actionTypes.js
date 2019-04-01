@@ -1,5 +1,6 @@
 export const RUNNING = "RUNNING";
 export const VOLUME = "VOLUME";
+export const DISPLAY_LATIN = "DISPLAY_LATIN";
 
 export const INCREMENT_TEMPO = "INCREMENT_TEMPO";
 export const DECREMENT_TEMPO = "DECREMENT_TEMPO";

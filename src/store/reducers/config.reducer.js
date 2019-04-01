@@ -1,4 +1,4 @@
-import { RUNNING, VOLUME, SET_CLEF, SET_TIME, SET_INSTRUMENT } from "../actions/actionTypes";
+import { RUNNING, VOLUME, SET_CLEF, SET_TIME, SET_INSTRUMENT, DISPLAY_LATIN } from "../actions/actionTypes";
 
 const initialState = {
   clef: true,
@@ -7,7 +7,7 @@ const initialState = {
   volume: false,
   instrument: 0,
   context: false,
-  counter: 0
+  displayLatin: false
 };
 
 const configReducer = (state = initialState, action) => {
@@ -36,6 +36,11 @@ const configReducer = (state = initialState, action) => {
       return {
         ...state,
         volume: !state.volume
+      }
+    case DISPLAY_LATIN:
+      return {
+        ...state,
+        displayLatin: !state.displayLatin
       }
     default: {
       return state;

@@ -5,6 +5,11 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog (dernière mise à jour le 14 mars 2019)</h2>
     <ul className="changelogs">
+      <li><strong>2.1</strong> – 01/04/2019
+        <ul>
+          <li>Ajout de choix entre notation internationale et latin</li>
+        </ul>
+      </li>
       <li><strong>1.8</strong> – 16/03/2019
         <ul>
           <li>Ajout de la popup des crédits</li>

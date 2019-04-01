@@ -18,6 +18,7 @@
 - [x] Add redux
 - [x] Change Running Checkbox to Volume Checkbox
 - [x] Add localstorage to keep configuration between reload
+- [x] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)
 
 ## Todo
 - [ ] Add tests
@@ -27,7 +28,6 @@
 - [ ] Add metronome sound
 - [ ] Add differents notes (eighths, half, whole, ...)
 - [ ] Make the tempo a range selector
-- [ ] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)
 
 ## On update
 - Bump version number (config, package.json)

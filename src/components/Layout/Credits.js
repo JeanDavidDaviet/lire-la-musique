@@ -8,8 +8,8 @@ const Credits = () => {
   const { t } = useTranslation();
   const [opened, setOpen] = useState(false);
   return (
-    <div style={{float: 'right'}}>
-        <span style={style} onClick={() => setOpen(true)}>{t('Credits')}</span>
+    <div>
+        <span className="blue-link" onClick={() => setOpen(true)}>{t('Credits')}</span>
         <Dialog open={opened} onClose={() => setOpen(!opened)} aria-labelledby="simple-dialog-title">
             <Typography component="h2" variant="title" style={{ padding: 8 * 3 }}>{t('Credits')}</Typography>
             <ul style={{margin:0, padding: 24, listStyle: 'none'}}>
@@ -20,12 +20,6 @@ const Credits = () => {
         </Dialog>
     </div>
   )
-}
-
-const style = {
-    fontSize: 12,
-    color: '#3c4fbc',
-    cursor: 'pointer',
 }
 
 export default Credits;

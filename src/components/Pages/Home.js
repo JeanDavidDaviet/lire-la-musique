@@ -101,7 +101,6 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
 
 const mapStateToProps = (state, props) => ({
   chord: props.match.params.chord,
-  counter: state.configReducer.counter,
   running: state.configReducer.running,
   volume: state.configReducer.volume,
   tempo: state.tempoReducer.tempo,
