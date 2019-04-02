@@ -107,7 +107,7 @@ class StaveFactory extends Component {
       <Stave index={this.state.staveIndex} key={this.state.staveIndex}>
         <ChordName chosenScale={this.props.chosenScale} rootOrFifthOrFourth={rootOrFifthOrFourth} minorOrMajor={minorOrMajor} />
         <LineFactory />
-        <NoteFactory index={this.state.staveIndex} />
+        <NoteFactory />
       </Stave>
     );
 

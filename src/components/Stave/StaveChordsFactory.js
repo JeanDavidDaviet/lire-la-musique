@@ -3,8 +3,10 @@ import StaveChords from '../../components/Stave/StaveChords';
 import LineFactory from '../../components/Line/LineFactory';
 import NoteChordsFactory from '../../components/Note/NoteChordsFactory';
 import getAudioContext from '../../webAudio';
-import { chords } from '../../chords';
 import config from '../../config';
+import ChordName from './ChordName';
+import { realChords } from '../../chords';
+import { realScale } from '../../scales';
 
 let timeoutId = 0;
 
@@ -12,7 +14,6 @@ class StaveChordsFactory extends Component {
   constructor(props){
     super(props);
 
-    this.audio = 0;
     this.audios = {};
     (Object.keys(this.props.sounds)).forEach((index) => {
       this.audios[index] = new Audio(this.props.sounds[index]);
@@ -21,7 +22,7 @@ class StaveChordsFactory extends Component {
     this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
 
     this.setTempo(props.tempo);
-    this.requestAnimationFrame = null;
+    this.rAF = null;
 
     this.staves = [];
     this.canProcess = 0;
@@ -30,12 +31,8 @@ class StaveChordsFactory extends Component {
     this.state = {
       x: config.clefWidth,
       staveIndex: 0,
-      transform: {
-        transform:`translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
-      }
+      transform: `translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
     }
-
-    this.displayFPS = '';
   }
 
   setTempo(tempo){
@@ -46,13 +43,20 @@ class StaveChordsFactory extends Component {
   }
 
   componentDidMount(){
-    for(let i = 0; i < this.stavesNumber; i++){
-      let chord = this.props.chord;
-      if (chord === undefined) {
-        chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
-      }
+    for (let i = 0; i < this.stavesNumber; i++) {
+      const rootOrFifthOrFourth = Math.round(Math.random() * 2);
+
+      const currentScale = realScale.ids[this.props.chord];
+      const randomChords = [
+        currentScale,
+        realScale.fourth[currentScale],
+        realScale.fifth[currentScale]
+      ];
+      const chord = realChords.major[randomChords[rootOrFifthOrFourth]];
+
       this.staves.push(
-        <StaveChords index={i} key={i} scale={this.props.scale} chord={chord}>
+        <StaveChords index={i} key={i}>
+          <ChordName chosenScale={this.props.chosenScale} rootOrFifthOrFourth={rootOrFifthOrFourth} minorOrMajor={0} />
           <LineFactory />
           <NoteChordsFactory chord={chord} />
         </StaveChords>
@@ -64,11 +68,11 @@ class StaveChordsFactory extends Component {
   }
 
   componentWillUnmount(){
-    cancelAnimationFrame(this.requestAnimationFrame);
+    cancelAnimationFrame(this.rAF);
   }
 
   update = () => {
-    this.requestAnimationFrame = requestAnimationFrame(this.update);
+    this.rAF = requestAnimationFrame(this.update);
     if(this.props.running){
       if(this.state.x < -config.staveWidth - this.canProcess){
         this.canProcess += config.staveWidth;
@@ -98,20 +102,25 @@ class StaveChordsFactory extends Component {
 
       this.setState({
         x: this.state.x - this.pixelsPerFrame,
-        transform: {
-          transform: `translate3d(${this.state.x}px,${config.staveMarginTop}px,0)`
-        }
+        transform: `translate3d(${this.state.x}px,${config.staveMarginTop}px,0)`
       });
     }
   }
 
   addStaves = () => {
-    let chord = this.props.chord;
-    if (chord === undefined) {
-      chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
-    }
+    const rootOrFifthOrFourth = Math.round(Math.random() * 2);
+
+    const currentScale = realScale.ids[this.props.currentScale];
+    const randomChords = [
+      currentScale,
+      realScale.fourth[currentScale],
+      realScale.fifth[currentScale]
+    ];
+    const chord = realChords.major[randomChords[rootOrFifthOrFourth]];
+
     this.staves.push(
-      <StaveChords index={this.state.staveIndex} key={this.state.staveIndex} scale={this.props.scale} chord={chord}>
+      <StaveChords index={this.state.staveIndex} key={this.state.staveIndex}>
+        <ChordName chosenScale={this.props.chosenScale} rootOrFifthOrFourth={rootOrFifthOrFourth} minorOrMajor={0} />
         <LineFactory />
         <NoteChordsFactory chord={chord} />
       </StaveChords>
@@ -126,8 +135,9 @@ class StaveChordsFactory extends Component {
 
   render(){
     this.setTempo(this.props.tempo);
+    const { transform } = this.state;
     return (
-      <g className="mesure" style={this.state.transform}>
+      <g className="mesure" style={{ transform }}>
         { this.staves }
       </g>
     );
