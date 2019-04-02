@@ -7,6 +7,7 @@ import config from '../../config';
 import ChordName from './ChordName';
 import getChord from '../../getChords';
 import NoteChordsFactory from '../Note/NoteChordsFactory';
+import sounds from '../Note/sounds/sounds';
 
 let timeoutId = 0;
 
@@ -15,11 +16,11 @@ class StaveFactory extends Component {
     super(props);
 
     this.audios = {};
-    (Object.keys(this.props.sounds)).forEach((index) => {
-      this.audios[index] = new Audio(this.props.sounds[index]);
+    (Object.keys(sounds)).forEach((index) => {
+      this.audios[index] = new Audio(sounds[index]);
     });
 
-    this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
+    this.stavesNumber = Math.ceil(config.width / config.staveWidth) + 1;
 
     this.setTempo(props.tempo);
     this.rAF = null;
@@ -35,31 +36,11 @@ class StaveFactory extends Component {
     }
   }
 
-  setTempo(tempo){
-    let tempoMultiplicator = tempo / 60;
-
-    this.pixelsPerBeats = config.xIntervalBetweenNotes * tempoMultiplicator;
-    this.pixelsPerFrame = this.pixelsPerBeats / config.framesPerBeat;
-  }
-
   componentDidMount(){
     for(let i = 0; i < this.stavesNumber; i++){
-      const rootOrFourthOrFifth = Math.round(Math.random() * 2);
-      const minorOrMajor = Math.round(Math.random());
-      const { chords, displayName, displayLatin } = getChord(this.props.chosenScale, rootOrFourthOrFifth, minorOrMajor);
-
-      this.staves.push(
-        <Stave index={i} key={i}>
-          <ChordName inter={displayName} latin={displayLatin} />
-          <LineFactory />
-          {this.props.isChord ?
-            <NoteChordsFactory chords={chords} /> :
-            <NoteFactory />}
-        </Stave>
-      );
+      this.pushStave(i);
     }
     this.setState({staveIndex: this.stavesNumber});
-
     this.update();
   }
 
@@ -105,25 +86,35 @@ class StaveFactory extends Component {
   }
 
   addStaves = () => {
-    const i = this.state.staveIndex;
-    const rootOrFourthOrFifth = Math.round(Math.random() * 2);
-    const minorOrMajor = Math.round(Math.random());
-    const { chords, displayName, displayLatin } = getChord(this.props.chosenScale, rootOrFourthOrFifth, minorOrMajor);
-    this.staves.push(
-      <Stave index={i} key={i}>
-        <ChordName inter={displayName} latin={displayLatin} />
-        <LineFactory />
-        { this.props.isChord ?
-          <NoteChordsFactory chords={chords} /> :
-          <NoteFactory chords={chords} /> }
-      </Stave>
-    );
-
+    this.pushStave(this.state.staveIndex);
     this.setState({staveIndex: this.state.staveIndex + 1});
   }
 
   removeStaves = () => {
     this.staves.splice(0, 1);
+  }
+
+  setTempo(tempo) {
+    let tempoMultiplicator = tempo / 60;
+
+    this.pixelsPerBeats = config.xIntervalBetweenNotes * tempoMultiplicator;
+    this.pixelsPerFrame = this.pixelsPerBeats / config.framesPerBeat;
+  }
+
+  pushStave(index) {
+    const rootOrFourthOrFifth = Math.round(Math.random() * 2);
+    const minorOrMajor = Math.round(Math.random());
+    const { chords, displayName, displayLatin } = getChord(this.props.chosenScale, rootOrFourthOrFifth, minorOrMajor);
+
+    this.staves.push(
+      <Stave index={index} key={index}>
+        <ChordName inter={displayName} latin={displayLatin} />
+        <LineFactory />
+        {this.props.isChord ?
+          <NoteChordsFactory chords={chords} /> :
+          <NoteFactory />}
+      </Stave>
+    );
   }
 
   render(){

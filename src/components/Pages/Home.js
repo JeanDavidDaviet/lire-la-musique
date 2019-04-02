@@ -11,7 +11,6 @@ import ControlsTempo from '../Controls/ControlsTempo';
 import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
 import Signature from '../Signature/Signature';
-import sounds from '../Note/sounds/sounds';
 import ControlsInstrument from '../Controls/ControlsInstrument.js';
 import Button from '@material-ui/core/Button';
 import PlayArrow from '@material-ui/icons/PlayArrow';
@@ -53,13 +52,10 @@ const Home = ({ isChord, running, volume, tempo, chosenScale, clef, time, instru
       </Controls>
       <Mesure>
         <StavesFactory
-          config={config}
           chosenScale={chosenScale}
-          signature={signatures[chosenScale]}
           running={running}
           volume={volume}
           tempo={tempo}
-          sounds={sounds}
           instrument={instrument}
           isChord={isChord}>
         </StavesFactory>

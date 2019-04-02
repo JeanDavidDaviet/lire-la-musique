@@ -154,19 +154,19 @@ export const realChords = {
   }
 }
 
-realChords.major[20] = 0;
-realChords.major[2] = 3;
-realChords.major[5] = 6;
-realChords.major[8] = 9;
-realChords.major[11] = 12;
-realChords.major[14] = 15;
-realChords.major[17] = 18;
+realChords.major[20] = realChords.major[0];
+realChords.major[2] = realChords.major[3];
+realChords.major[5] = realChords.major[6];
+realChords.major[8] = realChords.major[9];
+realChords.major[11] = realChords.major[12];
+realChords.major[14] = realChords.major[15];
+realChords.major[17] = realChords.major[18];
 
-realChords.major[4] = 3;
-realChords.major[7] = 6;
-realChords.major[10] = 9;
-realChords.major[13] = 2;
-realChords.major[16] = 5;
+realChords.major[4] = realChords.major[3];
+realChords.major[7] = realChords.major[6];
+realChords.major[10] = realChords.major[9];
+realChords.major[13] = realChords.major[2];
+realChords.major[16] = realChords.major[5];
 
 realChords.minor = realChords.major;
 
