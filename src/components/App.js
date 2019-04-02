@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import ChangeLogEN from './Pages/ChangeLogEN';
 import ChangeLogFR from './Pages/ChangeLogFR';

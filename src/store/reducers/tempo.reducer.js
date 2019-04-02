@@ -1,5 +1,5 @@
-import { INCREMENT_TEMPO, DECREMENT_TEMPO, SET_TEMPO } from "../actions/actionTypes";
-import config from "../../config";
+import { INCREMENT_TEMPO, DECREMENT_TEMPO, SET_TEMPO } from '../actions/actionTypes';
+import config from '../../config';
 
 const tempoReducer = (state = {tempo: 60}, action) => {
   switch (action.type) {

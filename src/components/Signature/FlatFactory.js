@@ -2,11 +2,11 @@ import React from 'react';
 import Flat from './Flat.js';
 import flats from '../../flats.js';
 import config from '../../config';
-import { realScale } from '../../scales.js';
+import scale from '../../scales.js';
 
 const FlatFactory = ( { chosenScale } ) => {
-  const rootID = realScale.ids[chosenScale];
-  const alterationsNumber = realScale.accidentals[rootID];
+  const rootID = scale.ids[chosenScale];
+  const alterationsNumber = scale.accidentals[rootID];
   const clefWidth = config.clefWidth;
   const alterationWidth = config.alterationWidth;
 

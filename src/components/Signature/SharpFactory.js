@@ -2,11 +2,11 @@ import React from 'react';
 import Sharp from './Sharp.js';
 import sharps from '../../sharps.js';
 import config from '../../config';
-import { realScale } from '../../scales.js';
+import scale from '../../scales.js';
 
 const SharpFactory = ({ chosenScale }) => {
-  const rootID = realScale.ids[chosenScale];
-  const alterationsNumber = realScale.accidentals[rootID];
+  const rootID = scale.ids[chosenScale];
+  const alterationsNumber = scale.accidentals[rootID];
   const clefWidth = config.clefWidth;
   const alterationWidth = config.alterationWidth;
 

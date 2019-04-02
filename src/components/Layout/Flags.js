@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import i18n from "../../i18n";
+import i18n from '../../i18n';
 import { languages } from '../../translations';
 import Dialog from '@material-ui/core/Dialog';
 import Typography from '@material-ui/core/Typography';

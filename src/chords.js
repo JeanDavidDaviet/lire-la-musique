@@ -1,95 +1,4 @@
-export const chords = {
-    C: [
-        [65, 50, 40],
-        [50, 40, 30],
-        [40, 30, 15],
-        [30, 15, 5],
-        [15, 5, -5],
-    ],
-    Cs: [
-        [50, 35, 25],
-    ],
-    D: [
-        [60, 45, 35],
-        [45, 35, 25],
-        [35, 25, 10],
-        [25, 10, 0],
-        [10, 0, -10],
-    ],
-    E: [
-        [65, 55, 40],
-        [55, 40, 30],
-        [40, 30, 20],
-        [30, 20, 5],
-        [20, 5, -5],
-    ],
-    F: [
-        [60, 50, 35],
-        [50, 35, 25],
-        [35, 25, 15],
-        [25, 15, 0],
-        [15, 0, -10],
-    ],
-    G: [
-        [55, 45, 30],
-        [45, 30, 20],
-        [30, 20, 10],
-        [20, 10, -5],
-        [10, -5, -15]
-    ],
-    A: [
-        [60, 50, 40],
-        [50, 40, 25],
-        [40, 25, 15],
-        [25, 15, 5],
-        [15, 5, -10],
-    ],
-    B: [
-        [65, 55, 45],
-        [55, 45, 35],
-        [45, 35, 20],
-        [35, 20, 10],
-        [20, 10, 0],
-    ],
-    Cb: [
-      [0, 5, 10],
-    ],
-    Db: [
-      [0, 5, 10],
-    ],
-    Eb: [
-      [0, 5, 10],
-    ],
-    Fb: [
-      [0, 5, 10],
-    ],
-    Gb: [
-      [0, 5, 10],
-    ],
-    Ab: [
-      [0, 5, 10],
-    ],
-    Bb: [
-      [0, 5, 10],
-    ],
-    Ds: [
-      [0, 5, 10],
-    ],
-    Es: [
-      [0, 5, 10],
-    ],
-    Fs: [
-      [0, 5, 10],
-    ],
-    Gs: [
-      [0, 5, 10],
-    ],
-    As: [
-      [0, 5, 10],
-    ],
-}
-
-export const realChords = {
+const chords = {
   major: {
     //C
     0: [
@@ -154,22 +63,24 @@ export const realChords = {
   }
 }
 
-realChords.major[20] = realChords.major[0];
-realChords.major[2] = realChords.major[3];
-realChords.major[5] = realChords.major[6];
-realChords.major[8] = realChords.major[9];
-realChords.major[11] = realChords.major[12];
-realChords.major[14] = realChords.major[15];
-realChords.major[17] = realChords.major[18];
+chords.major[20] = chords.major[0];
+chords.major[2] = chords.major[3];
+chords.major[5] = chords.major[6];
+chords.major[8] = chords.major[9];
+chords.major[11] = chords.major[12];
+chords.major[14] = chords.major[15];
+chords.major[17] = chords.major[18];
 
-realChords.major[4] = realChords.major[3];
-realChords.major[7] = realChords.major[6];
-realChords.major[10] = realChords.major[9];
-realChords.major[13] = realChords.major[2];
-realChords.major[16] = realChords.major[5];
+chords.major[4] = chords.major[3];
+chords.major[7] = chords.major[6];
+chords.major[10] = chords.major[9];
+chords.major[13] = chords.major[2];
+chords.major[16] = chords.major[5];
 
-realChords.minor = realChords.major;
+chords.minor = chords.major;
 
-realChords.minor.Cs = [
+chords.minor.Cs = [
   [50, 40, 30],
 ]
+
+export default chords;

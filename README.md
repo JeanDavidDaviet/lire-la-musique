@@ -25,6 +25,7 @@
 - [ ] Set real chords position of flats and sharps chords
 - [ ] Add tests
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#
+- [ ] Remove "Es" "Fb" Bs Cb
 
 ## Features
 - [ ] Add metronome sound

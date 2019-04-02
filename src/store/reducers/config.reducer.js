@@ -1,4 +1,4 @@
-import { RUNNING, VOLUME, SET_CLEF, SET_TIME, SET_INSTRUMENT, DISPLAY_LATIN } from "../actions/actionTypes";
+import { RUNNING, VOLUME, SET_CLEF, SET_TIME, SET_INSTRUMENT, DISPLAY_LATIN } from '../actions/actionTypes';
 
 const initialState = {
   clef: true,

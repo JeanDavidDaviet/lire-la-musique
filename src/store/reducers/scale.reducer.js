@@ -1,5 +1,5 @@
-import { INCREMENT_SCALE, DECREMENT_SCALE, SET_SCALE } from "../actions/actionTypes";
-import scales from "../../scales";
+import { INCREMENT_SCALE, DECREMENT_SCALE, SET_SCALE } from '../actions/actionTypes';
+import scale from '../../scales';
 
 const scaleReducer = (state = {chosenScale: "C"}, action) => {
   switch (action.type) {
@@ -28,9 +28,8 @@ export default scaleReducer;
 
 const calculateScale = (ACTION_TYPE, chosenScale) => {
   if (ACTION_TYPE === undefined) return;
-  const scalesArray = Object.keys(scales);
+  const scalesArray = Object.keys(scale.ids).filter(s => s !== 'Bs' && s !== 'Es' && s !== 'Fb');
   const sortedScale = scalesArray.sort();
-  console.log(sortedScale);
   if (ACTION_TYPE === INCREMENT_SCALE) {
     return sortedScale[(sortedScale.indexOf(chosenScale) + 1) % scalesArray.length];
   }

@@ -1,113 +1,4 @@
-const scales = {
-  C: {
-    M: "C",
-    m: "Am",
-  },
-  G: {
-    M: "G",
-    m: "Em",
-  },
-  D: {
-    M: "D",
-    m: "Bbm",
-  },
-  A: {
-    M: "A",
-    m: "F#m",
-  },
-  E: {
-    M: "E",
-    m: "C#m",
-  },
-  B: {
-    M: "B",
-    m: "G#m",
-  },
-  Fs: {
-    M: "F#",
-    m: "Ebm",
-  },
-  Cs: {
-    M: "C#",
-    m: "G#m",
-  },
-  F: {
-    M: "F",
-    m: "Dm",
-  },
-  Bb: {
-    M: "Bb",
-    m: "Gm",
-  },
-  Eb: {
-    M: "Eb",
-    m: "Cm",
-  },
-  Ab: {
-    M: "Ab",
-    m: "Fm",
-  },
-  Db: {
-    M: "Db",
-    m: "Bbm",
-  },
-  Gb: {
-    M: "Gb",
-    m: "Ebm",
-  },
-  Cb: {
-    M: "Cb",
-    m: "G#m",
-  }
-}
-
-// sharps
-scales.C.prev = scales.F;
-scales.C.next = scales.G;
-
-scales.G.prev = scales.C;
-scales.G.next = scales.D;
-
-scales.D.prev = scales.G;
-scales.D.next = scales.A;
-
-scales.A.prev = scales.D;
-scales.A.next = scales.E;
-
-scales.E.prev = scales.A;
-scales.E.next = scales.B;
-
-scales.B.prev = scales.E;
-scales.B.next = scales.Fs;
-
-scales.Fs.prev = scales.B;
-scales.Fs.next = scales.Cs;
-
-scales.Cs.prev = scales.Fs;
-scales.Cs.next = scales.Ab;
-
-// flats
-scales.F.prev = scales.Bb;
-scales.F.next = scales.C;
-
-scales.Bb.prev = scales.Eb;
-scales.Bb.next = scales.F;
-
-scales.Eb.prev = scales.Ab;
-scales.Eb.next = scales.Bb;
-
-scales.Ab.prev = scales.Db;
-scales.Ab.next = scales.Eb;
-
-scales.Db.prev = scales.Gb;
-scales.Db.next = scales.Ab;
-
-scales.Gb.prev = scales.B;
-scales.Gb.next = scales.Db;
-
-export default scales
-
-export const realScale = {
+const scale = {
   ids: {
     "C": 0,
     "Cs": 1,
@@ -291,5 +182,91 @@ export const realScale = {
     5,
     0,
     5
-  ]
-}
+  ],
+  chords: {
+    major: {
+      //C
+      0: [
+        [65, 50, 40],
+        [50, 40, 30],
+        [40, 30, 15],
+        [30, 15, 5],
+        [15, 5, -5],
+      ],
+      //Cs
+      1: [
+        [50, 35, 25],
+      ],
+      //D
+      3: [
+        [60, 45, 35],
+        [45, 35, 25],
+        [35, 25, 10],
+        [25, 10, 0],
+        [10, 0, -10],
+      ],
+      //E
+      6: [
+        [65, 55, 40],
+        [55, 40, 30],
+        [40, 30, 20],
+        [30, 20, 5],
+        [20, 5, -5],
+      ],
+      //F
+      9: [
+        [60, 50, 35],
+        [50, 35, 25],
+        [35, 25, 15],
+        [25, 15, 0],
+        [15, 0, -10],
+      ],
+      //G
+      12: [
+        [55, 45, 30],
+        [45, 30, 20],
+        [30, 20, 10],
+        [20, 10, -5],
+        [10, -5, -15]
+      ],
+      //A
+      15: [
+        [60, 50, 40],
+        [50, 40, 25],
+        [40, 25, 15],
+        [25, 15, 5],
+        [15, 5, -10],
+      ],
+      //B
+      18: [
+        [65, 55, 45],
+        [55, 45, 35],
+        [45, 35, 20],
+        [35, 20, 10],
+        [20, 10, 0],
+      ]
+    }
+  }
+};
+
+scale.chords.major[20] = scale.chords.major[0];
+scale.chords.major[2] = scale.chords.major[3];
+scale.chords.major[5] = scale.chords.major[6];
+scale.chords.major[8] = scale.chords.major[9];
+scale.chords.major[11] = scale.chords.major[12];
+scale.chords.major[14] = scale.chords.major[15];
+scale.chords.major[17] = scale.chords.major[18];
+
+scale.chords.major[4] = scale.chords.major[3];
+scale.chords.major[7] = scale.chords.major[6];
+scale.chords.major[10] = scale.chords.major[9];
+scale.chords.major[13] = scale.chords.major[2];
+scale.chords.major[16] = scale.chords.major[5];
+
+scale.chords.minor = scale.chords.major;
+
+scale.chords.minor.Cs = [
+  [50, 40, 30],
+]
+
+export default scale;

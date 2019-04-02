@@ -1,23 +1,22 @@
-import { realScale } from "./scales";
-import { realChords } from "./chords";
+import scale from './scales';
 
 const getChord = (currentScale, rootOrFourthOrFifth, minorOrMajor) => {
-  const rootID = realScale.ids[currentScale];
+  const rootID = scale.ids[currentScale];
   const rff = [
     rootID,
-    realScale.fourth[rootID],
-    realScale.fifth[rootID]
+    scale.fourth[rootID],
+    scale.fifth[rootID]
   ];
   let chord = rff[rootOrFourthOrFifth];
-  chord = minorOrMajor ? realScale.minor[chord] : chord;
+  chord = minorOrMajor ? scale.minor[chord] : chord;
 
-  const displayMajorName = realScale.displayName[chord];
-  const displayMajorLatin = realScale.displayLatin[chord];
+  const displayMajorName = scale.displayName[chord];
+  const displayMajorLatin = scale.displayLatin[chord];
 
   const displayName = minorOrMajor ? displayMajorName + 'm' : displayMajorName;
   const displayLatin = minorOrMajor ? displayMajorLatin + 'm' : displayMajorLatin;
 
-  const chords = minorOrMajor ? realChords.minor[chord] : realChords.major[chord];
+  const chords = minorOrMajor ? scale.chords.minor[chord] : scale.chords.major[chord];
 
   return {
     chord,
