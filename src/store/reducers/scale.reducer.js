@@ -30,6 +30,7 @@ const calculateScale = (ACTION_TYPE, chosenScale) => {
   if (ACTION_TYPE === undefined) return;
   const scalesArray = Object.keys(scales);
   const sortedScale = scalesArray.sort();
+  console.log(sortedScale);
   if (ACTION_TYPE === INCREMENT_SCALE) {
     return sortedScale[(sortedScale.indexOf(chosenScale) + 1) % scalesArray.length];
   }

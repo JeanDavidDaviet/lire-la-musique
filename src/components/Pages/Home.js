@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import config from '../../config.js';
-import scales from '../../scales.js';
 import signatures from '../../signatures.js';
 import Controls from '../Controls/Controls';
 import ControlsKeyboard from '../Controls/ControlsKeyboard';
@@ -27,7 +26,7 @@ window.notes = [];
 
 const { t } = useTranslation();
 
-const Home = ({ isChord, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ isChord, running, volume, tempo, chosenScale, clef, time, instrument, displayLatin, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
@@ -45,7 +44,7 @@ const Home = ({ isChord, running, volume, tempo, chosenScale, clef, time, instru
         <ControlsKeyboard />
         <ControlsClef clef={clef} onChange={() => {setClef()}} /><br/>
         <ControlsTime time={time} onChange={(event) => { setTime(event.target.value)}} /><br/>
-        <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
+        <ControlsScale chosenScale={chosenScale} displayLatin={displayLatin} onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
         <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }} /><br/>
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} /><br />
         {isChord ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
@@ -62,7 +61,6 @@ const Home = ({ isChord, running, volume, tempo, chosenScale, clef, time, instru
         <Signature
           signature={signatures[chosenScale]}
           chosenScale={chosenScale}
-          scale={scales[chosenScale]}
           clef={clef}
           time={time} />
       </Mesure>
@@ -91,6 +89,7 @@ const mapStateToProps = (state, props) => ({
   clef: state.configReducer.clef,
   time: state.configReducer.time,
   instrument: state.configReducer.instrument,
+  displayLatin: state.configReducer.displayLatin,
 });
 
 const mapDispatchToProps = dispatch => ({

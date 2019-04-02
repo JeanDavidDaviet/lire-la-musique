@@ -2,22 +2,27 @@ import React from 'react';
 import Sharp from './Sharp.js';
 import sharps from '../../sharps.js';
 import config from '../../config';
+import { realScale } from '../../scales.js';
 
-const SharpFactory = ( { signature, chosenScale } ) => {
+const SharpFactory = ({ chosenScale }) => {
+  const rootID = realScale.ids[chosenScale];
+  const alterationsNumber = realScale.accidentals[rootID];
   const clefWidth = config.clefWidth;
   const alterationWidth = config.alterationWidth;
-  const numberOfSharps = Object.keys(signature.sharps).indexOf(chosenScale);
+
   let sharpsObjects = [];
   let widthOfBackground = 0;
-  sharps.forEach((value, index) => {
-    if(index < numberOfSharps){
-      sharpsObjects.push(<Sharp key={index} x={-300 + ( alterationWidth * index )} y={value} />)
-      widthOfBackground++;
-    }
-  })
+  if (alterationsNumber > 0) {
+    sharps.forEach((value, index) => {
+      if (index < Math.abs(alterationsNumber)) {
+        sharpsObjects.push(<Sharp key={index} x={-300 + ( alterationWidth * index )} y={value} />)
+        widthOfBackground++;
+      }
+    })
+  }
   const background = <rect key="background" x="0" y="0" width={clefWidth + widthOfBackground * alterationWidth} height="150" fill="white" style={{transform: "translate3d(0, -50px, 0px)"}} />;
   const deadline = <path key="deadline" fill="none" stroke="red" d={`M ${clefWidth + widthOfBackground * alterationWidth} 0 L ${clefWidth + widthOfBackground * alterationWidth} 40`}></path>;
-  return Object.keys(signature.sharps).indexOf(chosenScale) > -1 ? [background, deadline, sharpsObjects] : null;
+  return alterationsNumber > 0 ? [background, deadline, sharpsObjects] : null;
 }
 
 export default SharpFactory;
