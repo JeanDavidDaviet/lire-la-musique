@@ -51,6 +51,42 @@ export const chords = {
         [35, 20, 10],
         [20, 10, 0],
     ],
+    Cb: [
+      [0, 5, 10],
+    ],
+    Db: [
+      [0, 5, 10],
+    ],
+    Eb: [
+      [0, 5, 10],
+    ],
+    Fb: [
+      [0, 5, 10],
+    ],
+    Gb: [
+      [0, 5, 10],
+    ],
+    Ab: [
+      [0, 5, 10],
+    ],
+    Bb: [
+      [0, 5, 10],
+    ],
+    Ds: [
+      [0, 5, 10],
+    ],
+    Es: [
+      [0, 5, 10],
+    ],
+    Fs: [
+      [0, 5, 10],
+    ],
+    Gs: [
+      [0, 5, 10],
+    ],
+    As: [
+      [0, 5, 10],
+    ],
 }
 
 export const realChords = {
@@ -114,9 +150,23 @@ export const realChords = {
       [45, 35, 20],
       [35, 20, 10],
       [20, 10, 0],
-    ],
-  },
+    ]
+  }
 }
+
+realChords.major[20] = 0;
+realChords.major[2] = 3;
+realChords.major[5] = 6;
+realChords.major[8] = 9;
+realChords.major[11] = 12;
+realChords.major[14] = 15;
+realChords.major[17] = 18;
+
+realChords.major[4] = 3;
+realChords.major[7] = 6;
+realChords.major[10] = 9;
+realChords.major[13] = 2;
+realChords.major[16] = 5;
 
 realChords.minor = realChords.major;
 

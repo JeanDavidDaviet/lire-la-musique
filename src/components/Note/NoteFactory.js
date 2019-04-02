@@ -2,7 +2,7 @@ import React from 'react';
 import Note from '../../components/Note/Note';
 import config from '../../config';
 
-const NoteFactory = ({ chord }) => {
+const NoteFactory = () => {
   const MN_centerNote = config.MN_centerNote;
   const staveWidth = config.staveWidth;
   let notes = [];

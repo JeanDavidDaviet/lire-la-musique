@@ -10,7 +10,6 @@ import ControlsScale from '../Controls/ControlsScale';
 import ControlsTempo from '../Controls/ControlsTempo';
 import Mesure from '../Mesure/Mesure';
 import StavesFactory from '../Stave/StaveFactory';
-import StavesChordsFactory from '../Stave/StaveChordsFactory';
 import Signature from '../Signature/Signature';
 import sounds from '../Note/sounds/sounds';
 import ControlsInstrument from '../Controls/ControlsInstrument.js';
@@ -29,7 +28,7 @@ window.notes = [];
 
 const { t } = useTranslation();
 
-const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ isChord, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
   const [context, setContext] = useState(false);
   const setContextOnce = () => {
@@ -50,22 +49,9 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
         <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
         <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }} /><br/>
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} /><br />
-        {chord ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
+        {isChord ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
       </Controls>
       <Mesure>
-      {chord ?
-        <StavesChordsFactory
-          config={config}
-          chosenScale={chosenScale}
-          scale={scales[chosenScale]}
-          signature={signatures[chosenScale]}
-          running={running}
-          volume={false}
-          tempo={tempo}
-          sounds={sounds}
-          instrument={instrument}
-          chord={chord}>
-        </StavesChordsFactory>:
         <StavesFactory
           config={config}
           chosenScale={chosenScale}
@@ -74,8 +60,9 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
           volume={volume}
           tempo={tempo}
           sounds={sounds}
-          instrument={instrument}>
-        </StavesFactory>}
+          instrument={instrument}
+          isChord={isChord}>
+        </StavesFactory>
         <Signature
           signature={signatures[chosenScale]}
           chosenScale={chosenScale}
@@ -100,7 +87,7 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
 }
 
 const mapStateToProps = (state, props) => ({
-  chord: props.match.params.chord,
+  isChord: props.isChord,
   running: state.configReducer.running,
   volume: state.configReducer.volume,
   tempo: state.tempoReducer.tempo,

@@ -5,6 +5,8 @@ import NoteFactory from '../../components/Note/NoteFactory';
 import getAudioContext from '../../webAudio';
 import config from '../../config';
 import ChordName from './ChordName';
+import getChord from '../../getChords';
+import NoteChordsFactory from '../Note/NoteChordsFactory';
 
 let timeoutId = 0;
 
@@ -42,14 +44,17 @@ class StaveFactory extends Component {
 
   componentDidMount(){
     for(let i = 0; i < this.stavesNumber; i++){
-      const rootOrFifthOrFourth = Math.round(Math.random() * 2);
+      const rootOrFourthOrFifth = Math.round(Math.random() * 2);
       const minorOrMajor = Math.round(Math.random());
+      const { chords, displayName, displayLatin } = getChord(this.props.chosenScale, rootOrFourthOrFifth, minorOrMajor);
 
       this.staves.push(
         <Stave index={i} key={i}>
-          <ChordName chosenScale={this.props.chosenScale} rootOrFifthOrFourth={rootOrFifthOrFourth} minorOrMajor={minorOrMajor} />
+          <ChordName inter={displayName} latin={displayLatin} />
           <LineFactory />
-          <NoteFactory index={i} />
+          {this.props.isChord ?
+            <NoteChordsFactory chords={chords} /> :
+            <NoteFactory />}
         </Stave>
       );
     }
@@ -100,14 +105,17 @@ class StaveFactory extends Component {
   }
 
   addStaves = () => {
-    const rootOrFifthOrFourth = Math.round(Math.random() * 2);
+    const i = this.state.staveIndex;
+    const rootOrFourthOrFifth = Math.round(Math.random() * 2);
     const minorOrMajor = Math.round(Math.random());
-
+    const { chords, displayName, displayLatin } = getChord(this.props.chosenScale, rootOrFourthOrFifth, minorOrMajor);
     this.staves.push(
-      <Stave index={this.state.staveIndex} key={this.state.staveIndex}>
-        <ChordName chosenScale={this.props.chosenScale} rootOrFifthOrFourth={rootOrFifthOrFourth} minorOrMajor={minorOrMajor} />
+      <Stave index={i} key={i}>
+        <ChordName inter={displayName} latin={displayLatin} />
         <LineFactory />
-        <NoteFactory />
+        { this.props.isChord ?
+          <NoteChordsFactory chords={chords} /> :
+          <NoteFactory chords={chords} /> }
       </Stave>
     );
 

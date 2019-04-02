@@ -9,7 +9,7 @@ const App = () => (
   <React.Fragment>
     <Header/>
     <Route exact path="/" component={Home} />
-    <Route path="/chords/:chord" render={(props) => <Home {...props} />} />
+    <Route path="/chords/" render={(props) => <Home {...props} isChord={true} />} />
     <Route path="/en/changelog" component={ChangeLogEN} />
     <Route path="/fr/changelog" component={ChangeLogFR} />
   </React.Fragment>

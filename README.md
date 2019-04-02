@@ -21,6 +21,8 @@
 - [x] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)
 
 ## Todo
+- [ ] Change chords when changing scale
+- [ ] Set real chords position of flats and sharps chords
 - [ ] Add tests
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#
 
