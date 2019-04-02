@@ -4,6 +4,7 @@ import LineFactory from '../../components/Line/LineFactory';
 import NoteFactory from '../../components/Note/NoteFactory';
 import getAudioContext from '../../webAudio';
 import config from '../../config';
+import ChordName from './ChordName';
 
 let timeoutId = 0;
 
@@ -11,7 +12,6 @@ class StaveFactory extends Component {
   constructor(props){
     super(props);
 
-    this.audio = 0;
     this.audios = {};
     (Object.keys(this.props.sounds)).forEach((index) => {
       this.audios[index] = new Audio(this.props.sounds[index]);
@@ -20,7 +20,7 @@ class StaveFactory extends Component {
     this.stavesNumber = Math.ceil(props.config.width / props.config.staveWidth) + 1;
 
     this.setTempo(props.tempo);
-    this.requestAnimationFrame = null;
+    this.rAF = null;
 
     this.staves = [];
     this.canProcess = 0;
@@ -29,12 +29,8 @@ class StaveFactory extends Component {
     this.state = {
       x: config.clefWidth,
       staveIndex: 0,
-      transform: {
-        transform:`translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
-      }
+      transform: `translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
     }
-
-    this.displayFPS = '';
   }
 
   setTempo(tempo){
@@ -46,10 +42,14 @@ class StaveFactory extends Component {
 
   componentDidMount(){
     for(let i = 0; i < this.stavesNumber; i++){
+      const rootOrFifthOrFourth = Math.round(Math.random() * 2);
+      const minorOrMajor = Math.round(Math.random());
+
       this.staves.push(
         <Stave index={i} key={i}>
+          <ChordName chosenScale={this.props.chosenScale} rootOrFifthOrFourth={rootOrFifthOrFourth} minorOrMajor={minorOrMajor} />
           <LineFactory />
-          <NoteFactory />
+          <NoteFactory index={i} />
         </Stave>
       );
     }
@@ -59,11 +59,11 @@ class StaveFactory extends Component {
   }
 
   componentWillUnmount(){
-    cancelAnimationFrame(this.requestAnimationFrame);
+    cancelAnimationFrame(this.rAF);
   }
 
   update = () => {
-    this.requestAnimationFrame = requestAnimationFrame(this.update);
+    this.rAF = requestAnimationFrame(this.update);
     if(this.props.running){
       if(this.state.x < -config.staveWidth - this.canProcess){
         this.canProcess += config.staveWidth;
@@ -94,18 +94,20 @@ class StaveFactory extends Component {
 
       this.setState({
         x: this.state.x - this.pixelsPerFrame,
-        transform: {
-          transform: `translate3d(${this.state.x}px,${config.staveMarginTop}px,0)`
-        }
+        transform: `translate3d(${this.state.x}px,${config.staveMarginTop}px,0)`
       });
     }
   }
 
   addStaves = () => {
+    const rootOrFifthOrFourth = Math.round(Math.random() * 2);
+    const minorOrMajor = Math.round(Math.random());
+
     this.staves.push(
       <Stave index={this.state.staveIndex} key={this.state.staveIndex}>
+        <ChordName chosenScale={this.props.chosenScale} rootOrFifthOrFourth={rootOrFifthOrFourth} minorOrMajor={minorOrMajor} />
         <LineFactory />
-        <NoteFactory />
+        <NoteFactory index={this.state.staveIndex} />
       </Stave>
     );
 
@@ -118,8 +120,9 @@ class StaveFactory extends Component {
 
   render(){
     this.setTempo(this.props.tempo);
+    const { transform } = this.state;
     return (
-      <g className="mesure" style={this.state.transform}>
+      <g className="mesure" style={{ transform }}>
         { this.staves }
       </g>
     );

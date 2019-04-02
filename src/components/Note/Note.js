@@ -81,7 +81,6 @@ function getRandomFifth(min, max) {
 
 function getRandomInt(min, max) {
   // const rand = Math.floor(window.perlin().getVal(Date.now()) * (max - min + 1)) + min;
-  // console.log(rand);
   // return rand;
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
