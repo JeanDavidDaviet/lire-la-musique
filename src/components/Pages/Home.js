@@ -27,9 +27,9 @@ import { useMedia } from '../../useMedia.js';
 
 window.notes = [];
 
-const { t } = useTranslation();
 
 const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+  const { t } = useTranslation();
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
   const [context, setContext] = useState(false);
   const setContextOnce = () => {

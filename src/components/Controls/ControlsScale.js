@@ -7,7 +7,7 @@ const ControlsScale = ({ chosenScale, scales, onChange }) => {
   const { t } = useTranslation();
   return (
     <div className="control">
-      <InputLabel shrink htmlFor="control-scale">{t('Scale')}</InputLabel><br />
+      <InputLabel htmlFor="control-scale">{t('Scale')}</InputLabel>
       <NativeSelect value={chosenScale} onChange={onChange}>
         {Object.keys(scales).sort().map((value, index) => {
           return <option key={index} value={value}>{scales[value].M}</option>

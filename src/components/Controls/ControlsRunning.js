@@ -7,7 +7,7 @@ const ControlsVolume = ({ volume, onChange }) => {
   const { t } = useTranslation();
   return (
     <div className="control">
-      <InputLabel shrink htmlFor="control-running">{t('Volume')}</InputLabel><br />
+      <InputLabel htmlFor="control-running">{t('Volume')}</InputLabel>
       <Switch color="primary" checked={volume} onChange={onChange}/>
     </div>
   )

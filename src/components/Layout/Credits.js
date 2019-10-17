@@ -11,7 +11,7 @@ const Credits = () => {
     <div style={{float: 'right'}}>
         <span style={style} onClick={() => setOpen(true)}>{t('Credits')}</span>
         <Dialog open={opened} onClose={() => setOpen(!opened)} aria-labelledby="simple-dialog-title">
-            <Typography component="h2" variant="title" style={{ padding: 8 * 3 }}>{t('Credits')}</Typography>
+            <Typography component="h2" variant="h6" style={{ padding: 8 * 3 }}>{t('Credits')}</Typography>
             <ul style={{margin:0, padding: 24, listStyle: 'none'}}>
                 <li style={{marginBottom: 10}}>{t('Site creator')}: <a href="https://jeandaviddaviet.fr" target="_blank" rel="noopener noreferrer">Jean-David Daviet</a></li>
                 <li style={{marginBottom: 10}}>{t('Flags SVG Icons')}: <a href="http://flag-icon-css.lip.is" target="_blank" rel="noopener noreferrer">flag-icon-css</a></li>

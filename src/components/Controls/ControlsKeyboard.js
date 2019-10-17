@@ -30,7 +30,7 @@ const ControlsKeyboard = ({ setRunning, incrementTempo, decrementTempo, incremen
     return () => {
       document.addEventListener("keydown", handleKeyboard, false);
     }
-  }, []);
+  });
   return null
 }
 

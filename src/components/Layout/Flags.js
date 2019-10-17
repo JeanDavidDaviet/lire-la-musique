@@ -18,7 +18,7 @@ const Flags = () => {
             <img style={style} alt="English" src="/assets/svg/gb.svg" onClick={() => { setSnack(true); i18n.changeLanguage('en')}} />
             <img style={style} alt="Other language" src="/assets/svg/language.svg" onClick={() => setOpen(true)} />
             <Dialog open={opened} onClose={() => setOpen(!opened)} aria-labelledby="simple-dialog-title">
-                <Typography component="h2" variant="title" style={{ padding: 8 * 3 }}>{t('Contribute in your language!')}</Typography>
+                <Typography component="h2" variant="h6" style={{ padding: 8 * 3 }}>{t('Contribute in your language!')}</Typography>
                 <div style={{padding: '0 24px 24px 24px'}}>
                     <p>{t('You can contribute by adding your own translation in your language!')}</p>
                     <p>{t('Two ways of doing this:')}</p>

@@ -7,7 +7,7 @@ const ControlsInstrument = ({ instrument, onChange }) => {
   const { t } = useTranslation();
   return (
     <div className="control">
-      <InputLabel shrink htmlFor="control-tempo">{t('Instrument')}</InputLabel><br />
+      <InputLabel htmlFor="control-tempo">{t('Instrument')}</InputLabel>
       <NativeSelect value={instrument} onChange={onChange}>
         <option value={0}>{t('Piano')}</option>
         <option value={1}>{t('Computer')}</option>

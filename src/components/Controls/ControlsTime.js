@@ -7,7 +7,7 @@ const ControlsTime = ({ time, onChange }) => {
   const { t } = useTranslation();
   return (
     <div className="control">
-      <InputLabel shrink htmlFor="control-time">{t('Time Signature')}</InputLabel><br />
+      <InputLabel htmlFor="control-time">{t('Time Signature')}</InputLabel>
       <NativeSelect value={time} onChange={onChange}>
         <optgroup label="2 beats">
           <option>2/2</option>

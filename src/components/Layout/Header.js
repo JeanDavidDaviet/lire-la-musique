@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar variant={isSmallHeight ? 'dense' : 'regular'}>
-        <Typography variant="title" color="inherit">
+        <Typography variant="h6" color="inherit">
           <Link to="/" className="logo">{t('Read the music')}</Link>
         </Typography>
         <FullScreen />

@@ -12,7 +12,7 @@ const ControlsTempo = ({ tempo, onChange }) => {
   }
   return (
     <div className="control">
-      <InputLabel shrink htmlFor="control-tempo">{t('Tempo')}</InputLabel><br />
+      <InputLabel htmlFor="control-tempo">{t('Tempo')}</InputLabel>
       <NativeSelect value={tempo} onChange={onChange}>
         {}
         {tempos.map(t => <option key={t} value={t}>{t}</option>)}
