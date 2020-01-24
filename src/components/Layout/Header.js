@@ -21,7 +21,7 @@ const Header = () => {
           <Link to="/" className="logo">{t('Read the music')}</Link>
         </Typography>
         <FullScreen />
-        <Link to={`${i18n.language}/changelog`} className="changelog">
+        <Link to={`/${i18n.language}/changelog`} className="changelog">
           <Chip color="secondary" label={"Version " + config.version} className="changelog__chip"/>
         </Link>
       </Toolbar>

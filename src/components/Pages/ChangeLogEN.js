@@ -3,8 +3,13 @@ import './ChangeLog.css';
 
 const ChangeLogEN = () => (
   <article className="page">
-    <h2>Changelog (last updated 17th, October 2019)</h2>
+    <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.0.3</strong> – 01/24/2020
+        <ul>
+          <li>Fix a bug with language locale and update dependencies</li>
+        </ul>
+      </li>
       <li><strong>2.0.2</strong> – 10/17/2019
         <ul>
           <li>Update react-script to v3</li>

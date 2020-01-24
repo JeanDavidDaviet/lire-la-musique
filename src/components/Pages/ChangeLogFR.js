@@ -3,8 +3,13 @@ import './ChangeLog.css';
 
 const ChangeLogFR = () => (
   <article className="page">
-    <h2>Changelog (dernière mise à jour le 17 octobre 2019)</h2>
+    <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.0.3</strong> – 24/01/2020
+        <ul>
+          <li>Correction d'un bug avec la locale du langage et mises à jour des dépendances</li>
+        </ul>
+      </li>
       <li><strong>2.0.2</strong> – 17/10/2019
         <ul>
           <li>Mises à jour de react-script vers la v3</li>
