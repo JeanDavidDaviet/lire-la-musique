@@ -1,6 +1,28 @@
 # Piano
 
-## Done
+## How to Install
+
+To play with the project locally :
+
+Clone the repository
+
+```git clone git@github.com:JeanDavidDaviet/piano.git```
+
+Go to the directory
+
+```cd piano```
+
+Install the dependencies
+
+```yarn```
+
+Run the development server
+
+```yarn run start```
+
+## WIP
+
+### Done
 - [x] Fix tempo issues
 - [x] Use config file for global variables ? ( a way to share it)
 - [x] Routing
