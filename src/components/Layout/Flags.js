@@ -16,7 +16,7 @@ const Flags = () => {
         <div className="flags">
             <img style={style} alt="Français" src="/assets/svg/fr.svg" onClick={() => { setSnack(true); i18n.changeLanguage('fr')}} />
             <img style={style} alt="English" src="/assets/svg/gb.svg" onClick={() => { setSnack(true); i18n.changeLanguage('en')}} />
-            <img style={style} alt="Other language" src="/assets/svg/language.svg" onClick={() => setOpen(true)} />
+            <img style={styleLastImg} alt="Other language" src="/assets/svg/language.svg" onClick={() => setOpen(true)} />
             <Dialog open={opened} onClose={() => setOpen(!opened)} aria-labelledby="simple-dialog-title">
                 <Typography component="h2" variant="h6" style={{ padding: 8 * 3 }}>{t('Contribute in your language!')}</Typography>
                 <div style={{padding: '0 24px 24px 24px'}}>
@@ -52,6 +52,10 @@ const style = {
     maxWidth: 24,
     marginRight: 10,
     cursor: 'pointer'
+};
+
+const styleLastImg = {...style,
+  marginRight: 0
 };
 
 export default Flags;

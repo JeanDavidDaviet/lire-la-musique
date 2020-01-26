@@ -25,7 +25,7 @@ const saveState = (state) => {
 };
 
 
-const store = createStore(rootReducer, loadState());
+const store = createStore(rootReducer, loadState(), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 store.subscribe(() => {
   saveState(store.getState());

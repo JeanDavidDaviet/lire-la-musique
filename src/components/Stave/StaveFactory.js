@@ -47,7 +47,7 @@ class StaveFactory extends Component {
   componentDidMount(){
     for(let i = 0; i < this.stavesNumber; i++){
       this.staves.push(
-        <Stave index={i} key={i}>
+        <Stave index={i} key={i} notation={this.props.notation}>
           <LineFactory />
           <NoteFactory />
         </Stave>
@@ -103,7 +103,7 @@ class StaveFactory extends Component {
 
   addStaves = () => {
     this.staves.push(
-      <Stave index={this.state.staveIndex} key={this.state.staveIndex}>
+      <Stave index={this.state.staveIndex} key={this.state.staveIndex} notation={this.props.notation}>
         <LineFactory />
         <NoteFactory />
       </Stave>

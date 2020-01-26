@@ -21,14 +21,15 @@ import { useTranslation } from 'react-i18next';
 import Footer from '../Layout/Footer.js';
 import getAudioContext from '../../webAudio.js';
 import { connect } from 'react-redux';
-import { setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument } from '../../store/actions/global.action.js';
+import { setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument, setNotation } from '../../store/actions/global.action.js';
 import ControlsVolume from '../Controls/ControlsRunning';
 import { useMedia } from '../../useMedia.js';
+import Notation from '../Layout/Notation.js';
 
 window.notes = [];
 
 
-const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrument, setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrument, notation, setRunning, setVolume, setNotation, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
   const { t } = useTranslation();
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
   const [context, setContext] = useState(false);
@@ -47,7 +48,7 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
         <ControlsKeyboard />
         <ControlsClef clef={clef} onChange={() => {setClef()}} /><br/>
         <ControlsTime time={time} onChange={(event) => { setTime(event.target.value)}} /><br/>
-        <ControlsScale chosenScale={chosenScale} scales={scales} onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
+        <ControlsScale chosenScale={chosenScale} scales={scales} notation={notation} onChange={(event) => {setScale(event.target.value)}}></ControlsScale><br/>
         <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }} /><br/>
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} /><br />
         {chord ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
@@ -64,7 +65,8 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
           tempo={tempo}
           sounds={sounds}
           instrument={instrument}
-          chord={chord}>
+          chord={chord}
+          notation={notation}>
         </StavesChordsFactory>:
         <StavesFactory
           config={config}
@@ -74,7 +76,8 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
           volume={volume}
           tempo={tempo}
           sounds={sounds}
-          instrument={instrument}>
+          instrument={instrument}
+          notation={notation}>
         </StavesFactory>}
         <Signature
           signature={signatures[chosenScale]}
@@ -93,7 +96,9 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
             <PlayArrow style={{ marginLeft: 0, marginRight: -5 }} />}
         </Button>
       </div>
-      <Footer />
+      <Footer>
+        <Notation notation={notation} onClick={setNotation} />
+      </Footer>
 
     </React.Fragment>
   );
@@ -101,7 +106,6 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
 
 const mapStateToProps = (state, props) => ({
   chord: props.match.params.chord,
-  counter: state.configReducer.counter,
   running: state.configReducer.running,
   volume: state.configReducer.volume,
   tempo: state.tempoReducer.tempo,
@@ -109,6 +113,7 @@ const mapStateToProps = (state, props) => ({
   clef: state.configReducer.clef,
   time: state.configReducer.time,
   instrument: state.configReducer.instrument,
+  notation: state.configReducer.notation,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -116,6 +121,7 @@ const mapDispatchToProps = dispatch => ({
   setVolume: () => dispatch(setVolume()),
   setTempo: (value) => dispatch(setTempo(value)),
   setScale: (value) => dispatch(setScale(value)),
+  setNotation: () => dispatch(setNotation()),
   setClef: () => dispatch(setClef()),
   setTime: (value) => dispatch(setTime(value)),
   setInstrument: (value) => dispatch(setInstrument(value)),

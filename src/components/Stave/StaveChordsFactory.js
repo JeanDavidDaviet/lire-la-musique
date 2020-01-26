@@ -52,7 +52,7 @@ class StaveChordsFactory extends Component {
         chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
       }
       this.staves.push(
-        <StaveChords index={i} key={i} scale={this.props.scale} chord={chord}>
+        <StaveChords index={i} key={i} scale={this.props.scale} chord={chord} notation={this.props.notation}>
           <LineFactory />
           <NoteChordsFactory chord={chord} />
         </StaveChords>
@@ -111,7 +111,7 @@ class StaveChordsFactory extends Component {
       chord = Object.keys(chords)[Math.floor(Math.random() * Object.keys(chords).length)];
     }
     this.staves.push(
-      <StaveChords index={this.state.staveIndex} key={this.state.staveIndex} scale={this.props.scale} chord={chord}>
+      <StaveChords index={this.state.staveIndex} key={this.state.staveIndex} scale={this.props.scale} chord={chord} notation={this.props.notation}>
         <LineFactory />
         <NoteChordsFactory chord={chord} />
       </StaveChords>

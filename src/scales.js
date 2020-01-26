@@ -247,3 +247,17 @@ export const realScale = {
     11
   ],
 }
+
+export const translatedScale = {
+  "A": "La",
+  "B": "Si",
+  "C": "Do",
+  "D": "Ré",
+  "E": "Mi",
+  "F": "Fa",
+  "G": "Sol"
+}
+
+export const getTranslatedScaleFromLetter = (inputLetter, notation) => {
+  return notation ? translatedScale[inputLetter.substr(0, 1)] + inputLetter.substr(1) : inputLetter;
+}

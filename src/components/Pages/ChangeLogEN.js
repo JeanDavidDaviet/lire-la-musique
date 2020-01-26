@@ -5,6 +5,11 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.1.0</strong> – 01/26/2020
+        <ul>
+          <li>Add latine notation choice and update Readme</li>
+        </ul>
+      </li>
       <li><strong>2.0.3</strong> – 01/24/2020
         <ul>
           <li>Fix a bug with language locale and update dependencies</li>

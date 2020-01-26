@@ -1,4 +1,4 @@
-import { RUNNING, VOLUME, SET_CLEF, SET_TIME, SET_INSTRUMENT } from "../actions/actionTypes";
+import { SET_RUNNING, SET_VOLUME, SET_NOTATION, SET_CLEF, SET_TIME, SET_INSTRUMENT } from "../actions/actionTypes";
 
 const initialState = {
   clef: true,
@@ -7,7 +7,7 @@ const initialState = {
   volume: false,
   instrument: 0,
   context: false,
-  counter: 0
+  notation: false
 };
 
 const configReducer = (state = initialState, action) => {
@@ -27,15 +27,20 @@ const configReducer = (state = initialState, action) => {
         ...state,
         instrument: action.payload
       }
-    case RUNNING:
+    case SET_RUNNING:
       return {
         ...state,
         running: !state.running
       }
-    case VOLUME:
+    case SET_VOLUME:
       return {
         ...state,
         volume: !state.volume
+      }
+    case SET_NOTATION:
+      return {
+        ...state,
+        notation: !state.notation
       }
     default: {
       return state;
