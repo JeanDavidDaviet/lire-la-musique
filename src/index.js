@@ -10,6 +10,25 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import * as Sentry from '@sentry/browser';
 import config from './config';
+// import * as mm from '@magenta/music';
+
+// const TWINKLE_TWINKLE = {
+//   notes: [
+//     {pitch: 60, quantizedStartStep: 0, quantizedEndStep: 1},
+//     {pitch: 60, quantizedStartStep: 1, quantizedEndStep: 2},
+//     {pitch: 67, quantizedStartStep: 2, quantizedEndStep: 3},
+//     {pitch: 67, quantizedStartStep: 3, quantizedEndStep: 4},
+//   ],
+//   quantizationInfo: {stepsPerQuarter: 4},
+//   tempos: [{time: 0, qpm: 60}],
+//   totalQuantizedSteps: 4
+// };
+//     const music_rnn = new mm.MusicRNN('https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/basic_rnn');
+//     // music_rnn.initialize();
+//     // const qns = mm.sequences.quantizeNoteSequence(TWINKLE_TWINKLE, 4);
+//     music_rnn
+//     .continueSequence(TWINKLE_TWINKLE, 20, 1.5)
+//     .then(console.log);
 
 if(process.env.NODE_ENV === "production"){
   Sentry.init({
