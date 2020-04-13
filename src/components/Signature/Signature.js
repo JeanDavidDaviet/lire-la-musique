@@ -8,11 +8,11 @@ import TimeSignature from './TimeSignature.js';
 import signatures from '../../signatures.js';
 import config from '../../config';
 
-const Signature = ({ scale, signature, chosenScale, clef, time }) => (
+const Signature = ({ numberOfAlterations, chosenScale, clef, time }) => (
   <g className={"signature"} height="150" style={{transform: `translate3d(0, 50px, 0px)`}}>
-    <FlatFactory scale={scale} signature={signatures} chosenScale={chosenScale} />
-    <SharpFactory scale={scale} signature={signatures} chosenScale={chosenScale} />
-    <LineFactory staveWidth={signature * config.alterationWidth + config.clefWidth}/>
+    <FlatFactory signatures={signatures} chosenScale={chosenScale} />
+    <SharpFactory signatures={signatures} chosenScale={chosenScale} />
+    <LineFactory staveWidth={numberOfAlterations * config.alterationWidth + config.clefWidth}/>
     <TimeSignature beats={parseInt(time, 10)} quarter={parseInt(time.substr(2), 10)} />
     {clef ? <Treble /> : <Bass />}
   </g>

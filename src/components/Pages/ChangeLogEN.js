@@ -5,6 +5,11 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.0.4</strong> – 04/13/2020
+        <ul>
+          <li>The red line wasn't moving when the alterations changed</li>
+        </ul>
+      </li>
       <li><strong>2.0.3</strong> – 01/24/2020
         <ul>
           <li>Fix a bug with language locale and update dependencies</li>
