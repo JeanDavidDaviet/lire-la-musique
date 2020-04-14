@@ -3,7 +3,7 @@ import Flat from './Flat.js';
 import flats from '../../flats.js';
 import config from '../../config';
 
-export const getWidthOfBackground = (numberOfFlats) => {
+const getWidthOfBackground = (numberOfFlats) => {
   let widthOfBackground = 0;
   flats.forEach((_, index) => {
     if(index < numberOfFlats){
@@ -30,9 +30,8 @@ const FlatFactory = ( { signatures, chosenScale } ) => {
   const flatsObjects = pushFlatAlterationIntoArray(numberOfFlats, alterationWidth);
   const widthOfBackground = getWidthOfBackground(numberOfFlats);
 
-  const background = <rect key="background" x="0" y="0" width={clefWidth + widthOfBackground * alterationWidth} height="150" fill="white" style={{transform: "translate3d(0, -50px, 0px)"}} />;
   const deadline = <path key="deadline" fill="none" stroke="red" d={`M ${clefWidth + widthOfBackground * alterationWidth} 0 L ${clefWidth + widthOfBackground * alterationWidth} 40`}></path>;
-  return Object.keys(signatures.flats).indexOf(chosenScale) > -1 ? [background, deadline, flatsObjects] : null;
+  return Object.keys(signatures.flats).indexOf(chosenScale) > -1 ? [deadline, flatsObjects] : null;
 }
 
 export default FlatFactory;
