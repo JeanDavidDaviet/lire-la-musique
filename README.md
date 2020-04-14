@@ -45,6 +45,7 @@ Run the development server
 - [x] When using 3/4, need to show only 3 notes
 - [x] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)
 - [x] Alterations need to be above the svg lines
+- [x] Use of Perlin noise to nicer note curves
 
 ## Todo
 - [ ] Add tests
@@ -52,12 +53,14 @@ Run the development server
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#
 - [ ] As, Ds, and Gs need to have their signature. Signature can't be relevant to order in array because then order of flats is wrong.
 - [ ] Bug with the notation of staves not updating but the scaleInput does.
+- [ ] Bug when playing has started and I change the scale while playing, the sheet translateX to the old scale translateX, and not the new
 
 ## Features
 - [ ] Add metronome sound
 - [ ] Add differents notes (eighths, half, whole, ...)
 - [ ] Make the tempo a range selector
 - [ ] Make the sheet bigger or smaller
+- [ ] Add both clef in the same time like a real sheet
 
 ## On update
 - Bump version number (config, package.json)
