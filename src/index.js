@@ -19,6 +19,8 @@ if(process.env.NODE_ENV === "production"){
   });
 }
 
+window.llm_time = Date.now();
+
 ReactDOM.render(
   <I18nextProvider i18n={i18n}>
     <Provider store={store}>

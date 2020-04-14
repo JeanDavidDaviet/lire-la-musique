@@ -5,18 +5,7 @@ import config from '../../config';
 const staveHeight = config.staveHeight;
 const marginTop = config.yIntervalBetweenNotes * 2;
 
-// REMEMBER : for the "y" property
-// less than 0 are higher on the score
-// greater than 0 are higher on the score
-
-const higherNote = -20;
-const lowerNote = 70;
-
 const Note = ( { x, y, index } ) => {
-  // prevent first note to overlap the chord name
-  if(!index && y < marginTop){
-    y = getRandomFifth(0, staveHeight);
-  }
 
   window.notes.push(y);
   let bars = [];
@@ -63,27 +52,6 @@ const Note = ( { x, y, index } ) => {
       </g>
     </g>
   )
-}
-
-
-Note.defaultProps = Object.create({}, {
-  y: {
-    enumerable: true,
-    get: () => getRandomFifth(higherNote, lowerNote)
-  },
-
-});
-
-function getRandomFifth(min, max) {
-  // return a number between getRandomInt(higherNote, lowerNote) rounded to the nearest fifth
-  return Math.ceil(getRandomInt(min, max) / 5) * 5;
-}
-
-function getRandomInt(min, max) {
-  // const rand = Math.floor(window.perlin().getVal(Date.now()) * (max - min + 1)) + min;
-  // console.log(rand);
-  // return rand;
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export default Note;
