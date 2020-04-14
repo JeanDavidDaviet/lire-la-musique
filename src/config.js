@@ -1,5 +1,5 @@
 export default {
-  version:"2.1.0",
+  version:"2.2.0",
   width: window.innerWidth,
   height: window.innerHeight,
   staveWidth: 200,
@@ -14,4 +14,6 @@ export default {
   tempoGapUnit: 20,
   tempoMaxBPM: 200,
   isSmallHeight: 420,
+  maxNote: -20,
+  minNote: 70
 }

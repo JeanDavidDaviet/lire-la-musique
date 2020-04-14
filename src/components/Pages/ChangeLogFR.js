@@ -5,6 +5,11 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.2.0</strong> – 04/14/2020
+        <ul>
+          <li>Utilisation d'un bruit Perlin pour générer de plus belles courbes de notes</li>
+        </ul>
+      </li>
       <li><strong>2.1.0</strong> – 04/14/2020
         <ul>
           <li>Maintenant le nombre de notes par barre refléte la signature rythmique</li>

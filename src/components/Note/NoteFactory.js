@@ -1,25 +1,32 @@
 import React from 'react';
 import Note from '../../components/Note/Note';
 import config from '../../config';
-import { noise } from '../../perlin copie';
+import { noise } from '../../perlin';
+import { map_range } from '../../utils';
 
-const staveHeight = config.staveHeight;
+
+noise.seed(Math.random());
+const clamped = false;
 const marginTop = config.yIntervalBetweenNotes * 2;
 
 // REMEMBER : for the "y" property
 // less than 0 are higher on the score
 // greater than 0 are higher on the score
-const higherNote = -20;
-const lowerNote = 70;
+const perlinDivider = clamped ? .025 : 3; 
+const higherNote = clamped ? config.staveHeight : config.minNote;
+const lowerNote = clamped ? 0 : config.maxNote;
 
-const getRandomFifth = (x, min, max) => {
-  // return a number between getRandomInt(higherNote, lowerNote) rounded to the nearest fifth
-  return Math.ceil(getRandomInt(x, min, max) / 5) * 5;
+// return a number between getRandomInt(higherNote, lowerNote) rounded to the nearest fifth
+const getRandomFifth = () => {
+  const rand = generateRandomNumberWithPerlin();
+  return Math.ceil(rand / 5) * 5;
 }
 
-const getRandomInt = (x, min, max) => {
-  // console.log(noise.perlin2(x, Date.now()));
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+const generateRandomNumberWithPerlin = () => {
+  window.perlinX = ++window.perlinX || 0;
+  const perlin = noise.perlin2(window.perlinX / perlinDivider, 0.5);
+  const remap_perlin_range = map_range(perlin, -1, 1, higherNote, lowerNote);
+  return remap_perlin_range;
 }
 
 const NoteFactory = ({ beatsPerStave }) => {
@@ -27,10 +34,10 @@ const NoteFactory = ({ beatsPerStave }) => {
   const staveWidth = config.staveWidth;
   let notes = [];
   for(let i = 0; i < beatsPerStave; i++){
-    let y = getRandomFifth(i, 0, staveHeight);
+    let y = getRandomFifth();
     // prevent first note to overlap the chord name
     if(!i && y < marginTop){
-      y = getRandomFifth(i, 0, staveHeight);
+      y = getRandomFifth();
     }
     notes.push({
       x  : (i * staveWidth / beatsPerStave) + (staveWidth / 8) - MN_centerNote,

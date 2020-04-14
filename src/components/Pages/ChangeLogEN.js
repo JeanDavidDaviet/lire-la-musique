@@ -5,6 +5,11 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.2.0</strong> – 04/14/2020
+        <ul>
+          <li>Use of Perlin noise to nicer note curves</li>
+        </ul>
+      </li>
       <li><strong>2.1.0</strong> – 04/14/2020
         <ul>
           <li>Now the number of note per staff reflects the time signature</li>
