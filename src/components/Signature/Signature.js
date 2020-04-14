@@ -10,11 +10,11 @@ import Deadline from './Deadline';
 
 const Signature = ({ numberOfAlterations, chosenScale, clef, time }) => (
   <g className={"signature"} height="150" style={{transform: `translate3d(0, 50px, 0px)`}}>
+    <Deadline chosenScale={chosenScale} />
     <LineFactory staveWidth={numberOfAlterations * config.alterationWidth + config.clefWidth}/>
     {clef ? <Treble /> : <Bass />}
     <TimeSignature beats={parseInt(time, 10)} quarter={parseInt(time.substr(2), 10)} />
     <AlterationFactory signatures={signatures} chosenScale={chosenScale}/>
-    <Deadline chosenScale={chosenScale} />
   </g>
 )
 
