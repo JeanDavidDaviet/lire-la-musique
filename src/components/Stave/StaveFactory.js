@@ -27,13 +27,12 @@ class StaveFactory extends Component {
     this.canPlay = 0;
 
     this.state = {
-      x: config.clefWidth,
+      x: this.props.widthOfBackground,
       staveIndex: 0,
       transform: {
-        transform:`translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
+        transform:`translate3d(${this.props.widthOfBackground}px,${config.staveMarginTop}px,0)`
       }
     }
-
     this.displayFPS = '';
   }
 
@@ -49,7 +48,7 @@ class StaveFactory extends Component {
       this.staves.push(
         <Stave index={i} key={i} notation={this.props.notation}>
           <LineFactory />
-          <NoteFactory />
+          <NoteFactory beatsPerStave={this.props.beatsPerStave} />
         </Stave>
       );
     }
@@ -60,6 +59,28 @@ class StaveFactory extends Component {
 
   componentWillUnmount(){
     cancelAnimationFrame(this.requestAnimationFrame);
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.widthOfBackground !== this.props.widthOfBackground){
+      this.setState({
+        transform: {
+          transform: `translate3d(${this.props.widthOfBackground}px,${config.staveMarginTop}px,0)`
+        }
+      });
+    }
+    if(prevProps.beatsPerStave !== this.props.beatsPerStave || prevProps.notation !== this.props.notation){
+      this.staves = [];
+      for(let i = 0; i < this.stavesNumber; i++){
+        this.staves.push(
+          <Stave index={i} key={i} notation={this.props.notation}>
+            <LineFactory />
+            <NoteFactory beatsPerStave={this.props.beatsPerStave} />
+          </Stave>
+        );
+      }
+      this.setState({staveIndex: this.stavesNumber});
+    }
   }
 
   update = () => {
@@ -105,7 +126,7 @@ class StaveFactory extends Component {
     this.staves.push(
       <Stave index={this.state.staveIndex} key={this.state.staveIndex} notation={this.props.notation}>
         <LineFactory />
-        <NoteFactory />
+        <NoteFactory beatsPerStave={this.props.beatsPerStave}/>
       </Stave>
     );
 

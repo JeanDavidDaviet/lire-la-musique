@@ -41,20 +41,23 @@ Run the development server
 - [x] Change Running Checkbox to Volume Checkbox
 - [x] Add localstorage to keep configuration between reload
 - [x] when using shortcut to change scale with keyboard arrows, need to update the controlScale input too.
+- [x] When the number of alterations changes the start of the red line need to be moved futher right.
+- [x] When using 3/4, need to show only 3 notes
 - [x] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)
-
-# DEV to fix before merge
-- [ ] Bug with the notation of staves not updating but the scaleInput does.
-- [ ] As, Ds, and Gs need to have their signature. Signature can't be relevant to order in array because then order of flats is wrong.
 
 ## Todo
 - [ ] Add tests
+- [ ] When changing the quarter per beat time signature, the note should chage to be quarter, eighth...
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#
+- [ ] As, Ds, and Gs need to have their signature. Signature can't be relevant to order in array because then order of flats is wrong.
+- [ ] Bug with the notation of staves not updating but the scaleInput does.
+- [ ] Alterations need to be above the svg lines
 
 ## Features
 - [ ] Add metronome sound
 - [ ] Add differents notes (eighths, half, whole, ...)
 - [ ] Make the tempo a range selector
+- [ ] Make the sheet bigger or smaller
 
 ## On update
 - Bump version number (config, package.json)

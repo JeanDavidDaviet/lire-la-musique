@@ -5,9 +5,15 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
-      <li><strong>2.1.0</strong> – 01/26/2020
+      <li><strong>2.1.0</strong> – 04/14/2020
         <ul>
           <li>Add latine notation choice and update Readme</li>
+          <li>Now the number of note per staff reflects the time signature</li>
+        </ul>
+      </li>
+      <li><strong>2.0.4</strong> – 04/13/2020
+        <ul>
+          <li>The red line wasn't moving when the alterations changed</li>
         </ul>
       </li>
       <li><strong>2.0.3</strong> – 01/24/2020

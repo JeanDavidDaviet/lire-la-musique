@@ -5,9 +5,15 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
-      <li><strong>2.1.0</strong> – 26/01/2020
+      <li><strong>2.1.0</strong> – 04/14/2020
         <ul>
           <li>Ajout de choix de notation latine et mise à jour du Readme</li>
+          <li>Maintenant le nombre de notes par barre refléte la signature rythmique</li>
+        </ul>
+      </li>
+      <li><strong>2.0.4</strong> – 04/13/2020
+        <ul>
+          <li>La ligne rouge ne bougeait pas quand les alterations changeaient</li>
         </ul>
       </li>
       <li><strong>2.0.3</strong> – 24/01/2020

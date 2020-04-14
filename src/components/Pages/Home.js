@@ -9,9 +9,6 @@ import ControlsTime from '../Controls/ControlsTime';
 import ControlsScale from '../Controls/ControlsScale';
 import ControlsTempo from '../Controls/ControlsTempo';
 import Mesure from '../Mesure/Mesure';
-import StavesFactory from '../Stave/StaveFactory';
-import StavesChordsFactory from '../Stave/StaveChordsFactory';
-import Signature from '../Signature/Signature';
 import sounds from '../Note/sounds/sounds';
 import ControlsInstrument from '../Controls/ControlsInstrument.js';
 import Button from '@material-ui/core/Button';
@@ -40,7 +37,7 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
         setContext(true);
       });
     }
-  }
+  }  
 
   return (
     <React.Fragment>
@@ -53,39 +50,20 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
         <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} /><br />
         {chord ? null : <ControlsVolume volume={volume} onChange={setVolume} />}
       </Controls>
-      <Mesure>
-      {chord ?
-        <StavesChordsFactory
-          config={config}
-          chosenScale={chosenScale}
-          scale={scales[chosenScale]}
-          signature={signatures[chosenScale]}
-          running={running}
-          volume={false}
-          tempo={tempo}
-          sounds={sounds}
-          instrument={instrument}
-          chord={chord}
-          notation={notation}>
-        </StavesChordsFactory>:
-        <StavesFactory
-          config={config}
-          chosenScale={chosenScale}
-          signature={signatures[chosenScale]}
-          running={running}
-          volume={volume}
-          tempo={tempo}
-          sounds={sounds}
-          instrument={instrument}
-          notation={notation}>
-        </StavesFactory>}
-        <Signature
-          signature={signatures[chosenScale]}
-          chosenScale={chosenScale}
-          scale={scales[chosenScale]}
-          clef={clef}
-          time={time} />
-      </Mesure>
+      <Mesure
+        chord={chord}
+        config={config}
+        chosenScale={chosenScale}
+        scale={scales[chosenScale]}
+        numberOfAlterations={signatures[chosenScale]}
+        running={running}
+        volume={volume}
+        tempo={tempo}
+        sounds={sounds}
+        instrument={instrument}
+        clef={clef}
+        time={time}
+        notation={notation}></Mesure>
       <div className={`play ${isSmallHeight ? 'play--small':''}`}>
         <Button variant="contained" color="primary" size="large" onClick={() => { setContextOnce(); setRunning(); }}>
           <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
