@@ -48,7 +48,7 @@ class StaveFactory extends Component {
       this.staves.push(
         <Stave index={i} key={i}>
           <LineFactory />
-          <NoteFactory />
+          <NoteFactory beatsPerStave={this.props.beatsPerStave} />
         </Stave>
       );
     }
@@ -62,12 +62,24 @@ class StaveFactory extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.widthOfBackground != this.props.widthOfBackground){
+    if(prevProps.widthOfBackground !== this.props.widthOfBackground){
       this.setState({
         transform: {
           transform: `translate3d(${this.props.widthOfBackground}px,${config.staveMarginTop}px,0)`
         }
-      })
+      });
+    }
+    if(prevProps.beatsPerStave !== this.props.beatsPerStave){
+      this.staves = [];
+      for(let i = 0; i < this.stavesNumber; i++){
+        this.staves.push(
+          <Stave index={i} key={i}>
+            <LineFactory />
+            <NoteFactory beatsPerStave={this.props.beatsPerStave} />
+          </Stave>
+        );
+      }
+      this.setState({staveIndex: this.stavesNumber});
     }
   }
 
@@ -114,7 +126,7 @@ class StaveFactory extends Component {
     this.staves.push(
       <Stave index={this.state.staveIndex} key={this.state.staveIndex}>
         <LineFactory />
-        <NoteFactory />
+        <NoteFactory beatsPerStave={this.props.beatsPerStave}/>
       </Stave>
     );
 

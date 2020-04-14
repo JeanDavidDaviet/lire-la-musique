@@ -20,10 +20,11 @@
 - [x] Add localstorage to keep configuration between reload
 - [x] when using shortcut to change scale with keyboard arrows, need to update the controlScale input too.
 - [x] When the number of alterations changes the start of the red line need to be moved futher right.
+- [x] When using 3/4, need to show only 3 notes
 
 ## Todo
 - [ ] Add tests
-- [ ] When using 3/4, need to show only 3 notes
+- [ ] When changing the quarter per beat time signature, the note should chage to be quarter, eighth...
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#
 - [ ] As, Ds, and Gs need to have their signature. Signature can't be relevant to order in array because then order of flats is wrong.
 

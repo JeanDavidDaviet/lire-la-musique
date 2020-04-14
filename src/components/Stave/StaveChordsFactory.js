@@ -28,10 +28,10 @@ class StaveChordsFactory extends Component {
     this.canPlay = 0;
 
     this.state = {
-      x: config.clefWidth,
+      x: this.props.widthOfBackground,
       staveIndex: 0,
       transform: {
-        transform:`translate3d(${config.clefWidth}px,${config.staveMarginTop}px,0)`
+        transform:`translate3d(${this.props.widthOfBackground}px,${config.staveMarginTop}px,0)`
       }
     }
 
@@ -65,6 +65,16 @@ class StaveChordsFactory extends Component {
 
   componentWillUnmount(){
     cancelAnimationFrame(this.requestAnimationFrame);
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.widthOfBackground !== this.props.widthOfBackground){
+      this.setState({
+        transform: {
+          transform: `translate3d(${this.props.widthOfBackground}px,${config.staveMarginTop}px,0)`
+        }
+      })
+    }
   }
 
   update = () => {

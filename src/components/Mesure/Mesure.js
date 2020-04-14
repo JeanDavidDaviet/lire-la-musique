@@ -21,7 +21,9 @@ const Mesure = ({ chord, config, chosenScale, scale, numberOfAlterations, runnin
             tempo={tempo}
             sounds={sounds}
             instrument={instrument}
-            chord={chord}>
+            chord={chord}
+            widthOfBackground={widthOfBackground}
+            beatsPerStave={parseInt(time, 10)}>
           </StaveChordsFactory>:
           <StaveFactory
             config={config}
@@ -31,7 +33,8 @@ const Mesure = ({ chord, config, chosenScale, scale, numberOfAlterations, runnin
             tempo={tempo}
             sounds={sounds}
             instrument={instrument}
-            widthOfBackground={widthOfBackground}>
+            widthOfBackground={widthOfBackground}
+            beatsPerStave={parseInt(time, 10)}>
           </StaveFactory>}
           <Signature
             numberOfAlterations={numberOfAlterations}
