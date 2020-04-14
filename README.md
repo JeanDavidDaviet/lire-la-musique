@@ -44,6 +44,7 @@ Run the development server
 - [x] When the number of alterations changes the start of the red line need to be moved futher right.
 - [x] When using 3/4, need to show only 3 notes
 - [x] Choose between international notation (A, B, C, ...) and latin notation (La, Si, Do, ...)
+- [x] Alterations need to be above the svg lines
 
 ## Todo
 - [ ] Add tests
@@ -51,7 +52,6 @@ Run the development server
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#
 - [ ] As, Ds, and Gs need to have their signature. Signature can't be relevant to order in array because then order of flats is wrong.
 - [ ] Bug with the notation of staves not updating but the scaleInput does.
-- [ ] Alterations need to be above the svg lines
 
 ## Features
 - [ ] Add metronome sound
