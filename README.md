@@ -48,6 +48,7 @@ Run the development server
 - [x] Use of Perlin noise to nicer note curves
 
 ## Todo
+- [ ] Better handle on audio play() error (NotAllowedError) instead of console.logging everything
 - [ ] Add tests
 - [ ] When changing the quarter per beat time signature, the note should chage to be quarter, eighth...
 - [ ] Sort the scales not on name only but on tone => Cb then C then C#

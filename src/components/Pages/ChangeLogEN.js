@@ -5,6 +5,11 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.2.1</strong> – 03/24/2021
+        <ul>
+          <li>Fixed a bug that prevented the app from working on Safari</li>
+        </ul>
+      </li>
       <li><strong>2.2.0</strong> – 04/14/2020
         <ul>
           <li>Use of Perlin noise to nicer note curves</li>

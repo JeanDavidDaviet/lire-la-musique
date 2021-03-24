@@ -2,7 +2,7 @@ let context = undefined;
 
 const getAudioContext = () => {
   if(context === undefined){
-    context = new AudioContext();
+    context = new (window.AudioContext || window.webkitAudioContext)();
     context.oscillator = context.createOscillator();
     context.oscillator.start(0);
 
