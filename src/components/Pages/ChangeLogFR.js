@@ -5,6 +5,11 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.2.2</strong> – 12/09/2022
+        <ul>
+          <li>Dependencies update and fixing issues linked</li>
+        </ul>
+      </li>
       <li><strong>2.2.1</strong> – 24/03/2021
         <ul>
           <li>Correction d'un bug empechant l'app de fonctionner sur Safari</li>

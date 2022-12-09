@@ -22,11 +22,16 @@ import { setRunning, setVolume, setTempo, setScale, setClef, setTime, setInstrum
 import ControlsVolume from '../Controls/ControlsRunning';
 import { useMedia } from '../../useMedia.js';
 import Notation from '../Layout/Notation.js';
+import { useParams } from 'react-router-dom';
 
 window.notes = [];
 
 
-const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrument, notation, setRunning, setVolume, setNotation, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, notation, setRunning, setVolume, setNotation, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
+  let { chord } = useParams(); 
+
+  console.log(chord);
+
   const { t } = useTranslation();
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
   const [context, setContext] = useState(false);
@@ -82,8 +87,9 @@ const Home = ({ chord, running, volume, tempo, chosenScale, clef, time, instrume
   );
 }
 
-const mapStateToProps = (state, props) => ({
-  chord: props.match.params.chord,
+const mapStateToProps = (state, props) => {
+  return ({
+  // chord: props.match.params.chord,
   running: state.configReducer.running,
   volume: state.configReducer.volume,
   tempo: state.tempoReducer.tempo,
@@ -92,7 +98,7 @@ const mapStateToProps = (state, props) => ({
   time: state.configReducer.time,
   instrument: state.configReducer.instrument,
   notation: state.configReducer.notation,
-});
+})};
 
 const mapDispatchToProps = dispatch => ({
   setRunning: () => dispatch(setRunning()),
