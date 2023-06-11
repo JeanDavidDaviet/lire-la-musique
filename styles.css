@@ -2,8 +2,15 @@
     box-sizing: border-box;
 }
 body {
+    --repeat: 100px;
+    --repeatMinusOne: calc(var(--repeat) - 1px);
+    --gray: rgba(200,200,200,.5);
     margin: 0;
     padding: 0;
+    background:
+        linear-gradient(to right, transparent 0, transparent calc(50% - 1px), red calc(50% - 1px), red calc(50% + 1px), transparent calc(50% + 1px)),
+        linear-gradient(to right, white 0, white var(--repeatMinusOne), var(--gray) var(--repeatMinusOne), var(--gray) var(--repeat));
+    background-size: 100%, var(--repeat);
 }
 
 #output {
