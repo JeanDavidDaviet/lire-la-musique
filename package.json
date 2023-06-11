@@ -1,37 +1,12 @@
 {
-  "name": "musique",
-  "version": "2.2.2",
+  "name": "lire-la-musique",
+  "version": "3.0.0",
   "private": true,
-  "dependencies": {
-    "@babel/runtime": "^7.20.6",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@sentry/browser": "^6.2.3",
-    "i18next": "22",
-    "i18next-browser-languagedetector": "^7",
-    "react": "18",
-    "react-dom": "18",
-    "react-i18next": "^12",
-    "react-redux": "^8",
-    "react-router-dom": "^6",
-    "react-scripts": "^5",
-    "redux": "^4.0.5",
-    "source-map-explorer": "^2.5.2"
-  },
-  "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "HTTPS=true NODE_ENV=dev react-scripts start",
-    "build": "NODE_ENV=prod react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "scripts": {},
   "devDependencies": {
-    "redux-devtools": "^3.7.0"
+    "esbuild": "0.18.0"
+  },
+  "dependencies": {
+    "vexflow": "^4.1.0"
   }
 }
