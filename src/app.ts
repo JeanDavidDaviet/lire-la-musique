@@ -1,8 +1,23 @@
 import { Flow } from "vexflow";
+//@ts-ignore
+import sounds from './acoustic-grand-piano.js';
 const Formatter = Flow.Formatter;
 const Renderer = Flow.Renderer;
 const Stave = Flow.Stave;
 const StaveNote = Flow.StaveNote;
+
+const play = async (note: string) => {
+    const url = note;
+    const context = new AudioContext();
+    const audioBuffer = await fetch(url)
+        .then(res => res.arrayBuffer())
+        .then(buffer => context.decodeAudioData(buffer));
+
+    const source = context.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(context.destination);
+    source.start(context.currentTime, 0, .5);
+}
 
 // Create an SVG renderer and attach it to the DIV element with id="output".
 const div = document.getElementById("output") as HTMLDivElement;
