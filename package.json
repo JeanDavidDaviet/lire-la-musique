@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {},
   "devDependencies": {
-    "esbuild": "0.18.0"
+    "esbuild": "0.18.0",
+    "typescript": "^5.1.3"
   },
   "dependencies": {
     "vexflow": "^4.1.0"
