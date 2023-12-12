@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import * as Sentry from '@sentry/browser';
 import config from './config';
+import DevTools from './store/DevTools';
 
 if(process.env.NODE_ENV === "production"){
   Sentry.init({
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
   <I18nextProvider i18n={i18n}>
     <Provider store={store}>
       <App />
+      {process.env.NODE_ENV === 'development' && window.location.search === '?redux' ? <DevTools /> : null}
     </Provider>
   </I18nextProvider>
 );

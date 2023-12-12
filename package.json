@@ -36,6 +36,8 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@redux-devtools/core": "^3.14.0"
+    "@redux-devtools/core": "^3.14.0",
+    "@redux-devtools/dock-monitor": "^3.1.0",
+    "@redux-devtools/log-monitor": "^4.1.0"
   }
 }

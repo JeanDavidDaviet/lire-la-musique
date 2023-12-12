@@ -1,5 +1,13 @@
-import { createStore } from "redux";
+import { createStore, compose } from "redux";
 import rootReducer from "./reducers";
+import DevTools from './DevTools';
+
+let enhancer;
+if (process.env.NODE_ENV === 'development' && window.location.search === '?redux') {
+  enhancer = compose(
+    DevTools.instrument(),
+  );
+}
 
 const loadState = () => {
     try {
@@ -25,7 +33,7 @@ const saveState = (state) => {
 };
 
 
-const store = createStore(rootReducer, loadState(), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer, loadState(), enhancer);
 
 store.subscribe(() => {
   saveState(store.getState());
