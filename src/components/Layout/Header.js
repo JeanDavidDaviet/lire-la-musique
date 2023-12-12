@@ -1,9 +1,9 @@
 import React from 'react';
 import './Layout.css';
-import AppBar from '@material-ui/core/AppBar';
-import Chip from '@material-ui/core/Chip';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import AppBar from '@mui/material/AppBar';
+import Chip from '@mui/material/Chip';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 import config from '../../config.js';
 import { useTranslation } from "react-i18next";
@@ -15,7 +15,7 @@ const Header = () => {
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
   const { t } = useTranslation();
   return (
-    <AppBar position="static">
+    <AppBar position="static" color='primary'>
       <Toolbar variant={isSmallHeight ? 'dense' : 'regular'}>
         <Typography variant="h6" color="inherit">
           <Link to="/" className="logo">{t('Read the music')}</Link>

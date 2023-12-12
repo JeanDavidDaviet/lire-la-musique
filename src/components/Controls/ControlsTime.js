@@ -1,6 +1,6 @@
 import React from 'react';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputLabel from '@material-ui/core/InputLabel';
+import NativeSelect from '@mui/material/NativeSelect';
+import InputLabel from '@mui/material/InputLabel';
 import { useTranslation } from 'react-i18next';
 
 const ControlsTime = ({ time, onChange }) => {

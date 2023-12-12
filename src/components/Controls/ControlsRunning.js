@@ -1,6 +1,6 @@
 import React from 'react';
-import Switch from '@material-ui/core/Switch';
-import InputLabel from '@material-ui/core/InputLabel';
+import Switch from '@mui/material/Switch';
+import InputLabel from '@mui/material/InputLabel';
 import { useTranslation } from 'react-i18next';
 
 const ControlsVolume = ({ volume, onChange }) => {

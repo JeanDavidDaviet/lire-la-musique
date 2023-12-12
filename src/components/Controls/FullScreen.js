@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Fullscreen from '@material-ui/icons/Fullscreen';
-import FullscreenExit from '@material-ui/icons/FullscreenExit';
+import Fullscreen from '@mui/icons-material/Fullscreen';
+import FullscreenExit from '@mui/icons-material/FullscreenExit';
 
 const FullScreen = () => {
     const [fullscreen, setFullscreen] = useState(false);

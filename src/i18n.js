@@ -27,10 +27,6 @@ i18n.use(LanguageDetector).init({
   interpolation: {
     escapeValue: false, // not needed for react!!
     formatSeparator: ","
-  },
-
-  react: {
-    wait: true
   }
 });
 

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import i18n from "../../i18n";
 import { languages } from '../../translations';
-import Dialog from '@material-ui/core/Dialog';
-import Typography from '@material-ui/core/Typography';
+import Dialog from '@mui/material/Dialog';
+import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Flags = () => {
     const { t } = useTranslation();
@@ -32,7 +32,6 @@ const Flags = () => {
                 anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
                 open={snack}
                 autoHideDuration={1000}
-                onExited={() => setSnack(false)}
                 onClose={() => setSnack(false)}
                 message={<span id="message-id">{t('Language changed to')} {languages[i18n.language]}</span>}
                 action={

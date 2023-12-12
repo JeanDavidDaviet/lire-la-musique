@@ -11,9 +11,9 @@ import ControlsTempo from '../Controls/ControlsTempo';
 import Mesure from '../Mesure/Mesure';
 import sounds from '../Note/sounds/sounds';
 import ControlsInstrument from '../Controls/ControlsInstrument.js';
-import Button from '@material-ui/core/Button';
-import PlayArrow from '@material-ui/icons/PlayArrow';
-import Pause from '@material-ui/icons/Pause';
+import Button from '@mui/material/Button';
+import PlayArrow from '@mui/icons-material/PlayArrow';
+import Pause from '@mui/icons-material/Pause';
 import { useTranslation } from 'react-i18next';
 import Footer from '../Layout/Footer.js';
 import getAudioContext from '../../webAudio.js';
@@ -28,9 +28,7 @@ window.notes = [];
 
 
 const Home = ({ running, volume, tempo, chosenScale, clef, time, instrument, notation, setRunning, setVolume, setNotation, setTempo, setScale, setClef, setTime, setInstrument }) =>  {
-  let { chord } = useParams(); 
-
-  console.log(chord);
+  let { chord } = useParams();
 
   const { t } = useTranslation();
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);

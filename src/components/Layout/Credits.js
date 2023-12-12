@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Layout.css';
-import Dialog from '@material-ui/core/Dialog';
-import Typography from '@material-ui/core/Typography';
+import Dialog from '@mui/material/Dialog';
+import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 
 const Credits = () => {
