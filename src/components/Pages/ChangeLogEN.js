@@ -5,9 +5,15 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
-      <li><strong>2.2.2</strong> – 09/12/2022
+      <li><strong>2.2.3</strong> – 12/12/2023
         <ul>
-          <li>Mises à jour de dépendances majeures et corrections des problèmes liés</li>
+          <li>Dependencies update</li>
+          <li>Update local DevTools for react-redux</li>
+        </ul>
+      </li>
+      <li><strong>2.2.2</strong> – 12/09/2022
+        <ul>
+          <li>Dependencies update and fixing issues linked</li>
         </ul>
       </li>
       <li><strong>2.2.1</strong> – 03/24/2021
