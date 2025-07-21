@@ -5,6 +5,13 @@ const ChangeLogEN = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.2.4</strong> – 07/20/2025
+        <ul>
+          <li>Fixed duplicate router issue (BrowserRouter)</li>
+          <li>Improved fullscreen mode browser compatibility</li>
+          <li>Added vendor prefix support for requestFullscreen</li>
+        </ul>
+      </li>
       <li><strong>2.2.3</strong> – 12/12/2023
         <ul>
           <li>Dependencies update</li>

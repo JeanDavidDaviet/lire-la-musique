@@ -5,6 +5,13 @@ const ChangeLogFR = () => (
   <article className="page">
     <h2>Changelog</h2>
     <ul className="changelogs">
+      <li><strong>2.2.4</strong> – 20/07/2025
+        <ul>
+          <li>Correction du problème de routeur duppliqué (BrowserRouter)</li>
+          <li>Amélioration de la compatibilité du mode plein écran avec les navigateurs</li>
+          <li>Ajout du support des préfixes vendor pour requestFullscreen</li>
+        </ul>
+      </li>
       <li><strong>2.2.3</strong> – 12/12/2023
         <ul>
           <li>Mises à jour de dépendances</li>
