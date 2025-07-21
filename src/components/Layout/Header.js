@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import i18n from '../../i18n';
 import { useMedia } from '../../useMedia';
 import FullScreen from '../Controls/FullScreen';
+import MenuDrawer from './MenuDrawer';
 
 const Header = () => {
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
@@ -17,7 +18,8 @@ const Header = () => {
   return (
     <AppBar position="static" color='primary'>
       <Toolbar variant={isSmallHeight ? 'dense' : 'regular'}>
-        <Typography variant="h6" color="inherit">
+        <MenuDrawer />
+        <Typography variant="h6" color="inherit" sx={{ flexGrow: 1, ml: 1 }}>
           <Link to="/" className="logo">{t('Read the music')}</Link>
         </Typography>
         <FullScreen />

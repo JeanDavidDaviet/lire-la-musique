@@ -46,6 +46,18 @@ export default {
       'Now playing': 'Now playing',
       'All Available Notes (Lowest to Highest)': 'All Available Notes (Lowest to Highest)',
       'Click on any note to play it individually': 'Click on any note to play it individually',
+      'Home': 'Home',
+      'Main piano practice interface': 'Main piano practice interface',
+      'Test Notes': 'Test Notes',
+      'Sequential note testing interface': 'Sequential note testing interface',
+      'Chords': 'Chords',
+      'Chord practice and learning': 'Chord practice and learning',
+      'Changelog': 'Changelog',
+      'Version history and updates': 'Version history and updates',
+      'Navigation Menu': 'Navigation Menu',
+      'Ready': 'Ready',
+      'In Progress': 'In Progress',
+      'Experimental': 'Experimental',
     }
   },
   fr: {
@@ -95,6 +107,18 @@ export default {
       'Now playing': 'En cours de lecture',
       'All Available Notes (Lowest to Highest)': 'Toutes les notes disponibles (Du grave à l\'aigu)',
       'Click on any note to play it individually': 'Cliquez sur une note pour la jouer individuellement',
+      'Home': 'Accueil',
+      'Main piano practice interface': 'Interface principale de pratique du piano',
+      'Test Notes': 'Test des notes',
+      'Sequential note testing interface': 'Interface de test séquentiel des notes',
+      'Chords': 'Accords',
+      'Chord practice and learning': 'Pratique et apprentissage des accords',
+      'Changelog': 'Historique',
+      'Version history and updates': 'Historique des versions et mises à jour',
+      'Navigation Menu': 'Menu de navigation',
+      'Ready': 'Prêt',
+      'In Progress': 'En cours',
+      'Experimental': 'Expérimental',
     }
   }
 };
