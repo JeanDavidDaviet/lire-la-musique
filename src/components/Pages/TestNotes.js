@@ -10,8 +10,15 @@ import { realSounds } from '../Note/sounds/sounds.js';
 import Note from '../Note/Note.js';
 import getAudioContext from '../../webAudio.js';
 import Controls from '../Controls/Controls';
+import ControlsTempo from '../Controls/ControlsTempo';
+import ControlsScale from '../Controls/ControlsScale';
+import ControlsClef from '../Controls/ControlsClef';
+import ControlsInstrument from '../Controls/ControlsInstrument';
 import Footer from '../Layout/Footer.js';
 import { useMedia } from '../../useMedia.js';
+import { setTempo, setScale, setClef, setInstrument } from '../../store/actions/global.action.js';
+import scales from '../../scales.js';
+import { getTranslatedScaleFromLetter } from '../../scales.js';
 
 // Get all notes in ascending order based on Y position
 const getAllNotesAscending = () => {
@@ -32,7 +39,7 @@ const getNoteNames = () => {
   return noteNames;
 };
 
-const TestNotes = ({ volume, tempo, instrument }) => {
+const TestNotes = ({ volume, tempo, instrument, chosenScale, notation, clef, setTempo, setScale, setClef, setInstrument }) => {
   const { t } = useTranslation();
   const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`], [true], false);
   
@@ -117,80 +124,19 @@ const TestNotes = ({ volume, tempo, instrument }) => {
   return (
     <React.Fragment>
       <Controls>
-        <div style={{ padding: '20px' }}>
-          <h2 style={{ margin: '0 0 20px 0', color: '#333' }}>
-            {t('Test All Notes')} - {allNotes.length} {t('notes available')}
-          </h2>
-          
-          <div style={{ marginBottom: '20px' }}>
-            <Button 
-              variant="contained" 
-              color="primary" 
-              size="large" 
-              onClick={playAllNotes}
-              style={{ marginRight: '10px' }}
-            >
-              <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
-                {isPlaying ? t('Stop') : t('Play All Notes')}
-              </span>
-              {isPlaying ?
-                <Pause style={{ marginLeft: 5 }} /> :
-                <PlayArrow style={{ marginLeft: 5 }} />}
-            </Button>
-            
-            {isPlaying && (
-              <Button 
-                variant="outlined" 
-                color="secondary" 
-                size="large" 
-                onClick={playNextNote}
-              >
-                <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
-                  {t('Next Note')}
-                </span>
-                <Skip style={{ marginLeft: 5 }} />
-              </Button>
-            )}
-          </div>
-
-          {isPlaying && currentNoteIndex >= 0 && (
-            <div style={{ 
-              background: '#f0f0f0', 
-              padding: '10px', 
-              borderRadius: '5px',
-              marginBottom: '20px'
-            }}>
-              <strong>
-                {t('Now playing')}: {noteNames[allNotes[currentNoteIndex][0]]} 
-                ({currentNoteIndex + 1}/{allNotes.length})
-              </strong>
-            </div>
-          )}
-        </div>
+        <ControlsTempo tempo={tempo} onChange={(event) => { setTempo(parseInt(event.target.value, 10)); }} />
+        <ControlsScale 
+          chosenScale={chosenScale} 
+          scales={scales} 
+          notation={notation} 
+          onChange={(event) => {setScale(event.target.value)}}
+        />
+        <ControlsClef clef={clef} onChange={() => {setClef()}} />
+        <ControlsInstrument instrument={instrument} onChange={(event) => { setInstrument(parseInt(event.target.value, 10)) }} />
       </Controls>
 
-      <div style={{ 
-        padding: '20px', 
-        minHeight: '400px',
-        background: 'white',
-        margin: '20px',
-        borderRadius: '10px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-      }}>
-        <h3 style={{ marginBottom: '20px', textAlign: 'center' }}>
-          {t('All Available Notes (Lowest to Highest)')}
-        </h3>
-        
-        {/* Staff background */}
-        <svg 
-          width="100%" 
-          height="300" 
-          style={{ 
-            background: '#fff',
-            border: '1px solid #ddd',
-            borderRadius: '5px'
-          }}
-        >
+      <div>
+        <svg width="100%" height="300">
           {/* Draw staff lines */}
           {[0, 10, 20, 30, 40].map((line, index) => (
             <line 
@@ -230,7 +176,7 @@ const TestNotes = ({ volume, tempo, instrument }) => {
                       transform: `translate(${parseInt(yPosition) < 20 ? 0 : 14}px, ${parseInt(yPosition) < 20 ? 0 : -38}px)`
                     }}
                   >
-                    <path fill="none" stroke="black" d="M 1 0 L 1 35"></path>
+                    <path fill="none" stroke={isCurrentNote ? '#ff4444' : 'black'} d="M 1 0 L 1 35"></path>
                   </g>
                   <g className="note__head" style={{ transform: `rotate(-15deg)` }}>
                     <ellipse 
@@ -250,7 +196,7 @@ const TestNotes = ({ volume, tempo, instrument }) => {
                   textAnchor="middle" 
                   fontSize="12" 
                   fill={isCurrentNote ? '#ff4444' : '#666'}
-                  fontWeight={isCurrentNote ? 'bold' : 'normal'}
+                  fontWeight="normal"
                 >
                   {noteNames[yPosition]}
                 </text>
@@ -259,17 +205,35 @@ const TestNotes = ({ volume, tempo, instrument }) => {
           })}
         </svg>
         
-        <div style={{ 
-          marginTop: '20px', 
-          fontSize: '14px', 
-          color: '#666',
-          textAlign: 'center'
-        }}>
-          {t('Click on any note to play it individually')} • 
-          {t('Tempo')}: {tempo} BPM • 
-          {t('Volume')}: {volume}%
+        <div>
+          <div style={{ 
+            marginTop: '20px', 
+            fontSize: '14px', 
+            color: '#666',
+            textAlign: 'center'
+          }}>
+            {t('Click on any note to play it individually')} 
+          </div>
+          <div style={{ marginRight: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Button 
+                variant="contained" 
+                color="primary" 
+                size="large" 
+                onClick={playAllNotes}
+                style={{ marginRight: '10px', marginTop: '16px' }}
+              >
+                <span style={{ position: 'relative', top: 1, fontWeight: 'normal' }}>
+                  {isPlaying ? t('Stop') : t('Play All Notes')}
+                </span>
+                {isPlaying ?
+                  <Pause style={{ marginLeft: 5 }} /> :
+                  <PlayArrow style={{ marginLeft: 5 }} />}
+              </Button>
+          </div>
         </div>
       </div>
+
+      
 
       <Footer />
     </React.Fragment>
@@ -280,6 +244,16 @@ const mapStateToProps = (state) => ({
   volume: state.configReducer.volume,
   tempo: state.tempoReducer.tempo,
   instrument: state.configReducer.instrument,
+  chosenScale: state.scaleReducer.chosenScale,
+  notation: state.configReducer.notation,
+  clef: state.configReducer.clef,
 });
 
-export default connect(mapStateToProps)(TestNotes);
+const mapDispatchToProps = dispatch => ({
+  setTempo: (value) => dispatch(setTempo(value)),
+  setScale: (value) => dispatch(setScale(value)),
+  setClef: () => dispatch(setClef()),
+  setInstrument: (value) => dispatch(setInstrument(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestNotes);
