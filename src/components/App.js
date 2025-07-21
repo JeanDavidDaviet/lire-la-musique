@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from './Pages/Home';
 import ChangeLogEN from './Pages/ChangeLogEN';
 import ChangeLogFR from './Pages/ChangeLogFR';
+import TestNotes from './Pages/TestNotes';
 import Header from './Layout/Header';
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chords/:chord" element={<Home />} />
+        <Route path="/test-notes" element={<TestNotes />} />
         <Route path="/en/changelog" element={<ChangeLogEN />} />
         <Route path="/fr/changelog" element={<ChangeLogFR />} />
       </Routes>

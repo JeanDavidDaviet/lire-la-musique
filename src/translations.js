@@ -38,6 +38,14 @@ export default {
       'Accelerate tempo up 20 bpm': 'Accelerate tempo up 20 bpm',
       'Right arrow': 'Right arrow',
       'Decelerate tempo up 20 bpm': 'Decelerate tempo up 20 bpm',
+      'Test All Notes': 'Test All Notes',
+      'notes available': 'notes available',
+      'Stop': 'Stop',
+      'Play All Notes': 'Play All Notes',
+      'Next Note': 'Next Note',
+      'Now playing': 'Now playing',
+      'All Available Notes (Lowest to Highest)': 'All Available Notes (Lowest to Highest)',
+      'Click on any note to play it individually': 'Click on any note to play it individually',
     }
   },
   fr: {
@@ -79,6 +87,14 @@ export default {
       'Accelerate tempo up 20 units': 'Accélerer le tempo de 20 bpm',
       'Right arrow': 'Flèche droite',
       'Decelerate tempo up 20 units': 'Ralentir le tempo de 20 bpm',
+      'Test All Notes': 'Tester toutes les notes',
+      'notes available': 'notes disponibles',
+      'Stop': 'Arrêter',
+      'Play All Notes': 'Jouer toutes les notes',
+      'Next Note': 'Note suivante',
+      'Now playing': 'En cours de lecture',
+      'All Available Notes (Lowest to Highest)': 'Toutes les notes disponibles (Du grave à l\'aigu)',
+      'Click on any note to play it individually': 'Cliquez sur une note pour la jouer individuellement',
     }
   }
 };
