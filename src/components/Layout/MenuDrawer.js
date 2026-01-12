@@ -79,7 +79,7 @@ const MenuDrawer = () => {
   const getStatusText = (status) => {
     switch (status) {
       case 'ok':
-        return t('Ready');
+        return t('Beta');
       case 'in-progress':
         return t('In Progress');
       case 'experimental':
