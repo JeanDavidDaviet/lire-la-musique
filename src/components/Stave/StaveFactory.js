@@ -92,7 +92,7 @@ class StaveFactory extends Component {
         this.removeStaves();
       }
 
-      if(this.state.x - config.clefWidth + config.xIntervalBetweenNotes - 30 < this.canPlay){
+      if(this.state.x - this.props.widthOfBackground + config.xIntervalBetweenNotes - 30 < this.canPlay){
         this.canPlay -= config.xIntervalBetweenNotes;
 
         if (this.props.volume === true) {
