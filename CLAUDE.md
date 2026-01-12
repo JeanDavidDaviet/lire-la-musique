@@ -4,10 +4,36 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-- **Start development server**: `yarn start` or `npm start`
-- **Build for production**: `yarn build` or `npm run build`
-- **Run tests**: `yarn test` or `npm test`
-- **Analyze bundle size**: `yarn analyze` or `npm run analyze`
+- **Start development server**: `npm start`
+- **Build for production**: `npm run build`
+- **Run tests**: `npm test`
+- **Analyze bundle size**: `npm run analyze`
+- **Lint code**: `npx eslint src/`
+- **Format code**: `npx prettier --write "src/**/*.{js,jsx,json,css,md}"`
+
+## Code Quality Tools
+
+### ESLint (v8.57.1)
+
+- Configuration: `.eslintrc.json`
+- Preset: `react-app` with React/JSX/a11y linting
+- Rules: No unused vars, enforce `const/let`, equality checks
+- Run: `npx eslint src/`
+
+### Prettier (v3.7.4)
+
+- Configuration: `.prettierrc.json`
+- Line length: 100 characters
+- Indentation: 2 spaces
+- Quotes: Single quotes for JS, double for JSX
+- Run: `npx prettier --write "src/**/*.{js,jsx,json,css,md}"`
+
+### Husky + lint-staged
+
+- Hook file: `.husky/pre-commit`
+- Runs automatically before each commit
+- Executes: Prettier format + ESLint fix on staged files
+- Prevents commits that don't pass linting/formatting
 
 ## Architecture Overview
 
@@ -58,8 +84,16 @@ This is a React-based music education app called "Piano" that teaches users to r
 
 ### Development Notes
 
-- Uses yarn as package manager (yarn.lock present)
 - React Scripts 5 for build tooling
-- MUI v5 for UI components
+- Material-UI v7 for UI components
 - Sentry integration for error tracking
 - Service worker for PWA capabilities
+
+## Important Files
+
+- **IDEAS.md** - Product roadmap with 27 feature ideas organized by priority
+- **.eslintrc.json** - ESLint configuration
+- **.prettierrc.json** - Prettier configuration
+- **.prettierignore** - Files to skip formatting
+- **.husky/pre-commit** - Git pre-commit hook
+- **package.json** - Contains lint-staged configuration
