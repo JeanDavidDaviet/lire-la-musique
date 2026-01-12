@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
 import PlayArrow from '@mui/icons-material/PlayArrow';
 import Pause from '@mui/icons-material/Pause';
-import Skip from '@mui/icons-material/SkipNext';
-import config from '../../config.js';
 import { realSounds } from '../Note/sounds/sounds.js';
-import Note from '../Note/Note.js';
 import getAudioContext from '../../webAudio.js';
 import Controls from '../Controls/Controls';
 import ControlsTempo from '../Controls/ControlsTempo';
@@ -15,10 +12,8 @@ import ControlsScale from '../Controls/ControlsScale';
 import ControlsClef from '../Controls/ControlsClef';
 import ControlsInstrument from '../Controls/ControlsInstrument';
 import Footer from '../Layout/Footer.js';
-import { useMedia } from '../../useMedia.js';
 import { setTempo, setScale, setClef, setInstrument } from '../../store/actions/global.action.js';
 import scales from '../../scales.js';
-import { getTranslatedScaleFromLetter } from '../../scales.js';
 
 // Get all notes in ascending order based on Y position
 const getAllNotesAscending = () => {
@@ -76,7 +71,6 @@ const TestNotes = ({
   setInstrument,
 }) => {
   const { t } = useTranslation();
-  const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`], [true], false);
 
   const [context, setContext] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -142,7 +136,7 @@ const TestNotes = ({
 
   useEffect(() => {
     if (isPlaying && currentNoteIndex >= 0 && currentNoteIndex < allNotes.length) {
-      const [yPosition, audioFile] = allNotes[currentNoteIndex];
+      const [, audioFile] = allNotes[currentNoteIndex];
       playNote(audioFile);
 
       // Calculate interval based on tempo (tempo is BPM, so we want delay between notes)
@@ -154,6 +148,7 @@ const TestNotes = ({
 
       return () => clearTimeout(timer);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying, currentNoteIndex, tempo, audioContext]);
 
   return (

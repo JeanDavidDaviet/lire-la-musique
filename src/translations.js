@@ -1,4 +1,4 @@
-export default {
+const translations = {
   en: {
     translations: {
       'Read the music': 'Read the music',
@@ -125,6 +125,8 @@ export default {
     },
   },
 };
+
+export default translations;
 
 export const languages = {
   en: 'English',

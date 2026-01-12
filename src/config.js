@@ -1,4 +1,4 @@
-export default {
+const config = {
   version: '2.2.4',
   width: window.innerWidth,
   height: window.innerHeight,
@@ -17,3 +17,5 @@ export default {
   maxNote: -20,
   minNote: 70,
 };
+
+export default config;

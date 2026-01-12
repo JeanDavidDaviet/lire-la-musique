@@ -96,7 +96,7 @@ class StaveChordsFactory extends Component {
 
         if (this.props.volume === true) {
           if (this.props.instrument === 0) {
-            this.audios[window.notes[0]].play().then(null, console.log);
+            this.audios[window.notes[0]].play().then(null, () => {});
           }
           if (this.props.instrument === 1) {
             const context = getAudioContext();
