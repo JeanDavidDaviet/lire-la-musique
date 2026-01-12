@@ -25,7 +25,7 @@ const ControlsTime = ({ time, onChange }) => {
         </optgroup>
       </NativeSelect>
     </div>
-  )
-}
+  );
+};
 
 export default ControlsTime;

@@ -10,14 +10,14 @@ import {
   Chip,
   Typography,
   Box,
-  Divider
+  Divider,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
   Home as HomeIcon,
   MusicNote as MusicNoteIcon,
   LibraryMusic as LibraryMusicIcon,
-  Description as DescriptionIcon
+  Description as DescriptionIcon,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -38,29 +38,29 @@ const MenuDrawer = () => {
       description: t('Main piano practice interface'),
       path: '/',
       icon: <HomeIcon />,
-      status: 'ok'
+      status: 'ok',
     },
     {
       title: t('Test Notes'),
       description: t('Sequential note testing interface'),
       path: '/test-notes',
       icon: <MusicNoteIcon />,
-      status: 'in-progress'
+      status: 'in-progress',
     },
     {
       title: t('Chords'),
       description: t('Chord practice and learning'),
       path: '/chords',
       icon: <LibraryMusicIcon />,
-      status: 'experimental'
+      status: 'experimental',
     },
     {
       title: t('Changelog'),
       description: t('Version history and updates'),
       path: `/${i18n.language}/changelog`,
       icon: <DescriptionIcon />,
-      status: 'ok'
-    }
+      status: 'ok',
+    },
   ];
 
   const getStatusColor = (status) => {
@@ -96,21 +96,16 @@ const MenuDrawer = () => {
 
   return (
     <>
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        onClick={toggleDrawer}
-        edge="start"
-      >
+      <IconButton color="inherit" aria-label="open drawer" onClick={toggleDrawer} edge="start">
         <MenuIcon />
       </IconButton>
-      
+
       <Drawer
         anchor="left"
         open={open}
         onClose={toggleDrawer}
         PaperProps={{
-          sx: { width: 320 }
+          sx: { width: 320 },
         }}
       >
         <Box sx={{ p: 2 }}>
@@ -118,22 +113,18 @@ const MenuDrawer = () => {
             {t('Navigation Menu')}
           </Typography>
         </Box>
-        
+
         <Divider />
-        
+
         <List>
           {menuItems.map((item, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton onClick={() => handleItemClick(item.path)}>
-                <ListItemIcon>
-                  {item.icon}
-                </ListItemIcon>
+                <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText
                   primary={
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <Typography variant="subtitle1">
-                        {item.title}
-                      </Typography>
+                      <Typography variant="subtitle1">{item.title}</Typography>
                       <Chip
                         label={getStatusText(item.status)}
                         color={getStatusColor(item.status)}

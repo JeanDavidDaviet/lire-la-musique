@@ -6,7 +6,7 @@ import { useMedia } from '../../useMedia';
 import config from '../../config';
 
 const Footer = ({ children }) => {
-  const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`],[true],false);
+  const isSmallHeight = useMedia([`(max-height: ${config.isSmallHeight}px)`], [true], false);
   return (
     <footer className={`footer ${isSmallHeight ? 'footer--small' : ''}`}>
       <Flags />
@@ -14,7 +14,7 @@ const Footer = ({ children }) => {
       <Credits />
       <SettingsDialog />
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

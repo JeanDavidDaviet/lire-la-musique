@@ -10,13 +10,19 @@ const ControlsScale = ({ chosenScale, scales, notation, onChange }) => {
     <div className="control">
       <InputLabel htmlFor="control-scale">{t('Scale')}</InputLabel>
       <NativeSelect value={chosenScale} onChange={onChange}>
-        {Object.keys(scales).sort().map((value, index) => {
-          const scaleNotation = getTranslatedScaleFromLetter(scales[value].M, notation);
-          return <option key={index} value={value}>{scaleNotation}</option>
-        })}
+        {Object.keys(scales)
+          .sort()
+          .map((value, index) => {
+            const scaleNotation = getTranslatedScaleFromLetter(scales[value].M, notation);
+            return (
+              <option key={index} value={value}>
+                {scaleNotation}
+              </option>
+            );
+          })}
       </NativeSelect>
     </div>
-  )
-}
+  );
+};
 
 export default ControlsScale;

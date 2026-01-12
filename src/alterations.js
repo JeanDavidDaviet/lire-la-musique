@@ -1,5 +1,5 @@
-import SharpFactory from "./components/Signature/SharpFactory"
-import FlatFactory from "./components/Signature/FlatFactory"
+import SharpFactory from './components/Signature/SharpFactory';
+import FlatFactory from './components/Signature/FlatFactory';
 
 const alterations = {
   C: () => null,
@@ -16,7 +16,7 @@ const alterations = {
   Ab: FlatFactory,
   Db: FlatFactory,
   Gb: FlatFactory,
-  Cb: FlatFactory
-}
+  Cb: FlatFactory,
+};
 
-export default alterations
+export default alterations;

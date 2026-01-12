@@ -16,12 +16,14 @@ This is a React-based music education app called "Piano" that teaches users to r
 ### Key Architecture Components
 
 **Redux State Management**:
+
 - Uses Redux 5 with localStorage persistence
 - State automatically saves/loads from localStorage in `src/store/store.js:12-33`
 - Redux DevTools available in development with `?redux` query parameter
 - Main reducers: config, scale, tempo in `src/store/reducers/`
 
 **Musical Components Structure**:
+
 - `Stave`: Main container for musical staff rendering
 - `Line`: Individual staff lines with notes
 - `Mesure`: Musical measures/bars
@@ -30,16 +32,19 @@ This is a React-based music education app called "Piano" that teaches users to r
 - All components have corresponding Factory classes for creation
 
 **Audio System**:
+
 - Web Audio API implementation in `src/webAudio.js`
 - Audio files organized by octaves in `src/components/Note/sounds/`
 - Requires user interaction to enable audio (autoplay policy compliance)
 
 **Configuration**:
+
 - Global config in `src/config.js` with musical constants
 - Version synced between `config.js` and `package.json`
 - Responsive design with screen size detection
 
 **Internationalization**:
+
 - i18next for translations in `src/i18n.js`
 - Language detection and switching
 - Supports French and English

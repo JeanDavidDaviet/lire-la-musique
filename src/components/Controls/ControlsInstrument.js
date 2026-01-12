@@ -14,7 +14,7 @@ const ControlsInstrument = ({ instrument, onChange }) => {
         {/* <option value={1}>Metronome</option> */}
       </NativeSelect>
     </div>
-  )
-}
+  );
+};
 
 export default ControlsInstrument;

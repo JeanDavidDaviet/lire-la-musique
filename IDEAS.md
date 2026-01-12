@@ -7,6 +7,7 @@
 ## 📊 ANALYSE DU PROJET
 
 ### ✅ Forces Actuelles
+
 - Architecture musicale solide (Factory patterns)
 - State management simple (Redux + localStorage)
 - Multi-langage (FR/EN)
@@ -17,12 +18,14 @@
 ### ⚠️ Lacunes Majeures
 
 #### 1. QA & Tests (CRITIQUE) ❌
+
 - Aucun test unitaire/intégration
 - Aucun test E2E
 - Aucune couverture de code
 - **Impact:** Risque de regressions à chaque release
 
 #### 2. Qualité de Code ❌
+
 - Pas d'ESLint
 - Pas de Prettier
 - Pas de pre-commit hooks
@@ -30,35 +33,41 @@
 - **Impact:** Dette technique croissante
 
 #### 3. Documentation ❌
+
 - Pas d'API documentation des composants
 - Pas de guide contribution
 - Pas de troubleshooting
 - **Impact:** Onboarding difficile
 
 #### 4. Accessibilité ❌
+
 - Pas de labels ARIA
 - Navigation clavier limitée
 - Pas de screen reader support
 - **Impact:** Exclut les utilisateurs en situation de handicap
 
 #### 5. Performance ❌
+
 - Aucune optimisation memoization React
 - Pas de lazy loading routes
 - **Impact:** Ralentissement sur mobiles
 
 #### 6. Error Handling ❌
+
 - Gestion d'erreurs audio basique
 - Pas d'error boundary
 - Pas de feedback utilisateur
 - **Impact:** Poor UX lors de problèmes
 
 #### 7. Configuration & DevOps ❌
+
 - Pas de .env management
 - Secrets hardcodés (Sentry DSN)
 - Pas de changelog automatisé
 - **Impact:** Sécurité fragile
 
 #### 8. Analytics & Monitoring ⚠️
+
 - Sentry incomplet
 - Pas d'user analytics
 - Pas de tracking erreurs complet
@@ -71,6 +80,7 @@
 ### NIVEAU 1: Fonctionnalités Core (Haute Priorité)
 
 #### 1️⃣ Mode Pratique Progressive
+
 - **Description:** Niveaux 1-10 avec progression automatique
 - **Détails:**
   - Niveau 1-2: Gamme C, notes graves uniquement
@@ -82,6 +92,7 @@
 - **Impact:** 🔥🔥🔥 Augmente retention & engagement
 
 #### 2️⃣ Système de Score & Achievements
+
 - **Description:** Points, badges, leaderboards
 - **Détails:**
   - +10pts par note correcte, -5pts erreur
@@ -94,6 +105,7 @@
 - **Impact:** 🔥🔥 Gamification = meilleure rétention
 
 #### 3️⃣ Mode Timing/Rythme
+
 - **Description:** Tester capacité à jouer au bon tempo
 - **Détails:**
   - Métronome visuel (pulsation)
@@ -105,6 +117,7 @@
 - **Impact:** 🔥🔥 Pédagogiquement important
 
 #### 4️⃣ Enregistrement Audio Utilisateur
+
 - **Description:** Enregistrer via microphone, comparer
 - **Détails:**
   - Utiliser Web Audio API (getUserMedia)
@@ -117,6 +130,7 @@
 - **Impact:** 🔥🔥🔥 Feedback temps réel unique
 
 #### 5️⃣ Quiz Note de Nom
+
 - **Description:** "Quelle est cette note?" format multi-choice
 - **Détails:**
   - 4 options de réponse
@@ -128,6 +142,7 @@
 - **Impact:** 🔥 Teste connaissance théorique
 
 #### 6️⃣ Sauvegarde Progression
+
 - **Description:** Historique d'apprentissage + stats
 - **Détails:**
   - Créer "Profil Utilisateur" simple
@@ -139,6 +154,7 @@
 - **Impact:** 🔥🔥 Motivation visuelle
 
 #### 7️⃣ Support Dactylographie Clavier
+
 - **Description:** Jouer notes au clavier (A-G keys)
 - **Détails:**
   - A=La, B=Si, C=Do, D=Ré, E=Mi, F=Fa, G=Sol
@@ -150,6 +166,7 @@
 - **Impact:** 🔥🔥 Workflow professionnels
 
 #### 8️⃣ Tutoriels Intégrés
+
 - **Description:** Onboarding + help contextuels
 - **Détails:**
   - Premier visit: 5-minute interactive tour
@@ -165,6 +182,7 @@
 ### NIVEAU 2: Améliorations UX/Design
 
 #### 9️⃣ Dark Mode Theme
+
 - **Description:** Complet avec MUI dark theme
 - **Détails:**
   - Toggle dans Header
@@ -176,6 +194,7 @@
 - **Impact:** 🔥 Réduction fatigue yeux
 
 #### 🔟 Animations Lisses
+
 - **Description:** Transitions note entrée/sortie
 - **Détails:**
   - Fade in/out notes
@@ -187,6 +206,7 @@
 - **Impact:** 🔥 Polish visuel
 
 #### 1️⃣1️⃣ Responsive Mobile First
+
 - **Description:** Vraiment utilisable sur petit écran
 - **Détails:**
   - Redesign controls pour mobile (stacked vertical)
@@ -198,6 +218,7 @@
 - **Impact:** 🔥🔥 Atteindre 60% users mobiles
 
 #### 1️⃣2️⃣ Loupe Note Sélectionnée
+
 - **Description:** Zoom visuel note sélectionnée
 - **Détails:**
   - Afficher note en grand en corner
@@ -208,6 +229,7 @@
 - **Impact:** 🔥 Aide visuelle apprentissage
 
 #### 1️⃣3️⃣ Historique Visualisé
+
 - **Description:** Stats graphiques (chart.js / recharts)
 - **Détails:**
   - Graphique temps: score sur 7 jours
@@ -219,6 +241,7 @@
 - **Impact:** 🔥🔥 Motivation visuelle
 
 #### 1️⃣4️⃣ Print/Export Partition
+
 - **Description:** Générer PDF des partitions
 - **Détails:**
   - Exporter partition courante en PDF
@@ -230,6 +253,7 @@
 - **Impact:** 🔥 Cas d'usage professionnel
 
 #### 1️⃣5️⃣ Sound Indicator Visual
+
 - **Description:** Animation wave lors lecture audio
 - **Détails:**
   - Cercles concentriques lors play
@@ -244,6 +268,7 @@
 ### NIVEAU 3: Infrastructure & Professionnel
 
 #### 1️⃣6️⃣ Suite de Tests Complète
+
 - **Description:** Jest + React Testing Library
 - **Détails:**
   - Setup Jest configuration
@@ -256,6 +281,7 @@
 - **Impact:** 🔥🔥🔥 Stabilité & confiance
 
 #### 1️⃣7️⃣ TypeScript Migration
+
 - **Description:** Graduel, commencer par types base
 - **Détails:**
   - tsconfig.json + babel config
@@ -268,6 +294,7 @@
 - **Impact:** 🔥🔥 Maintenabilité long-terme
 
 #### 1️⃣8️⃣ Storybook Components
+
 - **Description:** Documentation visuelle composants
 - **Détails:**
   - Setup Storybook v8
@@ -279,6 +306,7 @@
 - **Impact:** 🔥🔥 Developer experience
 
 #### 1️⃣9️⃣ API Documentation
+
 - **Description:** JSDoc + Swagger/OpenAPI
 - **Détails:**
   - JSDoc tous les fonctions/composants
@@ -290,6 +318,7 @@
 - **Impact:** 🔥 Onboarding contributeurs
 
 #### 2️⃣0️⃣ Pre-commit Hooks
+
 - **Description:** Prettier + ESLint + Tests
 - **Détails:**
   - Husky + lint-staged
@@ -301,6 +330,7 @@
 - **Impact:** 🔥 Code quality consistant
 
 #### 2️⃣1️⃣ Semantic Versioning
+
 - **Description:** SemVer + Changelog automatisé
 - **Détails:**
   - Commitizen integration
@@ -312,6 +342,7 @@
 - **Impact:** 🔥 Professional releases
 
 #### 2️⃣2️⃣ Analytics Dashboard
+
 - **Description:** Voir usage patterns utilisateurs
 - **Détails:**
   - Event tracking: section visited, mode played, score achieved
@@ -327,6 +358,7 @@
 ### NIVEAU 4: Pédagogie Avancée
 
 #### 2️⃣3️⃣ Cours Structurés
+
 - **Description:** Curriculum guidé par level
 - **Détails:**
   - Structure: Théorie → Exercices → Quiz
@@ -339,6 +371,7 @@
 - **Impact:** 🔥🔥🔥 Devenir "cours complet"
 
 #### 2️⃣4️⃣ Musique Classique Repository
+
 - **Description:** Exercices célèbres (Chopin, Bach, etc.)
 - **Détails:**
   - Importer partitions MusicXML
@@ -350,6 +383,7 @@
 - **Impact:** 🔥🔥 Engagement culturel
 
 #### 2️⃣5️⃣ Notation Musicale Avancée
+
 - **Description:** Liaison, pointillé, roulades, etc.
 - **Détails:**
   - Note pointée (1.5x durée)
@@ -362,6 +396,7 @@
 - **Impact:** 🔥 Réalisme musical
 
 #### 2️⃣6️⃣ Mode Collaboration
+
 - **Description:** Partager partitions avec amis
 - **Détails:**
   - Générer lien partageable (URL courte)
@@ -373,6 +408,7 @@
 - **Impact:** 🔥 Viralité social
 
 #### 2️⃣7️⃣ Explications Note
+
 - **Description:** Popup "Pourquoi cette note?"
 - **Détails:**
   - Hover sur note → info popup
@@ -408,12 +444,14 @@ Week 2:
 ### PHASE 2: UTILISATEUR (3-4 semaines)
 
 **Week 1-2:**
-  - [ ] Mode Pratique Progressive (Idée #1)
-  - [ ] Système Score/Achievements (Idée #2)
+
+- [ ] Mode Pratique Progressive (Idée #1)
+- [ ] Système Score/Achievements (Idée #2)
 
 **Week 3-4:**
-  - [ ] Responsive mobile optimization (Idée #11)
-  - [ ] Dark mode (Idée #9)
+
+- [ ] Responsive mobile optimization (Idée #11)
+- [ ] Dark mode (Idée #9)
 
 **Impact:** Users voient améliorations visibles
 
@@ -422,12 +460,14 @@ Week 2:
 ### PHASE 3: FEATURES (3-4 semaines)
 
 **Week 1-2:**
-  - [ ] Enregistrement Audio utilisateur (Idée #4)
-  - [ ] Historique + Stats visualisées (Idée #13)
+
+- [ ] Enregistrement Audio utilisateur (Idée #4)
+- [ ] Historique + Stats visualisées (Idée #13)
 
 **Week 3-4:**
-  - [ ] Quiz multi-choice (Idée #5)
-  - [ ] Tutoriels intégrés (Idée #8)
+
+- [ ] Quiz multi-choice (Idée #5)
+- [ ] Tutoriels intégrés (Idée #8)
 
 **Impact:** App devient puissant learning tool
 
@@ -446,6 +486,7 @@ Week 2:
 ## 📋 CHECKLIST "PROFESSIONNEL"
 
 ### Code Quality
+
 - [ ] ESLint configuré + enforced dans CI
 - [ ] Prettier auto-format tous les files
 - [ ] 80%+ test coverage
@@ -455,6 +496,7 @@ Week 2:
 - [ ] No hardcoded secrets
 
 ### Documentation
+
 - [ ] README.md complet (setup, usage, architecture)
 - [ ] API docs (JSDoc)
 - [ ] Contributing.md guide
@@ -462,6 +504,7 @@ Week 2:
 - [ ] Troubleshooting guide
 
 ### Accessibilité
+
 - [ ] WCAG 2.1 AA compliance
 - [ ] Screen reader tested (NVDA, VoiceOver)
 - [ ] Keyboard navigation complète
@@ -470,6 +513,7 @@ Week 2:
 - [ ] Focus indicators visibles
 
 ### DevOps
+
 - [ ] Environment variables (.env)
 - [ ] Semantic versioning + CHANGELOG automatisé
 - [ ] Security scanning (npm audit)
@@ -478,6 +522,7 @@ Week 2:
 - [ ] Staging environment
 
 ### UX/Design
+
 - [ ] Mobile responsive (tested on real devices)
 - [ ] Dark mode
 - [ ] Error handling + user feedback
@@ -500,27 +545,28 @@ Week 2:
 
 ## 📊 IMPACT ESTIMATION
 
-| Feature | Users | Engagement | Technical Debt | Revenue |
-|---------|-------|------------|-----------------|---------|
-| Mode Progressive | 🟢🟢🟢 | 🟢🟢🟢 | 🟢 | 🟢🟢 |
-| Score/Achievements | 🟢🟢 | 🟢🟢🟢 | 🟢 | 🟢 |
-| Mobile Responsive | 🟢🟢🟢 | 🟢🟢 | 🟡 | 🟢🟢🟢 |
-| Audio Recording | 🟢🟢 | 🟢🟢🟢 | 🟢 | 🟢🟢 |
-| Tests/TypeScript | 🟡 | 🟡 | 🟢🟢🟢 | 🟡 |
-| Dark Mode | 🟢 | 🟢 | 🟢 | 🟡 |
-| Analytics | 🟡 | 🟡 | 🟢 | 🟢 |
+| Feature            | Users  | Engagement | Technical Debt | Revenue |
+| ------------------ | ------ | ---------- | -------------- | ------- |
+| Mode Progressive   | 🟢🟢🟢 | 🟢🟢🟢     | 🟢             | 🟢🟢    |
+| Score/Achievements | 🟢🟢   | 🟢🟢🟢     | 🟢             | 🟢      |
+| Mobile Responsive  | 🟢🟢🟢 | 🟢🟢       | 🟡             | 🟢🟢🟢  |
+| Audio Recording    | 🟢🟢   | 🟢🟢🟢     | 🟢             | 🟢🟢    |
+| Tests/TypeScript   | 🟡     | 🟡         | 🟢🟢🟢         | 🟡      |
+| Dark Mode          | 🟢     | 🟢         | 🟢             | 🟡      |
+| Analytics          | 🟡     | 🟡         | 🟢             | 🟢      |
 
 ---
 
 ## 🔄 Revision History
 
-| Date | Changes |
-|------|---------|
+| Date       | Changes               |
+| ---------- | --------------------- |
 | 2026-01-12 | Document initial créé |
 
 ---
 
 **Pour commencer:** Quel type d'implémentation préférez-vous?
+
 - **Option A:** Amélioration professionnelle (ESLint, Tests)
 - **Option B:** Feature utilisateur (Mode Progression)
 - **Option C:** Autre?

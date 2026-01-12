@@ -1,5 +1,5 @@
 export default {
-  version:"2.2.4",
+  version: '2.2.4',
   width: window.innerWidth,
   height: window.innerHeight,
   staveWidth: 200,
@@ -15,5 +15,5 @@ export default {
   tempoMaxBPM: 200,
   isSmallHeight: 420,
   maxNote: -20,
-  minNote: 70
-}
+  minNote: 70,
+};

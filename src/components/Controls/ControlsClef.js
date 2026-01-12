@@ -3,7 +3,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 import InputLabel from '@mui/material/InputLabel';
 import { useTranslation } from 'react-i18next';
 
-const ControlsClef = ( { clef, onChange } ) => {
+const ControlsClef = ({ clef, onChange }) => {
   const { t } = useTranslation();
   return (
     <div className="control">
@@ -13,7 +13,7 @@ const ControlsClef = ( { clef, onChange } ) => {
         <option value={true}>{t('Treble')}</option>
       </NativeSelect>
     </div>
-  )
-}
+  );
+};
 
 export default ControlsClef;

@@ -7,7 +7,7 @@ import config from '../../config';
 const ControlsTempo = ({ tempo, onChange }) => {
   const { t } = useTranslation();
   const tempos = [];
-  for(let i = config.tempoGapUnit; i <= config.tempoMaxBPM; i += config.tempoGapUnit){
+  for (let i = config.tempoGapUnit; i <= config.tempoMaxBPM; i += config.tempoGapUnit) {
     tempos.push(i);
   }
   return (
@@ -15,10 +15,14 @@ const ControlsTempo = ({ tempo, onChange }) => {
       <InputLabel htmlFor="control-tempo">{t('Tempo')}</InputLabel>
       <NativeSelect value={tempo} onChange={onChange}>
         {}
-        {tempos.map(t => <option key={t} value={t}>{t}</option>)}
+        {tempos.map((t) => (
+          <option key={t} value={t}>
+            {t}
+          </option>
+        ))}
       </NativeSelect>
     </div>
-  )
-}
+  );
+};
 
 export default ControlsTempo;

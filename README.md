@@ -6,23 +6,24 @@ To play with the project locally :
 
 Clone the repository
 
-```git clone git@github.com:JeanDavidDaviet/piano.git```
+`git clone git@github.com:JeanDavidDaviet/piano.git`
 
 Go to the directory
 
-```cd piano```
+`cd piano`
 
 Install the dependencies
 
-```yarn```
+`yarn`
 
 Run the development server
 
-```yarn run start```
+`yarn run start`
 
 ## WIP
 
 ### Done
+
 - [x] Fix tempo issues
 - [x] Use config file for global variables ? ( a way to share it)
 - [x] Routing
@@ -48,6 +49,7 @@ Run the development server
 - [x] Use of Perlin noise to nicer note curves
 
 ## Todo
+
 - [ ] Better handle on audio play() error (NotAllowedError) instead of console.logging everything
 - [ ] Add tests
 - [ ] When changing the quarter per beat time signature, the note should chage to be quarter, eighth...
@@ -57,6 +59,7 @@ Run the development server
 - [ ] Bug when playing has started and I change the scale while playing, the sheet translateX to the old scale translateX, and not the new
 
 ## Features
+
 - [ ] Add metronome sound
 - [ ] Add differents notes (eighths, half, whole, ...)
 - [ ] Make the tempo a range selector
@@ -64,6 +67,7 @@ Run the development server
 - [ ] Add both clef in the same time like a real sheet
 
 ## On update
+
 - Bump version number (config, package.json)
 - Changelog in differents translations (careful of date format)
 - Cleanup

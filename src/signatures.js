@@ -7,7 +7,7 @@ const signatures = {
     E: 4,
     B: 5,
     Fs: 6,
-    Cs: 7
+    Cs: 7,
   },
   flats: {
     C: 0,
@@ -17,7 +17,7 @@ const signatures = {
     Ab: 4,
     Db: 5,
     Gb: 6,
-    Cb: 7
+    Cb: 7,
   },
   numberOfAlterations: {
     C: 0,
@@ -34,9 +34,9 @@ const signatures = {
     Ab: 4,
     Db: 5,
     Gb: 6,
-    Cb: 7
-  }
-}
+    Cb: 7,
+  },
+};
 
 signatures.C = signatures.sharps.C;
 signatures.G = signatures.sharps.G;
@@ -59,4 +59,4 @@ signatures.As = signatures.flats.Bb;
 signatures.Ds = signatures.flats.Eb;
 signatures.Gs = signatures.flats.Ab;
 
-export default signatures
+export default signatures;

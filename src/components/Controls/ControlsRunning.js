@@ -8,9 +8,9 @@ const ControlsVolume = ({ volume, onChange }) => {
   return (
     <div className="control">
       <InputLabel htmlFor="control-running">{t('Volume')}</InputLabel>
-      <Switch color="primary" checked={volume} onChange={onChange}/>
+      <Switch color="primary" checked={volume} onChange={onChange} />
     </div>
-  )
-}
+  );
+};
 
 export default ControlsVolume;
