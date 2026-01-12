@@ -6,6 +6,20 @@ const ChangeLogEN = () => (
     <h2>Changelog</h2>
     <ul className="changelogs">
       <li>
+        <strong>2.2.5</strong> – 01/12/2026
+        <ul>
+          <li>Added ESLint for code quality and standards enforcement</li>
+          <li>Added Prettier for consistent code formatting</li>
+          <li>Setup Husky + lint-staged for automatic pre-commit code quality checks</li>
+          <li>Resolved all ESLint warnings and unused imports</li>
+          <li>Formatted entire codebase with Prettier (75 files)</li>
+          <li>
+            Created comprehensive IDEAS.md document with 27 feature ideas and development roadmap
+          </li>
+          <li>Updated CLAUDE.md with development setup instructions</li>
+        </ul>
+      </li>
+      <li>
         <strong>2.2.4</strong> – 07/20/2025
         <ul>
           <li>Fixed duplicate router issue (BrowserRouter)</li>

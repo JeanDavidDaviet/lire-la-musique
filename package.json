@@ -1,6 +1,6 @@
 {
   "name": "musique",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.28.6",
@@ -26,7 +26,11 @@
     "start": "HTTPS=false NODE_ENV=dev react-scripts start",
     "build": "NODE_ENV=prod react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,md}\""
   },
   "browserslist": [
     ">0.2%",

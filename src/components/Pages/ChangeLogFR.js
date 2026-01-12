@@ -6,6 +6,23 @@ const ChangeLogFR = () => (
     <h2>Changelog</h2>
     <ul className="changelogs">
       <li>
+        <strong>2.2.5</strong> – 12/01/2026
+        <ul>
+          <li>Ajout d'ESLint pour l'application des normes de qualité du code</li>
+          <li>Ajout de Prettier pour un formatage cohérent du code</li>
+          <li>
+            Configuration de Husky + lint-staged pour les vérifications automatiques pré-commit
+          </li>
+          <li>Résolution de tous les avertissements ESLint et imports inutilisés</li>
+          <li>Formatage de l'ensemble du codebase avec Prettier (75 fichiers)</li>
+          <li>
+            Création d'un document IDEAS.md complet avec 27 idées de fonctionnalités et une feuille
+            de route de développement
+          </li>
+          <li>Mise à jour de CLAUDE.md avec les instructions d'installation</li>
+        </ul>
+      </li>
+      <li>
         <strong>2.2.4</strong> – 20/07/2025
         <ul>
           <li>Correction du problème de routeur duppliqué (BrowserRouter)</li>
