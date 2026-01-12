@@ -38,6 +38,23 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@redux-devtools/core": "^4.1.1",
     "@redux-devtools/dock-monitor": "^4.1.1",
-    "@redux-devtools/log-monitor": "^5.1.1"
+    "@redux-devtools/log-monitor": "^5.1.1",
+    "eslint": "^8.57.1",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
